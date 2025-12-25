@@ -1,0 +1,547 @@
+.bookNowPage {
+  min-height: 100vh;
+}
+
+/* Hero */
+.bookHero {
+  position: relative;
+  padding: 160px 0 80px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.bookHero .heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bookHero .heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 249, 251, 0.92) 0%,
+    rgba(248, 249, 251, 0.88) 50%,
+    rgba(248, 249, 251, 0.82) 100%
+  );
+}
+
+.bookHero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.bookTitle {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin: 24px 0;
+  line-height: 1.2;
+}
+
+.bookTitle .accent {
+  color: var(--brand-accent);
+  font-style: italic;
+}
+
+.bookSubtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Booking Section */
+.bookingSection {
+  background: var(--bg-secondary);
+}
+
+.bookingGrid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Booking Form */
+.bookingForm {
+  background: var(--brand-accent);
+  border: none;
+  border-radius: var(--radius-xl);
+  padding: 40px;
+}
+
+.formSection {
+  margin-bottom: 36px;
+}
+
+.formSection:last-of-type {
+  margin-bottom: 0;
+}
+
+.formSectionTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.bookingForm .formGroup label {
+  color: white !important;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all var(--transition-fast);
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.formGroup select option {
+  background: var(--brand-accent);
+  color: white;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.formHelp {
+  display: block;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 6px;
+}
+
+/* Time Preview */
+.timePreview {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.timePreview .checking {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Conflict Alert */
+.conflictAlert {
+  padding: 14px 16px;
+  background: #FEE2E2;
+  color: #DC2626;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+/* Add-ons */
+.addOnsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.addOnCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: center;
+}
+
+.addOnCard input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.addOnCard:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.addOnCard.selected {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.addOnCard .addOnIcon {
+  font-size: 28px;
+}
+
+.addOnCard .addOnLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.addOnCard .addOnPrice {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+}
+
+/* Form Actions */
+.formActions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.formActions .btn-primary {
+  flex: 1;
+  background: white;
+  color: var(--brand-accent);
+}
+
+.formActions .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.formActions .btn-outline {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.formActions .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Sidebar */
+.bookingSidebar {
+  position: sticky;
+  top: 100px;
+}
+
+.summaryCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  margin-bottom: 20px;
+}
+
+.summaryCard h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 20px;
+}
+
+.summaryRows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.summaryRow span:first-child {
+  color: var(--text-secondary);
+}
+
+.summaryRow span:last-child {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.summaryDivider {
+  height: 1px;
+  background: var(--border-light);
+  margin: 16px 0;
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.summaryTotal span:first-child {
+  color: var(--brand-dark);
+}
+
+.summaryTotal span:last-child {
+  color: var(--brand-accent);
+}
+
+.summaryNote {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+/* Help Card */
+.helpCard {
+  background: var(--brand-dark);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  text-align: center;
+}
+
+.helpCard h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.helpCard p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.helpCard .btn-outline {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+}
+
+.helpCard .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Success State */
+.bookingSuccess {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.bookingSuccess .successIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--brand-teal-light);
+  color: var(--brand-teal);
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.bookingSuccess h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 12px;
+}
+
+.bookingSuccess > p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.successDetails {
+  background: var(--bg-primary);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.successRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.successRow:last-child {
+  border-bottom: none;
+}
+
+.successRow.total {
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 2px solid var(--border-medium);
+  border-bottom: none;
+}
+
+.successLabel {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.successValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.successRow.total .successLabel,
+.successRow.total .successValue {
+  font-size: 16px;
+}
+
+.successRow.total .successValue {
+  color: var(--brand-accent);
+}
+
+/* TimePicker Styles for Brown Form */
+.bookingForm .timePickerTrigger {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.bookingForm .timePickerTrigger:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.bookingForm .timePickerTrigger.isOpen {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.bookingForm .timePickerTrigger.isEmpty .timePickerValue {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.bookingForm .timePickerDropdown {
+  background: rgba(78, 35, 21, 0.98);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.bookingForm .timePickerFilters {
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.bookingForm .timePickerFilterBtn {
+  color: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.bookingForm .timePickerFilterBtn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.bookingForm .timePickerFilterBtn.isActive {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.bookingForm .timePickerOption {
+  color: white;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bookingForm .timePickerOption:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.bookingForm .timePickerOption.isSelected {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.bookingForm .timePickerOptionPeriod.am,
+.bookingForm .timePickerOptionPeriod.pm {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .bookingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .bookingSidebar {
+    position: static;
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .bookingForm {
+    padding: 28px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .addOnsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+}
+

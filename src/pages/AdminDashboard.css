@@ -1,0 +1,285 @@
+.admin {
+  min-height: 100vh;
+  padding: 24px;
+  background: radial-gradient(1000px 500px at 10% 0%, rgba(100, 108, 255, 0.18), transparent),
+    radial-gradient(800px 400px at 90% 10%, rgba(0, 255, 200, 0.12), transparent),
+    #0b0f1a;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.adminHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto 16px auto;
+}
+
+.adminBadge {
+  display: inline-flex;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+.adminTitle {
+  margin: 10px 0 6px 0;
+  font-size: 34px;
+}
+
+.adminSubtle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.adminHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.adminLink {
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  padding-bottom: 2px;
+}
+
+.adminMain {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.adminBottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.adminCard {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 14px;
+  backdrop-filter: blur(10px);
+}
+
+.adminCardTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.adminSmall {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.adminFilters {
+  display: grid;
+  grid-template-columns: 1fr 180px 160px;
+  gap: 10px;
+  margin: 10px 0 10px 0;
+}
+
+.adminField label {
+  display: block;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 6px;
+}
+
+.adminField input,
+.adminField select,
+.adminField textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.25);
+  color: rgba(255, 255, 255, 0.92);
+  padding: 10px 12px;
+  outline: none;
+}
+
+.adminField textarea {
+  resize: vertical;
+}
+
+.adminError {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 80, 80, 0.35);
+  background: rgba(255, 80, 80, 0.12);
+  color: rgba(255, 220, 220, 0.95);
+}
+
+.adminFieldError {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #f87171;
+  font-weight: 500;
+}
+
+.adminTableWrap {
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.adminTable th,
+.adminTable td {
+  padding: 10px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+}
+
+.adminTable thead th {
+  position: sticky;
+  top: 0;
+  background: rgba(10, 14, 25, 0.92);
+  text-align: left;
+  color: rgba(255, 255, 255, 0.82);
+  z-index: 1;
+}
+
+.adminTable tbody tr {
+  cursor: pointer;
+}
+
+.adminTable tbody tr:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.adminTable tbody tr.isSelected {
+  background: rgba(100, 108, 255, 0.14);
+}
+
+.adminEmpty {
+  padding: 18px 10px;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.adminMono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+}
+
+.adminStatus {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 12px;
+}
+
+.adminStatus.s-pending {
+  background: rgba(255, 190, 0, 0.12);
+  border-color: rgba(255, 190, 0, 0.3);
+}
+.adminStatus.s-confirmed {
+  background: rgba(0, 255, 170, 0.12);
+  border-color: rgba(0, 255, 170, 0.3);
+}
+.adminStatus.s-cancelled {
+  background: rgba(255, 80, 80, 0.12);
+  border-color: rgba(255, 80, 80, 0.3);
+}
+
+.adminForm {
+  margin-top: 10px;
+}
+
+.adminGrid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.adminSpan2 {
+  grid-column: span 2;
+}
+
+.adminActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.adminBtn,
+.adminBtnPrimary,
+.adminBtnDanger {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.adminBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.adminBtn:disabled,
+.adminBtnPrimary:disabled,
+.adminBtnDanger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.adminBtnPrimary {
+  background: rgba(100, 108, 255, 0.18);
+  border-color: rgba(100, 108, 255, 0.35);
+}
+.adminBtnPrimary:hover {
+  background: rgba(100, 108, 255, 0.24);
+}
+
+.adminBtnDanger {
+  background: rgba(255, 80, 80, 0.14);
+  border-color: rgba(255, 80, 80, 0.35);
+}
+.adminBtnDanger:hover {
+  background: rgba(255, 80, 80, 0.18);
+}
+
+.adminEmptyBox {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 980px) {
+  .adminMain {
+    grid-template-columns: 1fr;
+  }
+  .adminFilters {
+    grid-template-columns: 1fr;
+  }
+  .adminBottomGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

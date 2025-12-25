@@ -1,0 +1,453 @@
+.pricingFaqPage {
+  min-height: 100vh;
+}
+
+/* Hero */
+.pricingHero {
+  position: relative;
+  padding: 160px 0 80px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.pricingHero .heroBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.pricingHero .heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 249, 251, 0.92) 0%,
+    rgba(248, 249, 251, 0.88) 50%,
+    rgba(248, 249, 251, 0.82) 100%
+  );
+}
+
+.pricingHero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.pricingTitle {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin: 24px 0;
+  line-height: 1.2;
+}
+
+.pricingTitle .accent {
+  color: var(--brand-accent);
+  font-style: italic;
+}
+
+.pricingSubtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Pricing Section */
+.pricingSection {
+  background: var(--bg-primary);
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pricingCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  text-align: center;
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.pricingCard:hover {
+  border-color: var(--border-medium);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pricingCard.popular {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 1px var(--brand-accent);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--brand-accent);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+}
+
+.tierName {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 8px;
+}
+
+.tierDays {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.tierPrice {
+  margin-bottom: 8px;
+}
+
+.priceAmount {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--brand-dark);
+}
+
+.priceUnit {
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.tierMin {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.tierAdditional {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.tierFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  text-align: left;
+}
+
+.tierFeatures li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.tierFeatures li:last-child {
+  border-bottom: none;
+}
+
+.checkIcon {
+  color: var(--brand-teal);
+  font-weight: 700;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* Add-ons Section */
+.addOnsSection {
+  background: var(--bg-secondary);
+}
+
+.addOnsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.addOnItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  transition: all var(--transition-fast);
+}
+
+.addOnItem:hover {
+  border-color: var(--border-medium);
+}
+
+.addOnInfo h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-dark);
+  margin-bottom: 4px;
+}
+
+.addOnInfo p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.addOnPrice {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brand-accent);
+  white-space: nowrap;
+}
+
+/* Included Section */
+.includedSection {
+  background: var(--brand-dark);
+  padding: 80px 0;
+}
+
+.includedInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.includedContent .badge-teal {
+  background: rgba(20, 184, 166, 0.2);
+  color: var(--brand-teal);
+}
+
+.includedText {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+.includedGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.includedItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+}
+
+.includedCheck {
+  color: var(--brand-teal);
+  font-weight: 700;
+}
+
+/* FAQ Section */
+.faqSection {
+  background: var(--bg-primary);
+}
+
+.faqContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faqGroup {
+  margin-bottom: 40px;
+}
+
+.faqGroup:last-child {
+  margin-bottom: 0;
+}
+
+.faqGroupTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--brand-accent);
+  display: inline-block;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faqItem {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.faqItem:hover {
+  border-color: var(--border-medium);
+}
+
+.faqItem.open {
+  border-color: var(--brand-accent);
+}
+
+.faqQuestion {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-dark);
+  transition: color var(--transition-fast);
+}
+
+.faqQuestion:hover {
+  color: var(--brand-accent);
+}
+
+.faqIcon {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--brand-accent);
+  flex-shrink: 0;
+}
+
+.faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faqItem.open .faqAnswer {
+  max-height: 200px;
+}
+
+.faqAnswer p {
+  padding: 0 24px 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* CTA Section */
+.ctaSection {
+  background: var(--brand-accent);
+  padding: 80px 0;
+}
+
+.ctaInner {
+  text-align: center;
+}
+
+.ctaTitle {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: white;
+  margin-bottom: 16px;
+}
+
+.ctaText {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 500px;
+  margin: 0 auto 32px;
+}
+
+.ctaActions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaSection .btn-primary {
+  background: white;
+  color: var(--brand-accent);
+  border: 2px solid var(--brand-accent);
+}
+
+.ctaSection .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.ctaSection .btn-outline {
+  border-color: var(--brand-accent);
+  color: var(--brand-accent);
+}
+
+.ctaSection .btn-outline:hover {
+  background: var(--brand-accent);
+  color: white;
+  border-color: var(--brand-accent);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .addOnsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .includedInner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .addOnsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .includedGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .faqQuestion {
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+
+  .faqAnswer p {
+    padding: 0 20px 16px;
+  }
+}
+
