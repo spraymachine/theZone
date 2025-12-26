@@ -64,9 +64,9 @@
 
 .pricingGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1000px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -418,8 +418,9 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .pricingGrid {
-    grid-template-columns: 1fr;
-    max-width: 400px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    gap: 32px;
   }
 
   .addOnsGrid {
@@ -433,6 +434,10 @@
 }
 
 @media (max-width: 768px) {
+  .pricingGrid {
+    grid-template-columns: 1fr;
+  }
+
   .addOnsGrid {
     grid-template-columns: 1fr;
   }
