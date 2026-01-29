@@ -54,7 +54,6 @@ export default function AdminGate() {
       setError('')
 
       const { data, error: e } = await supabase.from('admins').select('user_id').eq('user_id', userId).maybeSingle()
-
       if (cancelled) return
 
       if (e) {

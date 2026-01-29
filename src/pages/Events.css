@@ -161,6 +161,25 @@
   color: var(--brand-teal);
 }
 
+.categoryImage {
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  position: relative;
+}
+
+.categoryImageImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+}
+
 .categoryImagePlaceholder {
   aspect-ratio: 4/3;
   border-radius: var(--radius-xl);
