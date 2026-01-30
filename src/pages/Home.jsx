@@ -111,6 +111,16 @@ export default function Home() {
 
   const testimonialBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
   const testimonialTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  
+  // Testimonial cards animations - staggered from left to right
+  const testimonialCardRefs = TESTIMONIALS.map((_, index) => 
+    useGSAPScroll({
+      animation: 'fadeInUp',
+      delay: 0.2 + (index * 0.15), // Stagger: 0.2s, 0.35s, 0.5s - left to right
+      duration: 0.7,
+      start: 'top 85%'
+    })
+  )
 
   const ctaTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0, duration: 0.8 })
   const ctaTextRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
@@ -293,7 +303,7 @@ export default function Home() {
           </div>
           <div className="testimonialGrid">
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="testimonialCard">
+              <div key={i} ref={testimonialCardRefs[i]} className="testimonialCard">
                   <div className="testimonialRating">
                     {[...Array(t.rating)].map((_, j) => (
                       <span key={j} className="star">★</span>
