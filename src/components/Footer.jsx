@@ -1,3 +1,4 @@
+import { useGSAPScroll } from '../hooks/useGSAPScroll'
 import './Footer.css'
 
 const QUICK_LINKS = [
@@ -21,13 +22,21 @@ const SUPPORT = [
 ]
 
 export default function Footer() {
+  // Footer animations - subtle fade in effects
+  const brandRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0, duration: 0.6, start: 'top 90%' })
+  const quickLinksRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.6, start: 'top 90%' })
+  const eventTypesRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.15, duration: 0.6, start: 'top 90%' })
+  const supportRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.6, start: 'top 90%' })
+  const contactRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.25, duration: 0.6, start: 'top 90%' })
+  const footerBottomRef = useGSAPScroll({ animation: 'fadeIn', delay: 0.3, duration: 0.5, start: 'top 95%' })
+
   return (
     <footer className="footer">
       <div className="footerMain">
         <div className="container">
           <div className="footerGrid">
             {/* Brand Column */}
-            <div className="footerBrand">
+            <div ref={brandRef} className="footerBrand">
               <a href="#/" className="footerLogo">
                 <span className="footerLogoIcon">◆</span>
                 <span className="footerLogoText">The Zone</span>
@@ -55,7 +64,7 @@ export default function Footer() {
             </div>
 
             {/* Quick Links */}
-            <div className="footerCol">
+            <div ref={quickLinksRef} className="footerCol">
               <h4 className="footerColTitle">Quick Links</h4>
               <ul className="footerLinks">
                 {QUICK_LINKS.map((link) => (
@@ -67,7 +76,7 @@ export default function Footer() {
             </div>
 
             {/* Event Types */}
-            <div className="footerCol">
+            <div ref={eventTypesRef} className="footerCol">
               <h4 className="footerColTitle">Event Types</h4>
               <ul className="footerLinks">
                 {EVENT_TYPES.map((link) => (
@@ -79,7 +88,7 @@ export default function Footer() {
             </div>
 
             {/* Support */}
-            <div className="footerCol">
+            <div ref={supportRef} className="footerCol">
               <h4 className="footerColTitle">Support</h4>
               <ul className="footerLinks">
                 {SUPPORT.map((link) => (
@@ -91,7 +100,7 @@ export default function Footer() {
             </div>
 
             {/* Contact Info */}
-            <div className="footerCol">
+            <div ref={contactRef} className="footerCol">
               <h4 className="footerColTitle">Contact</h4>
               <div className="footerContact">
                 <div className="contactItem">
@@ -120,7 +129,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footerBottom">
+      <div ref={footerBottomRef} className="footerBottom">
         <div className="container">
           <div className="footerBottomInner">
             <p className="copyright">

@@ -251,6 +251,8 @@
 }
 
 .eventCard {
+  /* GSAP will handle initial opacity/transform, but ensure visibility is controlled */
+  will-change: transform, opacity;
   background: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
@@ -338,6 +340,8 @@
   background: #FFFFFF;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
+  /* GSAP animation optimization */
+  will-change: transform, opacity;
 }
 
 .amenityIcon {
