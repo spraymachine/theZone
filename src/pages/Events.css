@@ -66,7 +66,6 @@
 .eventCategory {
   position: sticky;
   top: 0;
-  background: var(--bg-secondary);
 }
 
 .eventCategory:nth-child(1) {
@@ -85,8 +84,44 @@
   z-index: 4;
 }
 
-.eventCategory.alt {
+/* White background categories (Conferences & Get-togethers) */
+.eventCategory.category-white {
   background: var(--bg-primary);
+}
+
+/* Brown background categories (Parties & Corporate) */
+.eventCategory.category-brown {
+  background: var(--brand-accent);
+  color: var(--text-light);
+}
+
+.eventCategory.category-brown .categoryTitle {
+  color: var(--text-light);
+}
+
+.eventCategory.category-brown .categoryDesc {
+  color: var(--text-on-dark);
+}
+
+.eventCategory.category-brown .categoryDetail h4 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.eventCategory.category-brown .categoryDetail li {
+  color: var(--text-on-dark);
+}
+
+.eventCategory.category-brown .categoryDetail li::before {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.eventCategory.category-brown .btn-primary {
+  background: var(--brand-dark);
+  color: var(--text-light);
+}
+
+.eventCategory.category-brown .btn-primary:hover {
+  background: #1E293B;
 }
 
 .categoryGrid {
@@ -96,11 +131,12 @@
   align-items: center;
 }
 
-.eventCategory.alt .categoryGrid {
+/* Alternate grid direction for brown sections (Parties & Corporate) */
+.eventCategory.category-brown .categoryGrid {
   direction: rtl;
 }
 
-.eventCategory.alt .categoryGrid > * {
+.eventCategory.category-brown .categoryGrid > * {
   direction: ltr;
 }
 
@@ -267,7 +303,7 @@
     gap: 40px;
   }
 
-  .eventCategory.alt .categoryGrid {
+  .eventCategory.category-brown .categoryGrid {
     direction: ltr;
   }
 

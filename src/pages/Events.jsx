@@ -87,11 +87,13 @@ export default function Events() {
         {EVENT_CATEGORIES.map((category, index) => {
           const contentAnimations = ['animate-fade-in-left', 'animate-fade-in-right', 'animate-fade-in-left', 'animate-fade-in-right']
           const imageAnimations = ['animate-zoom-in', 'animate-blur-in', 'animate-scale-up-fade', 'animate-rotate-in']
+          // Background colors: conferences=white, parties=brown, gatherings=white, corporate=brown
+          const categoryClass = category.id === 'conferences' || category.id === 'gatherings' ? 'category-white' : 'category-brown'
           return (
             <section 
               key={category.id} 
               id={category.id}
-              className={`section eventCategory ${index % 2 === 1 ? 'alt' : ''}`}
+              className={`section eventCategory ${categoryClass}`}
             >
               <div className="container">
                 <div className="categoryGrid">
