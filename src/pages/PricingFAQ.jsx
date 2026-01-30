@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useGSAPScroll } from '../hooks/useGSAPScroll'
 import './PricingFAQ.css'
 import heroBg from '../assets/hero-bg.png'
 
@@ -122,6 +123,40 @@ const FAQ_SECTIONS = [
 export default function PricingFAQ() {
   const [openFaq, setOpenFaq] = useState(null)
 
+  // Hero animations
+  const heroBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const heroTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const heroSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+
+  // Pricing section animations
+  const pricingBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const pricingTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const pricingSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+  const pricingCardRefs = PRICING_TIERS.map((_, i) => 
+    useGSAPScroll({ animation: i === 0 ? 'fadeInLeft' : 'fadeInRight', delay: 0.3 + (i * 0.1), duration: 0.7, start: 'top 85%' })
+  )
+
+  // Add-ons animations
+  const addOnsBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const addOnsTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const addOnsSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+  const addOnItemRefs = ADD_ONS.map((_, i) => 
+    useGSAPScroll({ animation: 'fadeInUp', delay: 0.3 + (i * 0.08), duration: 0.6, start: 'top 85%' })
+  )
+
+  // Included section animations
+  const includedBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const includedTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const includedTextRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+  const includedItemRefs = WHATS_INCLUDED.map((_, i) => 
+    useGSAPScroll({ animation: 'fadeInLeft', delay: 0.3 + (i * 0.06), duration: 0.5, start: 'top 85%' })
+  )
+
+  // FAQ animations
+  const faqBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const faqTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const faqSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+
   const toggleFaq = (id) => {
     setOpenFaq(openFaq === id ? null : id)
   }
@@ -136,12 +171,12 @@ export default function PricingFAQ() {
           <div className="heroOverlay" />
         </div>
         <div className="container">
-          <span className="badge">Pricing & FAQs</span>
-          <h1 className="pricingTitle">
+          <span ref={heroBadgeRef} className="badge">Pricing & FAQs</span>
+          <h1 ref={heroTitleRef} className="pricingTitle">
             Transparent Pricing,
             <span className="accent"> No Surprises</span>
           </h1>
-          <p className="pricingSubtitle">
+          <p ref={heroSubtitleRef} className="pricingSubtitle">
             Simple, all-inclusive pricing with everything you need for a successful event.
           </p>
         </div>
@@ -151,16 +186,16 @@ export default function PricingFAQ() {
       <section className="section pricingSection">
         <div className="container">
           <div className="sectionHeader">
-            <span className="badge">Flexible Options</span>
-            <h2 className="sectionTitle">Choose Your Package</h2>
-            <p className="sectionSubtitle">
+            <span ref={pricingBadgeRef} className="badge">Flexible Options</span>
+            <h2 ref={pricingTitleRef} className="sectionTitle">Choose Your Package</h2>
+            <p ref={pricingSubtitleRef} className="sectionSubtitle">
               All packages include our standard amenities — no hidden fees
             </p>
           </div>
 
           <div className="pricingGrid">
             {PRICING_TIERS.map((tier, index) => (
-              <div key={tier.name} className={`pricingCard ${tier.popular ? 'popular' : ''}`}>
+              <div key={tier.name} ref={pricingCardRefs[index]} className={`pricingCard ${tier.popular ? 'popular' : ''}`}>
                 {tier.popular && <span className="popularBadge">Most Popular</span>}
                 <h3 className="tierName">{tier.name}</h3>
                 <p className="tierDays">{tier.days}</p>
@@ -191,16 +226,16 @@ export default function PricingFAQ() {
       <section className="section addOnsSection">
         <div className="container">
           <div className="sectionHeader">
-            <span className="badge badge-teal">Customize</span>
-            <h2 className="sectionTitle">Optional Add-ons</h2>
-            <p className="sectionSubtitle">
+            <span ref={addOnsBadgeRef} className="badge badge-teal">Customize</span>
+            <h2 ref={addOnsTitleRef} className="sectionTitle">Optional Add-ons</h2>
+            <p ref={addOnsSubtitleRef} className="sectionSubtitle">
               Enhance your event with these optional services
             </p>
           </div>
 
           <div className="addOnsGrid">
-            {ADD_ONS.map((addon) => (
-              <div key={addon.name} className="addOnItem">
+            {ADD_ONS.map((addon, i) => (
+              <div key={addon.name} ref={addOnItemRefs[i]} className="addOnItem">
                 <div className="addOnInfo">
                   <h4>{addon.name}</h4>
                   <p>{addon.desc}</p>
@@ -217,15 +252,15 @@ export default function PricingFAQ() {
         <div className="container">
           <div className="includedInner">
             <div className="includedContent">
-              <span className="badge badge-teal">All-Inclusive</span>
-              <h2 className="sectionTitle" style={{ color: '#f5f5f0' }}>What's Included</h2>
-              <p className="includedText">
+              <span ref={includedBadgeRef} className="badge badge-teal">All-Inclusive</span>
+              <h2 ref={includedTitleRef} className="sectionTitle" style={{ color: '#f5f5f0' }}>What's Included</h2>
+              <p ref={includedTextRef} className="includedText">
                 Every booking comes with full access to our amenities and equipment at no extra cost.
               </p>
             </div>
             <div className="includedGrid">
               {WHATS_INCLUDED.map((item, idx) => (
-                <div key={idx} className="includedItem">
+                <div key={idx} ref={includedItemRefs[idx]} className="includedItem">
                   <span className="includedCheck">✓</span>
                   {item}
                 </div>
@@ -239,9 +274,9 @@ export default function PricingFAQ() {
       <section className="section faqSection">
         <div className="container">
           <div className="sectionHeader">
-            <span className="badge">FAQ</span>
-            <h2 className="sectionTitle">Frequently Asked Questions</h2>
-            <p className="sectionSubtitle">
+            <span ref={faqBadgeRef} className="badge">FAQ</span>
+            <h2 ref={faqTitleRef} className="sectionTitle">Frequently Asked Questions</h2>
+            <p ref={faqSubtitleRef} className="sectionSubtitle">
               Find answers to common questions about booking The Zone
             </p>
           </div>

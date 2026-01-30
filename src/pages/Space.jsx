@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ImageSlider from '../components/ImageSlider'
+import { useGSAPScroll } from '../hooks/useGSAPScroll'
 import './Space.css'
 import heroBg from '../assets/hero-bg.png'
 
@@ -66,6 +67,44 @@ const AMENITIES = [
 ]
 
 export default function Space() {
+  // Hero animations
+  const heroBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const heroTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const heroSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+
+  // Section animations
+  const aboutBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const overviewBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const overviewTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const overviewCardRefs = Array.from({ length: 4 }, (_, i) => 
+    useGSAPScroll({ animation: 'fadeInUp', delay: 0.2 + (i * 0.1), duration: 0.7, start: 'top 85%' })
+  )
+
+  const configBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const configTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const configSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+  const configCardRefs = CONFIGURATIONS.map((_, i) => 
+    useGSAPScroll({ animation: 'scaleIn', delay: 0.3 + (i * 0.1), duration: 0.7, start: 'top 85%' })
+  )
+
+  const ambienceBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const ambienceTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const ambienceTextRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+  const ambienceCardRefs = AMBIENCE_MODES.map((_, i) => 
+    useGSAPScroll({ animation: 'fadeInUp', delay: 0.3 + (i * 0.1), duration: 0.7, start: 'top 85%' })
+  )
+
+  const amenitiesBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const amenitiesTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const amenitiesSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+  const amenityCardRefs = AMENITIES.map((_, i) => 
+    useGSAPScroll({ animation: 'fadeInUp', delay: 0.3 + (i * 0.08), duration: 0.6, start: 'top 85%' })
+  )
+
+  const ctaTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0, duration: 0.8 })
+  const ctaTextRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const ctaActionsRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+
   return (
     <div className="spacePage">
       <Navbar />
@@ -76,12 +115,12 @@ export default function Space() {
           <div className="heroOverlay" />
         </div>
         <div className="container">
-          <span className="badge">The Space</span>
-          <h1 className="spaceTitle">
+          <span ref={heroBadgeRef} className="badge">The Space</span>
+          <h1 ref={heroTitleRef} className="spaceTitle">
             A Versatile Canvas for
             <span className="accent"> Your Vision</span>
           </h1>
-          <p className="spaceSubtitle">
+          <p ref={heroSubtitleRef} className="spaceSubtitle">
             2,000 sq ft of premium, adaptable space designed to transform 
             seamlessly for any type of event.
           </p>
@@ -92,7 +131,7 @@ export default function Space() {
       <section className="section aboutSection">
         <div className="container">
           <div className="aboutContent">
-            <span className="badge">Endless Possibilities</span>
+            <span ref={aboutBadgeRef} className="badge">Endless Possibilities</span>
           </div>
           <div className="aboutSlider">
             <ImageSlider />
@@ -104,26 +143,26 @@ export default function Space() {
       <section className="section overviewSection">
         <div className="container">
           <div className="sectionHeader">
-            <span className="badge">Space Overview</span>
-            <h2 className="sectionTitle">2,000 Sq Ft of Possibilities</h2>
+            <span ref={overviewBadgeRef} className="badge">Space Overview</span>
+            <h2 ref={overviewTitleRef} className="sectionTitle">2,000 Sq Ft of Possibilities</h2>
           </div>
           <div className="overviewGrid">
-            <div className="overviewCard">
+            <div ref={overviewCardRefs[0]} className="overviewCard">
               <span className="overviewIcon">📐</span>
               <h3>Total Area</h3>
               <p>2,000 sq ft</p>
             </div>
-            <div className="overviewCard">
+            <div ref={overviewCardRefs[1]} className="overviewCard">
               <span className="overviewIcon">📏</span>
               <h3>Ceiling Height</h3>
               <p>12 ft</p>
             </div>
-            <div className="overviewCard">
+            <div ref={overviewCardRefs[2]} className="overviewCard">
               <span className="overviewIcon">🪟</span>
               <h3>Natural Light</h3>
               <p>Large windows</p>
             </div>
-            <div className="overviewCard">
+            <div ref={overviewCardRefs[3]} className="overviewCard">
               <span className="overviewIcon">🚪</span>
               <h3>Private Entrance</h3>
               <p>Dedicated access</p>
@@ -138,15 +177,15 @@ export default function Space() {
         <section className="section configSection">
           <div className="container">
             <div className="sectionHeader">
-              <span className="badge">Flexible Layouts</span>
-              <h2 className="sectionTitle">Configuration Options</h2>
-              <p className="sectionSubtitle">
+              <span ref={configBadgeRef} className="badge">Flexible Layouts</span>
+              <h2 ref={configTitleRef} className="sectionTitle">Configuration Options</h2>
+              <p ref={configSubtitleRef} className="sectionSubtitle">
                 Our space adapts to your needs with multiple seating arrangements
               </p>
             </div>
             <div className="configGrid">
-              {CONFIGURATIONS.map((config) => (
-                <div key={config.name} className="configCard">
+              {CONFIGURATIONS.map((config, i) => (
+                <div key={config.name} ref={configCardRefs[i]} className="configCard">
                   <span className="configIcon">{config.icon}</span>
                   <h3 className="configName">{config.name}</h3>
                   <span className="configCapacity">{config.capacity}</span>
@@ -161,14 +200,14 @@ export default function Space() {
         <section className="section ambienceSection">
           <div className="container">
             <div className="ambienceInner">
-              <span className="badge badge-teal">Set the Mood</span>
-              <h2 className="sectionTitle">Ambience Modes</h2>
-              <p className="ambienceText">
+              <span ref={ambienceBadgeRef} className="badge badge-teal">Set the Mood</span>
+              <h2 ref={ambienceTitleRef} className="sectionTitle">Ambience Modes</h2>
+              <p ref={ambienceTextRef} className="ambienceText">
                 Our adjustable lighting system lets you create the perfect atmosphere.
               </p>
               <div className="ambienceGrid">
-                {AMBIENCE_MODES.map((mode) => (
-                  <div key={mode.name} className="ambienceCard">
+                {AMBIENCE_MODES.map((mode, i) => (
+                  <div key={mode.name} ref={ambienceCardRefs[i]} className="ambienceCard">
                     <span className="ambienceIcon">{mode.icon}</span>
                     <h3 className="ambienceName">{mode.name}</h3>
                     <p className="ambienceDesc">{mode.desc}</p>
@@ -183,15 +222,15 @@ export default function Space() {
         <section className="section amenitiesSection">
           <div className="container">
             <div className="sectionHeader">
-              <span className="badge badge-teal">Fully Equipped</span>
-              <h2 className="sectionTitle">Amenities & Features</h2>
-              <p className="sectionSubtitle">
+              <span ref={amenitiesBadgeRef} className="badge badge-teal">Fully Equipped</span>
+              <h2 ref={amenitiesTitleRef} className="sectionTitle">Amenities & Features</h2>
+              <p ref={amenitiesSubtitleRef} className="sectionSubtitle">
                 Everything included with your booking — no hidden fees
               </p>
             </div>
             <div className="amenitiesGrid">
-              {AMENITIES.map((amenity) => (
-                <div key={amenity.title} className="amenityCard">
+              {AMENITIES.map((amenity, i) => (
+                <div key={amenity.title} ref={amenityCardRefs[i]} className="amenityCard">
                   <span className="amenityIcon">{amenity.icon}</span>
                   <div className="amenityContent">
                     <h3 className="amenityTitle">{amenity.title}</h3>
@@ -208,11 +247,11 @@ export default function Space() {
       <section className="ctaSection">
         <div className="container">
           <div className="ctaInner">
-            <h2 className="ctaTitle">Ready to Experience The Zone?</h2>
-            <p className="ctaText">
+            <h2 ref={ctaTitleRef} className="ctaTitle">Ready to Experience The Zone?</h2>
+            <p ref={ctaTextRef} className="ctaText">
               Book your event or schedule a tour today.
             </p>
-            <div className="ctaActions">
+            <div ref={ctaActionsRef} className="ctaActions">
               <a href="#/book" className="btn btn-primary btn-lg">Book Now</a>
               <a href="#/contact" className="btn btn-outline btn-lg">
                 Schedule a Tour

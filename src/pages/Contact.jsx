@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useGSAPScroll } from '../hooks/useGSAPScroll'
 import { supabase } from '../supabaseClient'
 import './Contact.css'
 
@@ -42,6 +43,15 @@ export default function Contact() {
     }
   }
 
+  // Hero animations
+  const heroBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const heroTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const heroSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+
+  // Contact section animations
+  const contactInfoRef = useGSAPScroll({ animation: 'fadeInLeft', delay: 0.2, duration: 0.8, start: 'top 85%' })
+  const contactFormRef = useGSAPScroll({ animation: 'fadeInRight', delay: 0.3, duration: 0.8, start: 'top 85%' })
+
   return (
     <div className="contactPage">
       <Navbar />
@@ -49,12 +59,12 @@ export default function Contact() {
       {/* Hero */}
       <section className="contactHero">
         <div className="container">
-          <span className="badge">Contact</span>
-          <h1 className="contactTitle">
+          <span ref={heroBadgeRef} className="badge">Contact</span>
+          <h1 ref={heroTitleRef} className="contactTitle">
             Get in
             <span className="accent"> Touch</span>
           </h1>
-          <p className="contactSubtitle">
+          <p ref={heroSubtitleRef} className="contactSubtitle">
             Have questions or want to schedule a visit? We'd love to hear from you.
           </p>
         </div>
@@ -65,7 +75,7 @@ export default function Contact() {
         <div className="container">
           <div className="contactGrid">
             {/* Contact Info */}
-            <div className="contactInfo">
+            <div ref={contactInfoRef} className="contactInfo">
               <h2>Contact Information</h2>
               <p className="contactIntro">
                 Reach out to us through any of these channels. We typically respond within 24 hours.
@@ -134,7 +144,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="contactForm">
+            <div ref={contactFormRef} className="contactForm">
               <h2>Send Us a Message</h2>
               
               {submitted ? (

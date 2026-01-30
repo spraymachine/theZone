@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import TimePicker from '../components/TimePicker'
+import { useGSAPScroll } from '../hooks/useGSAPScroll'
 import { supabase } from '../supabaseClient'
 import './BookNow.css'
 import heroBg from '../assets/hero-bg.png'
@@ -258,6 +259,15 @@ export default function BookNow() {
     }))
   }
 
+  // Hero animations
+  const heroBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const heroTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const heroSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+  
+  // Form section animations
+  const formRef = useGSAPScroll({ animation: 'fadeInLeft', delay: 0.2, duration: 0.8, start: 'top 85%' })
+  const summaryRef = useGSAPScroll({ animation: 'fadeInRight', delay: 0.3, duration: 0.8, start: 'top 85%' })
+
   return (
     <div className="bookNowPage">
       <Navbar />
@@ -268,12 +278,12 @@ export default function BookNow() {
           <div className="heroOverlay" />
         </div>
         <div className="container">
-          <span className="badge">Book Now</span>
-          <h1 className="bookTitle">
+          <span ref={heroBadgeRef} className="badge">Book Now</span>
+          <h1 ref={heroTitleRef} className="bookTitle">
             Reserve Your
             <span className="accent"> Perfect Event</span>
           </h1>
-          <p className="bookSubtitle">
+          <p ref={heroSubtitleRef} className="bookSubtitle">
             Fill out the form below and we'll confirm your booking within 24 hours.
           </p>
         </div>
@@ -284,7 +294,7 @@ export default function BookNow() {
         <div className="container">
           <div className="bookingGrid">
             {/* Form */}
-            <div className="bookingForm">
+            <div ref={formRef} className="bookingForm">
               {submitted ? (
                 <div className="bookingSuccess">
                   <div className="successIcon">✓</div>
@@ -527,7 +537,7 @@ export default function BookNow() {
 
             {/* Summary Sidebar */}
             <div className="bookingSidebar">
-              <div className="summaryCard">
+              <div ref={summaryRef} className="summaryCard">
                 <h3>Booking Summary</h3>
                 
                 <div className="summaryRows">

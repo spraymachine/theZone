@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useGSAPScroll } from '../hooks/useGSAPScroll'
 import './Testimonials.css'
 
 const TESTIMONIALS = [
@@ -76,6 +77,25 @@ const STATS = [
 ]
 
 export default function Testimonials() {
+  // Hero animations
+  const heroBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
+  const heroTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const heroSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+
+  // Stats animations
+  const statCardRefs = STATS.map((_, i) => 
+    useGSAPScroll({ animation: 'scaleIn', delay: 0.2 + (i * 0.1), duration: 0.7, start: 'top 85%' })
+  )
+
+  // Testimonial cards animations
+  const testimonialCardRefs = TESTIMONIALS.map((_, i) => 
+    useGSAPScroll({ animation: 'fadeInUp', delay: 0.3 + (i * 0.08), duration: 0.6, start: 'top 85%' })
+  )
+
+  const ctaTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0, duration: 0.8 })
+  const ctaTextRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const ctaActionsRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
+
   return (
     <div className="testimonialsPage">
       <Navbar />
@@ -83,12 +103,12 @@ export default function Testimonials() {
       {/* Hero */}
       <section className="testimonialsHero">
         <div className="container">
-          <span className="badge">Testimonials</span>
-          <h1 className="testimonialsTitle">
+          <span ref={heroBadgeRef} className="badge">Testimonials</span>
+          <h1 ref={heroTitleRef} className="testimonialsTitle">
             What Our
             <span className="accent"> Clients Say</span>
           </h1>
-          <p className="testimonialsSubtitle">
+          <p ref={heroSubtitleRef} className="testimonialsSubtitle">
             Don't just take our word for it. Here's what people who've 
             hosted events at The Zone have to say.
           </p>
@@ -100,7 +120,7 @@ export default function Testimonials() {
         <div className="container">
           <div className="statsGrid">
             {STATS.map((stat, i) => (
-              <div key={i} className="statCard">
+              <div key={i} ref={statCardRefs[i]} className="statCard">
                 <span className="statValue">{stat.value}</span>
                 <span className="statLabel">{stat.label}</span>
               </div>
@@ -114,7 +134,7 @@ export default function Testimonials() {
         <div className="container">
           <div className="testimonialsGrid">
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="testimonialCard">
+              <div key={i} ref={testimonialCardRefs[i]} className="testimonialCard">
                 <span className="testimonialType">{t.type}</span>
                 <div className="testimonialRating">
                   {[...Array(t.rating)].map((_, j) => (
@@ -141,11 +161,11 @@ export default function Testimonials() {
       <section className="ctaSection">
         <div className="container">
           <div className="ctaInner">
-            <h2 className="ctaTitle">Join Our Happy Clients</h2>
-            <p className="ctaText">
+            <h2 ref={ctaTitleRef} className="ctaTitle">Join Our Happy Clients</h2>
+            <p ref={ctaTextRef} className="ctaText">
               Book your event and create your own success story.
             </p>
-            <div className="ctaActions">
+            <div ref={ctaActionsRef} className="ctaActions">
               <a href="#/book" className="btn btn-primary btn-lg">Book Now</a>
               <a href="#/contact" className="btn btn-outline btn-lg" style={{ borderColor: 'rgba(245,245,240,0.3)', color: '#f5f5f0' }}>
                 Contact Us

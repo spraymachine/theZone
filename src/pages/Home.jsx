@@ -140,7 +140,7 @@ export default function Home() {
             <div className="heroContent">
               <span ref={heroBadgeRef} className="heroBadge">Premium Private Space</span>
               <h1 ref={heroTitleRef} className="heroTitle">
-                Your Perfect Space for
+                Perfect Space for
                 <span className="heroAccent"> Every Occasion</span>
               </h1>
               <p ref={heroSubtitleRef} className="heroSubtitle">
