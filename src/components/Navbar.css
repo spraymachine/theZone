@@ -125,6 +125,7 @@
     top: 0;
     right: 0;
     bottom: 0;
+    height: 100vh;
     width: 300px;
     flex-direction: column;
     align-items: stretch;
@@ -134,10 +135,41 @@
     box-shadow: var(--shadow-xl);
     transform: translateX(100%);
     transition: transform var(--transition-slow);
+    z-index: 1001;
   }
 
   .navLinks.open {
     transform: translateX(0);
+  }
+
+  .navClose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 32px;
+    color: var(--brand-dark);
+    line-height: 1;
+    padding: 0;
+    z-index: 10;
+    transition: all var(--transition-fast);
+  }
+
+  .navClose:hover {
+    color: var(--brand-accent);
+    transform: scale(1.1);
+  }
+
+  .navClose span {
+    display: block;
+    font-weight: 300;
   }
 
   .navLink {

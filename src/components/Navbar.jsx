@@ -44,6 +44,13 @@ export default function Navbar() {
         </a>
 
         <div className={`navLinks ${mobileOpen ? 'open' : ''}`}>
+          <button
+            className="navClose"
+            onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
+          >
+            <span>×</span>
+          </button>
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
