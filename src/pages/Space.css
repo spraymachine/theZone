@@ -91,13 +91,13 @@
   border-radius: var(--radius-lg);
   padding: 32px 24px;
   text-align: center;
-  transition: all var(--transition-base);
+  transition: none;
   color: var(--text-primary);
 }
 
 .overviewSection .overviewCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: none;
+  box-shadow: none;
   border-color: var(--brand-accent);
 }
 
@@ -222,13 +222,13 @@
   border-radius: var(--radius-lg);
   padding: 32px 24px;
   text-align: center;
-  transition: all var(--transition-base);
+  transition: none;
   color: var(--text-primary);
 }
 
 .configCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: none;
+  box-shadow: none;
   border-color: var(--brand-accent);
 }
 
@@ -308,13 +308,13 @@
   border: 1px solid rgba(245, 245, 240, 0.2);
   border-radius: var(--radius-lg);
   padding: 32px 20px;
-  transition: all var(--transition-base);
+  transition: none;
   color: var(--text-light);
 }
 
 .ambienceCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: none;
+  box-shadow: none;
   border-color: var(--border-medium);
 }
 
@@ -366,12 +366,12 @@
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 24px;
-  transition: all var(--transition-base);
+  transition: none;
 }
 
 .amenityCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  transform: none;
+  box-shadow: none;
   border-color: var(--brand-accent);
 }
 

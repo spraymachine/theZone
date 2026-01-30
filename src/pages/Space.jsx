@@ -1,8 +1,6 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ImageSlider from '../components/ImageSlider'
-import AnimatedElement from '../components/AnimatedElement'
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import './Space.css'
 import heroBg from '../assets/hero-bg.png'
 
@@ -68,10 +66,6 @@ const AMENITIES = [
 ]
 
 export default function Space() {
-  const heroBadgeRef = useScrollAnimation('animate-fade-in-down', 0)
-  const heroTitleRef = useScrollAnimation('animate-fade-in-up', 100)
-  const heroSubtitleRef = useScrollAnimation('animate-fade-in-up', 200)
-
   return (
     <div className="spacePage">
       <Navbar />
@@ -82,12 +76,12 @@ export default function Space() {
           <div className="heroOverlay" />
         </div>
         <div className="container">
-          <span ref={heroBadgeRef} className="badge">The Space</span>
-          <h1 ref={heroTitleRef} className="spaceTitle">
+          <span className="badge">The Space</span>
+          <h1 className="spaceTitle">
             A Versatile Canvas for
             <span className="accent"> Your Vision</span>
           </h1>
-          <p ref={heroSubtitleRef} className="spaceSubtitle">
+          <p className="spaceSubtitle">
             2,000 sq ft of premium, adaptable space designed to transform 
             seamlessly for any type of event.
           </p>
@@ -151,22 +145,14 @@ export default function Space() {
               </p>
             </div>
             <div className="configGrid">
-              {CONFIGURATIONS.map((config, index) => {
-                const animations = ['animate-scale-in', 'animate-slide-in-bottom', 'animate-fade-in-up', 'animate-scale-in', 'animate-slide-in-bottom', 'animate-fade-in-up']
-                return (
-                  <AnimatedElement
-                    key={config.name}
-                    className="configCard"
-                    animationClass={animations[index]}
-                    delay={index * 80}
-                  >
-                    <span className="configIcon">{config.icon}</span>
-                    <h3 className="configName">{config.name}</h3>
-                    <span className="configCapacity">{config.capacity}</span>
-                    <p className="configDesc">{config.desc}</p>
-                  </AnimatedElement>
-                )
-              })}
+              {CONFIGURATIONS.map((config) => (
+                <div key={config.name} className="configCard">
+                  <span className="configIcon">{config.icon}</span>
+                  <h3 className="configName">{config.name}</h3>
+                  <span className="configCapacity">{config.capacity}</span>
+                  <p className="configDesc">{config.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -181,21 +167,13 @@ export default function Space() {
                 Our adjustable lighting system lets you create the perfect atmosphere.
               </p>
               <div className="ambienceGrid">
-                {AMBIENCE_MODES.map((mode, index) => {
-                  const animations = ['animate-fade-in-left', 'animate-fade-in-up', 'animate-fade-in-right', 'animate-scale-in']
-                  return (
-                    <AnimatedElement
-                      key={mode.name}
-                      className="ambienceCard"
-                      animationClass={animations[index]}
-                      delay={index * 100}
-                    >
-                      <span className="ambienceIcon">{mode.icon}</span>
-                      <h3 className="ambienceName">{mode.name}</h3>
-                      <p className="ambienceDesc">{mode.desc}</p>
-                    </AnimatedElement>
-                  )
-                })}
+                {AMBIENCE_MODES.map((mode) => (
+                  <div key={mode.name} className="ambienceCard">
+                    <span className="ambienceIcon">{mode.icon}</span>
+                    <h3 className="ambienceName">{mode.name}</h3>
+                    <p className="ambienceDesc">{mode.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -212,23 +190,15 @@ export default function Space() {
               </p>
             </div>
             <div className="amenitiesGrid">
-              {AMENITIES.map((amenity, index) => {
-                const animations = ['animate-fade-in-left', 'animate-fade-in-up', 'animate-fade-in-right', 'animate-scale-in', 'animate-slide-in-bottom', 'animate-fade-in-up', 'animate-scale-in', 'animate-slide-in-bottom', 'animate-fade-in-left', 'animate-fade-in-up', 'animate-fade-in-right', 'animate-scale-in']
-                return (
-                  <AnimatedElement
-                    key={amenity.title}
-                    className="amenityCard"
-                    animationClass={animations[index]}
-                    delay={index * 60}
-                  >
-                    <span className="amenityIcon">{amenity.icon}</span>
-                    <div className="amenityContent">
-                      <h3 className="amenityTitle">{amenity.title}</h3>
-                      <p className="amenityDesc">{amenity.desc}</p>
-                    </div>
-                  </AnimatedElement>
-                )
-              })}
+              {AMENITIES.map((amenity) => (
+                <div key={amenity.title} className="amenityCard">
+                  <span className="amenityIcon">{amenity.icon}</span>
+                  <div className="amenityContent">
+                    <h3 className="amenityTitle">{amenity.title}</h3>
+                    <p className="amenityDesc">{amenity.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

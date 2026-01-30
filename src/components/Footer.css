@@ -53,7 +53,7 @@
   border-radius: var(--radius-md);
   background: rgba(245, 245, 240, 0.08);
   color: var(--text-on-dark);
-  transition: all var(--transition-base);
+  transition: none;
 }
 
 .socialLink svg {
@@ -64,7 +64,7 @@
 .socialLink:hover {
   background: var(--brand-accent);
   color: var(--brand-dark);
-  transform: translateY(-2px);
+  transform: none;
 }
 
 /* Footer Columns */
@@ -86,12 +86,12 @@
 .footerLinks a {
   color: var(--text-muted);
   font-size: 15px;
-  transition: all var(--transition-fast);
+  transition: none;
 }
 
 .footerLinks a:hover {
   color: var(--brand-accent);
-  padding-left: 4px;
+  padding-left: 0;
 }
 
 /* Contact Info */
@@ -143,7 +143,7 @@
 .footerLegal a {
   color: var(--text-muted);
   font-size: 14px;
-  transition: color var(--transition-fast);
+  transition: none;
 }
 
 .footerLegal a:hover {

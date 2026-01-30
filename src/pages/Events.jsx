@@ -1,7 +1,5 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import AnimatedElement from '../components/AnimatedElement'
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import './Events.css'
 import heroBg from '../assets/hero-bg.png'
 import conferenceImg from '../assets/event pic/conference.png'
@@ -56,10 +54,6 @@ const EVENT_CATEGORIES = [
 ]
 
 export default function Events() {
-  const heroBadgeRef = useScrollAnimation('animate-fade-in-down', 0)
-  const heroTitleRef = useScrollAnimation('animate-fade-in-up', 100)
-  const heroSubtitleRef = useScrollAnimation('animate-fade-in-up', 200)
-
   return (
     <div className="eventsPage">
       <Navbar />
@@ -70,12 +64,12 @@ export default function Events() {
           <div className="heroOverlay" />
         </div>
         <div className="container">
-          <span ref={heroBadgeRef} className="badge">Event Types</span>
-          <h1 ref={heroTitleRef} className="eventsTitle">
+          <span className="badge">Event Types</span>
+          <h1 className="eventsTitle">
             A Space for
             <span className="accent"> Every Occasion</span>
           </h1>
-          <p ref={heroSubtitleRef} className="eventsSubtitle">
+          <p className="eventsSubtitle">
             From corporate conferences to intimate celebrations, our versatile venue 
             adapts to make your event perfect.
           </p>
@@ -85,8 +79,6 @@ export default function Events() {
       {/* Event Categories */}
       <div className="stickyCategoriesWrapper">
         {EVENT_CATEGORIES.map((category, index) => {
-          const contentAnimations = ['animate-fade-in-left', 'animate-fade-in-right', 'animate-fade-in-left', 'animate-fade-in-right']
-          const imageAnimations = ['animate-zoom-in', 'animate-blur-in', 'animate-scale-up-fade', 'animate-rotate-in']
           // Background colors: conferences=white, parties=brown, gatherings=white, corporate=brown
           const categoryClass = category.id === 'conferences' || category.id === 'gatherings' ? 'category-white' : 'category-brown'
           return (
@@ -97,11 +89,7 @@ export default function Events() {
             >
               <div className="container">
                 <div className="categoryGrid">
-                  <AnimatedElement
-                    className="categoryContent"
-                    animationClass={contentAnimations[index]}
-                    delay={0}
-                  >
+                  <div className="categoryContent">
                     <span className="categoryIcon">{category.icon}</span>
                     <h2 className="categoryTitle">{category.title}</h2>
                     <p className="categoryDesc">{category.description}</p>
@@ -136,18 +124,14 @@ export default function Events() {
                     <a href="#/book" className="btn btn-primary">
                       Book for {category.title.split(' ')[0]}
                     </a>
-                  </AnimatedElement>
-                  <AnimatedElement
-                    className="categoryImage"
-                    animationClass={imageAnimations[index]}
-                    delay={200}
-                  >
+                  </div>
+                  <div className="categoryImage">
                     <img 
                       src={EVENT_IMAGES[category.id]} 
                       alt={category.title}
                       className="categoryImageImg"
                     />
-                  </AnimatedElement>
+                  </div>
                 </div>
               </div>
             </section>

@@ -82,7 +82,7 @@
   border: 1px solid rgba(245, 245, 240, 0.2);
   border-radius: var(--radius-lg);
   padding: 28px;
-  transition: all var(--transition-base);
+  transition: none;
   color: var(--text-light);
 }
 

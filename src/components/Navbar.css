@@ -5,7 +5,7 @@
   right: 0;
   z-index: 1000;
   padding: 20px 0;
-  transition: all var(--transition-base);
+  transition: none;
 }
 
 .navbar.scrolled {
@@ -55,7 +55,7 @@
   font-weight: 500;
   color: var(--text-secondary);
   border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
+  transition: none;
 }
 
 .navLink:hover {
@@ -76,13 +76,13 @@
   background: var(--brand-accent);
   color: var(--text-light);
   border-radius: var(--radius-md);
-  transition: all var(--transition-base);
+  transition: none;
 }
 
 .navCta:hover {
   background: var(--brand-accent-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: none;
+  box-shadow: none;
 }
 
 .navToggle {
@@ -104,7 +104,7 @@
   height: 2px;
   background: var(--brand-dark);
   border-radius: 2px;
-  transition: all var(--transition-base);
+  transition: none;
 }
 
 .navToggle.open span:nth-child(1) {
@@ -138,7 +138,7 @@
     background: #f5f5f0 !important;
     box-shadow: var(--shadow-xl);
     transform: translateX(100%);
-    transition: transform var(--transition-slow);
+    transition: none;
     z-index: 1001;
   }
 
@@ -163,12 +163,12 @@
     line-height: 1;
     padding: 0;
     z-index: 10;
-    transition: all var(--transition-fast);
+    transition: none;
   }
 
   .navClose:hover {
     color: var(--brand-accent);
-    transform: scale(1.1);
+    transform: none;
   }
 
   .navClose span {

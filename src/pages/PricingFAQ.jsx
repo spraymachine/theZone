@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import AnimatedElement from '../components/AnimatedElement'
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import './PricingFAQ.css'
 import heroBg from '../assets/hero-bg.png'
 
@@ -123,9 +121,6 @@ const FAQ_SECTIONS = [
 
 export default function PricingFAQ() {
   const [openFaq, setOpenFaq] = useState(null)
-  const heroBadgeRef = useScrollAnimation('animate-fade-in-down', 0)
-  const heroTitleRef = useScrollAnimation('animate-fade-in-up', 100)
-  const heroSubtitleRef = useScrollAnimation('animate-fade-in-up', 200)
 
   const toggleFaq = (id) => {
     setOpenFaq(openFaq === id ? null : id)
@@ -141,12 +136,12 @@ export default function PricingFAQ() {
           <div className="heroOverlay" />
         </div>
         <div className="container">
-          <span ref={heroBadgeRef} className="badge">Pricing & FAQs</span>
-          <h1 ref={heroTitleRef} className="pricingTitle">
+          <span className="badge">Pricing & FAQs</span>
+          <h1 className="pricingTitle">
             Transparent Pricing,
             <span className="accent"> No Surprises</span>
           </h1>
-          <p ref={heroSubtitleRef} className="pricingSubtitle">
+          <p className="pricingSubtitle">
             Simple, all-inclusive pricing with everything you need for a successful event.
           </p>
         </div>
@@ -165,12 +160,7 @@ export default function PricingFAQ() {
 
           <div className="pricingGrid">
             {PRICING_TIERS.map((tier, index) => (
-              <AnimatedElement
-                key={tier.name}
-                className={`pricingCard ${tier.popular ? 'popular' : ''}`}
-                animationClass={index === 0 ? 'animate-fade-in-left' : 'animate-fade-in-right'}
-                delay={index * 150}
-              >
+              <div key={tier.name} className={`pricingCard ${tier.popular ? 'popular' : ''}`}>
                 {tier.popular && <span className="popularBadge">Most Popular</span>}
                 <h3 className="tierName">{tier.name}</h3>
                 <p className="tierDays">{tier.days}</p>
@@ -191,7 +181,7 @@ export default function PricingFAQ() {
                 <a href="#/book" className="btn btn-primary btn-block">
                   Book Now
                 </a>
-              </AnimatedElement>
+              </div>
             ))}
           </div>
         </div>
@@ -209,23 +199,15 @@ export default function PricingFAQ() {
           </div>
 
           <div className="addOnsGrid">
-            {ADD_ONS.map((addon, index) => {
-              const animations = ['animate-fade-in-up', 'animate-scale-in', 'animate-slide-in-bottom', 'animate-fade-in-up', 'animate-scale-in', 'animate-slide-in-bottom']
-              return (
-                <AnimatedElement
-                  key={addon.name}
-                  className="addOnItem"
-                  animationClass={animations[index]}
-                  delay={index * 80}
-                >
-                  <div className="addOnInfo">
-                    <h4>{addon.name}</h4>
-                    <p>{addon.desc}</p>
-                  </div>
-                  <span className="addOnPrice">+₹{addon.price.toLocaleString('en-IN')}</span>
-                </AnimatedElement>
-              )
-            })}
+            {ADD_ONS.map((addon) => (
+              <div key={addon.name} className="addOnItem">
+                <div className="addOnInfo">
+                  <h4>{addon.name}</h4>
+                  <p>{addon.desc}</p>
+                </div>
+                <span className="addOnPrice">+₹{addon.price.toLocaleString('en-IN')}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -242,20 +224,12 @@ export default function PricingFAQ() {
               </p>
             </div>
             <div className="includedGrid">
-              {WHATS_INCLUDED.map((item, idx) => {
-                const animations = ['animate-fade-in-left', 'animate-fade-in-up', 'animate-fade-in-right', 'animate-scale-in', 'animate-slide-in-bottom', 'animate-fade-in-up', 'animate-scale-in', 'animate-slide-in-bottom', 'animate-fade-in-left', 'animate-fade-in-up']
-                return (
-                  <AnimatedElement
-                    key={idx}
-                    className="includedItem"
-                    animationClass={animations[idx]}
-                    delay={idx * 60}
-                  >
-                    <span className="includedCheck">✓</span>
-                    {item}
-                  </AnimatedElement>
-                )
-              })}
+              {WHATS_INCLUDED.map((item, idx) => (
+                <div key={idx} className="includedItem">
+                  <span className="includedCheck">✓</span>
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
         </div>
