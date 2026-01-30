@@ -59,7 +59,7 @@
 
 /* Booking Section */
 .bookingSection {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
 }
 
 .bookingGrid {
@@ -88,10 +88,10 @@
 .formSectionTitle {
   font-size: 18px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(245, 245, 240, 0.9);
   margin-bottom: 20px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(245, 245, 240, 0.2);
 }
 
 .formRow {
@@ -112,7 +112,7 @@
 }
 
 .bookingForm .formGroup label {
-  color: white !important;
+  color: #f5f5f0 !important;
 }
 
 .formGroup input,
@@ -121,31 +121,31 @@
   width: 100%;
   padding: 14px 16px;
   font-size: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(245, 245, 240, 0.3);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: rgba(245, 245, 240, 0.1);
+  color: #f5f5f0;
   transition: all var(--transition-fast);
 }
 
 .formGroup input::placeholder,
 .formGroup textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(245, 245, 240, 0.5);
 }
 
 .formGroup input:focus,
 .formGroup select:focus,
 .formGroup textarea:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
+  border-color: rgba(245, 245, 240, 0.6);
+  box-shadow: 0 0 0 3px rgba(245, 245, 240, 0.1);
+  background: rgba(245, 245, 240, 0.15);
+  color: #f5f5f0;
 }
 
 .formGroup select option {
   background: var(--brand-accent);
-  color: white;
+  color: #f5f5f0;
 }
 
 .formGroup textarea {
@@ -166,8 +166,8 @@
   align-items: center;
   gap: 8px;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
+  background: rgba(245, 245, 240, 0.15);
+  color: #f5f5f0;
   border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 500;
@@ -200,8 +200,8 @@
   align-items: center;
   gap: 8px;
   padding: 20px 16px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-medium);
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: all var(--transition-base);
@@ -215,13 +215,13 @@
 }
 
 .addOnCard:hover {
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--brand-accent);
+  background: var(--bg-card-hover);
 }
 
 .addOnCard.selected {
-  border-color: white;
-  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--brand-accent);
+  background: var(--brand-accent-light);
 }
 
 .addOnCard .addOnIcon {
@@ -231,12 +231,12 @@
 .addOnCard .addOnLabel {
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: var(--text-primary);
 }
 
 .addOnCard .addOnPrice {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-secondary);
   font-weight: 600;
 }
 
@@ -246,27 +246,27 @@
   gap: 16px;
   margin-top: 32px;
   padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(245, 245, 240, 0.2);
 }
 
 .formActions .btn-primary {
   flex: 1;
-  background: white;
+  background: #f5f5f0;
   color: var(--brand-accent);
 }
 
 .formActions .btn-primary:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(245, 245, 240, 0.9);
 }
 
 .formActions .btn-outline {
-  border-color: rgba(255, 255, 255, 0.3);
-  color: white;
+  border-color: rgba(245, 245, 240, 0.3);
+  color: #f5f5f0;
 }
 
 .formActions .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(245, 245, 240, 0.1);
+  border-color: rgba(245, 245, 240, 0.5);
 }
 
 /* Sidebar */
@@ -276,11 +276,12 @@
 }
 
 .summaryCard {
-  background: var(--bg-card);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-xl);
   padding: 28px;
   margin-bottom: 20px;
+  color: var(--text-primary);
 }
 
 .summaryCard h3 {
@@ -361,13 +362,13 @@
 }
 
 .helpCard .btn-outline {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(245, 245, 240, 0.2);
   color: var(--text-light);
 }
 
 .helpCard .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(245, 245, 240, 0.1);
+  border-color: rgba(245, 245, 240, 0.3);
 }
 
 /* Success State */
@@ -449,70 +450,70 @@
   color: var(--brand-accent);
 }
 
-/* TimePicker Styles for Brown Form */
+/* TimePicker Styles for White Form */
 .bookingForm .timePickerTrigger {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
+  border: 1px solid var(--border-medium);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .bookingForm .timePickerTrigger:hover {
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--brand-accent);
 }
 
 .bookingForm .timePickerTrigger.isOpen {
-  border-color: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px var(--brand-accent-light);
 }
 
 .bookingForm .timePickerTrigger.isEmpty .timePickerValue {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-muted);
 }
 
 .bookingForm .timePickerDropdown {
-  background: rgba(150, 105, 25, 0.98);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--bg-secondary);
+  border-color: var(--border-light);
 }
 
 .bookingForm .timePickerFilters {
-  border-bottom-color: rgba(255, 255, 255, 0.15);
+  border-bottom-color: var(--border-light);
 }
 
 .bookingForm .timePickerFilterBtn {
-  color: rgba(255, 255, 255, 0.7);
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border-color: var(--border-light);
+  background: var(--bg-primary);
 }
 
 .bookingForm .timePickerFilterBtn:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
 }
 
 .bookingForm .timePickerFilterBtn.isActive {
-  color: white;
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--text-light);
+  background: var(--brand-accent);
+  border-color: var(--brand-accent);
 }
 
 .bookingForm .timePickerOption {
-  color: white;
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  background: transparent;
 }
 
 .bookingForm .timePickerOption:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--bg-card-hover);
 }
 
 .bookingForm .timePickerOption.isSelected {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: var(--brand-accent-light);
+  border-color: var(--brand-accent);
 }
 
 .bookingForm .timePickerOptionPeriod.am,
 .bookingForm .timePickerOptionPeriod.pm {
-  background: rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.9);
+  background: var(--brand-accent-light);
+  color: var(--brand-accent-hover);
 }
 
 /* Responsive */

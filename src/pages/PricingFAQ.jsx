@@ -236,7 +236,7 @@ export default function PricingFAQ() {
           <div className="includedInner">
             <div className="includedContent">
               <span className="badge badge-teal">All-Inclusive</span>
-              <h2 className="sectionTitle" style={{ color: 'white' }}>What's Included</h2>
+              <h2 className="sectionTitle" style={{ color: '#f5f5f0' }}>What's Included</h2>
               <p className="includedText">
                 Every booking comes with full access to our amenities and equipment at no extra cost.
               </p>

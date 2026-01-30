@@ -51,7 +51,7 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(245, 245, 240, 0.08);
   color: var(--text-on-dark);
   transition: all var(--transition-base);
 }

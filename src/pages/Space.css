@@ -86,17 +86,19 @@
 }
 
 .overviewSection .overviewCard {
-  background: white;
+  background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 32px 24px;
   text-align: center;
   transition: all var(--transition-base);
+  color: var(--text-primary);
 }
 
 .overviewSection .overviewCard:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+  border-color: var(--brand-accent);
 }
 
 .overviewSection .overviewIcon {
@@ -119,7 +121,13 @@
 
 /* Overview */
 .spaceOverview {
-  background: var(--bg-secondary);
+  background: linear-gradient(135deg, #967969 0%, #846A5C 100%);
+  color: var(--text-light);
+}
+
+.spaceOverview .sectionTitle,
+.spaceOverview .sectionSubtitle {
+  color: var(--text-light);
 }
 
 .spaceOverview .overviewGrid {
@@ -188,18 +196,18 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background: var(--brand-accent);
+  background: var(--bg-primary);
   padding: var(--space-4xl) 0;
 }
 
 .configSection .sectionHeader .badge {
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: white !important;
+  background: var(--brand-accent-light) !important;
+  color: var(--brand-accent-hover) !important;
 }
 
 .configSection .sectionHeader .sectionTitle,
 .configSection .sectionHeader .sectionSubtitle {
-  color: white !important;
+  color: var(--text-primary) !important;
 }
 
 .configGrid {
@@ -209,17 +217,19 @@
 }
 
 .configCard {
-  background: var(--bg-card);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 32px 24px;
   text-align: center;
   transition: all var(--transition-base);
+  color: var(--text-primary);
 }
 
 .configCard:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+  border-color: var(--brand-accent);
 }
 
 .configIcon {
@@ -257,8 +267,9 @@
   position: sticky;
   top: 0;
   z-index: 2;
-  background: white;
+  background: linear-gradient(135deg, #967969 0%, #846A5C 100%);
   padding: var(--space-4xl) 0;
+  color: var(--text-light);
 }
 
 .ambienceInner {
@@ -272,14 +283,18 @@
 
 .ambienceText {
   font-size: 17px;
-  color: var(--text-secondary);
+  color: var(--text-on-dark);
   max-width: 600px;
   margin: 0 auto 48px;
   line-height: 1.7;
 }
 
 .ambienceSection .sectionTitle {
-  color: var(--brand-dark) !important;
+  color: var(--text-light) !important;
+}
+
+.ambienceSection .sectionSubtitle {
+  color: var(--text-on-dark) !important;
 }
 
 .ambienceGrid {
@@ -289,11 +304,12 @@
 }
 
 .ambienceCard {
-  background: white;
-  border: 1px solid var(--border-light);
+  background: rgba(245, 245, 240, 0.1);
+  border: 1px solid rgba(245, 245, 240, 0.2);
   border-radius: var(--radius-lg);
   padding: 32px 20px;
   transition: all var(--transition-base);
+  color: var(--text-light);
 }
 
 .ambienceCard:hover {
@@ -311,13 +327,13 @@
 .ambienceName {
   font-size: 16px;
   font-weight: 600;
-  color: var(--brand-dark);
+  color: var(--text-light);
   margin-bottom: 8px;
 }
 
 .ambienceDesc {
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--text-on-dark);
   line-height: 1.5;
 }
 
@@ -326,13 +342,13 @@
   position: sticky;
   top: 0;
   z-index: 3;
-  background: var(--brand-accent);
+  background: var(--bg-primary);
   padding: var(--space-4xl) 0;
 }
 
 .amenitiesSection .sectionTitle,
 .amenitiesSection .sectionSubtitle {
-  color: white;
+  color: var(--text-primary);
 }
 
 
@@ -346,7 +362,7 @@
   display: flex;
   align-items: flex-start;
   gap: 20px;
-  background: var(--bg-card);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 24px;
@@ -356,7 +372,7 @@
 .amenityCard:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: var(--border-medium);
+  border-color: var(--brand-accent);
 }
 
 .amenityIcon {
@@ -383,7 +399,13 @@
 
 /* Floor Plan */
 .floorPlan {
-  background: var(--bg-secondary);
+  background: linear-gradient(135deg, #967969 0%, #846A5C 100%);
+  color: var(--text-light);
+}
+
+.floorPlan .sectionTitle,
+.floorPlan .sectionSubtitle {
+  color: var(--text-light);
 }
 
 .floorPlanImage {
@@ -469,7 +491,7 @@
 
 .ctaActions .btn-outline:hover {
   background: var(--brand-accent);
-  color: white;
+  color: #f5f5f0;
   border-color: var(--brand-accent);
 }
 

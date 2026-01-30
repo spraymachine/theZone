@@ -155,11 +155,12 @@ ul, ol {
 
 /* Card styles */
 .card {
-  background: var(--bg-card);
+  background: linear-gradient(135deg, #967969 0%, #846A5C 100%);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
   padding: var(--space-lg);
   transition: all var(--transition-base);
+  color: var(--text-light);
 }
 
 .card:hover {

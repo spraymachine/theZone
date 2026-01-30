@@ -104,7 +104,7 @@
 }
 
 .eventCategory.category-brown .categoryDetail h4 {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(245, 245, 240, 0.9);
 }
 
 .eventCategory.category-brown .categoryDetail li {
@@ -112,7 +112,7 @@
 }
 
 .eventCategory.category-brown .categoryDetail li::before {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(245, 245, 240, 0.6);
 }
 
 .eventCategory.category-brown .btn-primary {
@@ -285,7 +285,7 @@
 
 .ctaActions .btn-outline:hover {
   background: var(--brand-accent);
-  color: white;
+  color: #f5f5f0;
   border-color: var(--brand-accent);
 }
 

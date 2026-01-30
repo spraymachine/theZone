@@ -62,7 +62,13 @@
 
 /* Testimonials Grid */
 .testimonialsList {
-  background: var(--bg-secondary);
+  background: linear-gradient(135deg, #967969 0%, #846A5C 100%);
+  color: var(--text-light);
+}
+
+.testimonialsList .sectionTitle,
+.testimonialsList .sectionSubtitle {
+  color: var(--text-light);
 }
 
 .testimonialsGrid {
@@ -72,11 +78,12 @@
 }
 
 .testimonialCard {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: rgba(245, 245, 240, 0.1);
+  border: 1px solid rgba(245, 245, 240, 0.2);
   border-radius: var(--radius-lg);
   padding: 28px;
   transition: all var(--transition-base);
+  color: var(--text-light);
 }
 
 .testimonialCard:hover {
