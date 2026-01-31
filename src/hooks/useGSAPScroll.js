@@ -86,6 +86,11 @@ export function useGSAPScroll({
         initialStyles.y = 100 // Start from bottom
         initialStyles.filter = 'blur(8px)'
         break
+      case 'leftToOriginal':
+        initialStyles.opacity = 0
+        initialStyles.x = -150 // Start from left
+        initialStyles.filter = 'blur(10px)'
+        break
       case 'rightToOriginal':
         initialStyles.opacity = 0
         initialStyles.x = 150 // Start from right
@@ -132,7 +137,7 @@ export function useGSAPScroll({
     } else if (animation === 'slideInFwdCenter') {
       easeType = 'power3.out'
       // z is already set to 0 in finalProps
-    } else if (animation === 'topToOriginal' || animation === 'bottomToOriginal' || animation === 'rightToOriginal') {
+    } else if (animation === 'topToOriginal' || animation === 'bottomToOriginal' || animation === 'leftToOriginal' || animation === 'rightToOriginal') {
       easeType = 'power4.out'
     }
     

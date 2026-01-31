@@ -367,6 +367,10 @@
   border-radius: var(--radius-lg);
   padding: 24px;
   transition: none;
+  /* GSAP animation optimization */
+  will-change: transform, opacity;
+  /* Initial state - GSAP will override these */
+  opacity: 0;
 }
 
 .amenityCard:hover {

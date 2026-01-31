@@ -2,6 +2,9 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ImageSlider from '../components/ImageSlider'
 import { useGSAPScroll } from '../hooks/useGSAPScroll'
+import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Space.css'
 import heroBg from '../assets/hero-bg.png'
 
@@ -97,9 +100,103 @@ export default function Space() {
   const amenitiesBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
   const amenitiesTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
   const amenitiesSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
-  const amenityCardRefs = AMENITIES.map((_, i) => 
-    useGSAPScroll({ animation: 'fadeInUp', delay: 0.3 + (i * 0.08), duration: 0.6, start: 'top 85%' })
-  )
+  
+  // Amenities grid container ref for row-wise stagger animation
+  const amenitiesGridRef = useRef(null)
+  
+  // Amenities cards animations - left column from left, right column from right, row-wise stagger
+  // Grid is 2 columns, so even indices (0, 2, 4, 6, 8, 10) are left column
+  // Odd indices (1, 3, 5, 7, 9, 11) are right column
+  useEffect(() => {
+    const items = amenitiesGridRef.current?.querySelectorAll('.amenityCard')
+    if (!items || items.length === 0) return
+
+    // Separate left and right column items
+    const leftColumnItems = []
+    const rightColumnItems = []
+    
+    items.forEach((item, index) => {
+      if (index % 2 === 0) {
+        // Even indices = left column
+        leftColumnItems.push(item)
+      } else {
+        // Odd indices = right column
+        rightColumnItems.push(item)
+      }
+    })
+
+    // Set initial states immediately - left column from left, right column from right
+    gsap.set(leftColumnItems, {
+      opacity: 0,
+      x: -150,
+      y: 0, // Explicitly set y to 0 to prevent bottom animation
+      filter: 'blur(10px)',
+      immediateRender: true,
+      force3D: true
+    })
+    
+    gsap.set(rightColumnItems, {
+      opacity: 0,
+      x: 150,
+      y: 0, // Explicitly set y to 0 to prevent bottom animation
+      filter: 'blur(10px)',
+      immediateRender: true,
+      force3D: true
+    })
+
+    // Create timeline with row-wise stagger
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: amenitiesGridRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    })
+
+    // Animate row by row (2 items per row in 2-column grid)
+    const itemsPerRow = 2
+    const totalRows = Math.ceil(items.length / itemsPerRow)
+    
+    for (let row = 0; row < totalRows; row++) {
+      // Animate left column item (from left to original)
+      if (leftColumnItems[row]) {
+        tl.to(leftColumnItems[row], {
+          opacity: 1,
+          x: 0,
+          y: 0, // Ensure y stays at 0
+          filter: 'blur(0px)',
+          duration: 0.8,
+          ease: 'power4.out',
+          force3D: true
+        }, row * 0.2) // Row-wise stagger: 0s, 0.2s, 0.4s, etc.
+      }
+      
+      // Animate right column item (from right to original)
+      if (rightColumnItems[row]) {
+        tl.to(rightColumnItems[row], {
+          opacity: 1,
+          x: 0,
+          y: 0, // Ensure y stays at 0
+          filter: 'blur(0px)',
+          duration: 0.8,
+          ease: 'power4.out',
+          force3D: true
+        }, row * 0.2 + 0.1) // Slightly after left item in same row
+      }
+    }
+
+    return () => {
+      tl.kill()
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === amenitiesGridRef.current) {
+          trigger.kill()
+        }
+      })
+    }
+  }, [])
+
+  const amenityCardRefs = AMENITIES.map(() => useRef(null)) // Placeholder refs (not used)
 
   const ctaTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0, duration: 0.8 })
   const ctaTextRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
@@ -228,9 +325,9 @@ export default function Space() {
                 Everything included with your booking — no hidden fees
               </p>
             </div>
-            <div className="amenitiesGrid">
+            <div ref={amenitiesGridRef} className="amenitiesGrid">
               {AMENITIES.map((amenity, i) => (
-                <div key={amenity.title} ref={amenityCardRefs[i]} className="amenityCard">
+                <div key={amenity.title} className="amenityCard">
                   <span className="amenityIcon">{amenity.icon}</span>
                   <div className="amenityContent">
                     <h3 className="amenityTitle">{amenity.title}</h3>

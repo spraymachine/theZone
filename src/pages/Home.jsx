@@ -1,6 +1,9 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useGSAPScroll } from '../hooks/useGSAPScroll'
+import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './Home.css'
 import heroBg from '../assets/hero-bg.png'
 import heroImg from '../assets/hero-img.png'
@@ -82,45 +85,216 @@ export default function Home() {
   const eventTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
   const eventSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
   
-  // Event cards animations - staggered from left to right (leftmost first, rightmost last)
-  const eventCardRefs = EVENT_TYPES.map((_, index) => 
-    useGSAPScroll({
-      animation: 'fadeInUp',
-      delay: index * 0.3, // Stagger: 0s (leftmost), 0.3s, 0.6s, 0.9s (rightmost)
-      duration: 0.8,
-      start: 'top 85%' // Trigger when cards are entering viewport
+  // Event cards container ref for stagger animation
+  const eventGridRef = useRef(null)
+  
+  // Event cards animations - using GSAP stagger directly for better control
+  useEffect(() => {
+    const cards = eventGridRef.current?.querySelectorAll('.eventCard')
+    if (!cards || cards.length === 0) return
+
+    // Set initial state
+    gsap.set(cards, {
+      opacity: 0,
+      y: 120,
+      filter: 'blur(10px)',
+      immediateRender: true
     })
-  )
+
+    // Create stagger animation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: eventGridRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    })
+
+    tl.to(cards, {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      duration: 0.8,
+      ease: 'power4.out',
+      stagger: 0.3, // 0.3s between each card (leftmost first, rightmost last)
+      force3D: true
+    })
+
+    return () => {
+      tl.kill()
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === eventGridRef.current) {
+          trigger.kill()
+        }
+      })
+    }
+  }, [])
+
+  const eventCardRefs = EVENT_TYPES.map(() => useRef(null)) // Placeholder refs (not used)
 
   const amenitiesBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
   const amenitiesTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
   const amenitiesTextRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
   
-  // Amenities cards animations - left column from left, right column from right
+  // Amenities grid container ref for row-wise stagger animation
+  const amenitiesGridRef = useRef(null)
+  
+  // Amenities cards animations - left column from left, right column from right, row-wise stagger
   // Left column: indices 0, 2, 4 (HD Projector, High-Speed WiFi, Flexible Seating)
   // Right column: indices 1, 3, 5 (Sound System, Air Conditioning, Power Backup)
-  const amenityCardRefs = KEY_AMENITIES.map((_, index) => {
-    const isLeftColumn = index % 2 === 0 // Even indices are left column
-    return useGSAPScroll({
-      animation: isLeftColumn ? 'fadeInLeft' : 'fadeInRight',
-      delay: 0.3 + (Math.floor(index / 2) * 0.15), // Stagger by row: 0.3s, 0.45s, 0.6s
-      duration: 0.7,
-      start: 'top 85%'
+  useEffect(() => {
+    const items = amenitiesGridRef.current?.querySelectorAll('.amenityItem')
+    if (!items || items.length === 0) return
+
+    // Grid is 3 columns, items arranged:
+    // Row 1: indices 0, 1, 2 (HD Projector, Sound System, High-Speed WiFi)
+    // Row 2: indices 3, 4, 5 (Air Conditioning, Flexible Seating, Power Backup)
+    // Left column items (even indices 0, 2, 4): HD Projector, High-Speed WiFi, Flexible Seating
+    // Right column items (odd indices 1, 3, 5): Sound System, Air Conditioning, Power Backup
+    
+    const leftColumnIndices = [0, 2, 4] // Even indices
+    const rightColumnIndices = [1, 3, 5] // Odd indices
+    
+    const leftColumnItems = leftColumnIndices.map(idx => items[idx]).filter(Boolean)
+    const rightColumnItems = rightColumnIndices.map(idx => items[idx]).filter(Boolean)
+
+    // Set initial states immediately - left column from left, right column from right
+    // Set synchronously before creating timeline
+    gsap.set(leftColumnItems, {
+      opacity: 0,
+      x: -150,
+      y: 0, // Explicitly set y to 0 to prevent bottom animation
+      filter: 'blur(10px)',
+      immediateRender: true,
+      force3D: true
     })
-  })
+    
+    gsap.set(rightColumnItems, {
+      opacity: 0,
+      x: 150,
+      y: 0, // Explicitly set y to 0 to prevent bottom animation
+      filter: 'blur(10px)',
+      immediateRender: true,
+      force3D: true
+    })
+
+    // Create timeline with row-wise stagger AFTER initial states are set
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: amenitiesGridRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    })
+
+    // Animate row by row (3 items per row in 3-column grid)
+    // Row 1: indices 0, 1, 2 | Row 2: indices 3, 4, 5
+    const itemsPerRow = 3
+    const totalRows = Math.ceil(items.length / itemsPerRow)
+    
+    for (let row = 0; row < totalRows; row++) {
+      const rowStart = row * itemsPerRow
+      
+      // Find left and right items in this row
+      // Left items are at indices 0, 2, 4 (even indices)
+      // Right items are at indices 1, 3, 5 (odd indices)
+      const rowLeftIndex = leftColumnIndices.find(idx => idx >= rowStart && idx < rowStart + itemsPerRow)
+      const rowRightIndex = rightColumnIndices.find(idx => idx >= rowStart && idx < rowStart + itemsPerRow)
+      
+      const rowLeftItem = rowLeftIndex !== undefined ? items[rowLeftIndex] : null
+      const rowRightItem = rowRightIndex !== undefined ? items[rowRightIndex] : null
+      
+      // Animate left column item (from left to original)
+      if (rowLeftItem) {
+        tl.to(rowLeftItem, {
+          opacity: 1,
+          x: 0,
+          y: 0, // Ensure y stays at 0
+          filter: 'blur(0px)',
+          duration: 0.8,
+          ease: 'power4.out',
+          force3D: true
+        }, row * 0.2) // Row-wise stagger: 0s, 0.2s
+      }
+      
+      // Animate right column item (from right to original)
+      if (rowRightItem) {
+        tl.to(rowRightItem, {
+          opacity: 1,
+          x: 0,
+          y: 0, // Ensure y stays at 0
+          filter: 'blur(0px)',
+          duration: 0.8,
+          ease: 'power4.out',
+          force3D: true
+        }, row * 0.2 + 0.1) // Slightly after left item in same row
+      }
+    }
+
+    return () => {
+      tl.kill()
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === amenitiesGridRef.current) {
+          trigger.kill()
+        }
+      })
+    }
+  }, [])
+
+  const amenityCardRefs = KEY_AMENITIES.map(() => useRef(null)) // Placeholder refs (not used)
 
   const testimonialBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
   const testimonialTitleRef = useGSAPScroll({ animation: 'topToOriginal', delay: 0.1, duration: 0.8 })
   
-  // Testimonial cards animations - staggered from left to right (leftmost first, rightmost last)
-  const testimonialCardRefs = TESTIMONIALS.map((_, index) => 
-    useGSAPScroll({
-      animation: 'fadeInUp',
-      delay: 0.2 + (index * 0.3), // Stagger: 0.2s (leftmost), 0.5s, 0.8s (rightmost)
-      duration: 0.8,
-      start: 'top 85%'
+  // Testimonial cards container ref for stagger animation
+  const testimonialGridRef = useRef(null)
+  
+  // Testimonial cards animations - using GSAP stagger directly for better control
+  useEffect(() => {
+    const cards = testimonialGridRef.current?.querySelectorAll('.testimonialCard')
+    if (!cards || cards.length === 0) return
+
+    // Set initial state
+    gsap.set(cards, {
+      opacity: 0,
+      y: 120,
+      filter: 'blur(10px)',
+      immediateRender: true
     })
-  )
+
+    // Create stagger animation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: testimonialGridRef.current,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+        once: true
+      }
+    })
+
+    tl.to(cards, {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      duration: 0.8,
+      ease: 'power4.out',
+      stagger: 0.4, // 0.4s between each card (leftmost first, rightmost last)
+      force3D: true
+    })
+
+    return () => {
+      tl.kill()
+      ScrollTrigger.getAll().forEach(trigger => {
+        if (trigger.vars.trigger === testimonialGridRef.current) {
+          trigger.kill()
+        }
+      })
+    }
+  }, [])
+
+  const testimonialCardRefs = TESTIMONIALS.map(() => useRef(null)) // Placeholder refs (not used)
 
   const ctaTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0, duration: 0.8 })
   const ctaTextRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
@@ -244,9 +418,9 @@ export default function Home() {
               From corporate conferences to personal celebrations, our space adapts to your needs
             </p>
           </div>
-          <div className="eventGrid">
+          <div ref={eventGridRef} className="eventGrid">
             {EVENT_TYPES.map((event, index) => (
-              <a key={event.title} ref={eventCardRefs[index]} href={event.href} className="eventCard">
+              <a key={event.title} href={event.href} className="eventCard">
                 <span className="eventIcon">{event.icon}</span>
                 <h3 className="eventTitle">{event.title}</h3>
                 <p className="eventDesc">{event.desc}</p>
@@ -278,9 +452,9 @@ export default function Home() {
                 Our space comes equipped with premium amenities to ensure your event runs smoothly.
                 No need to bring anything extra – we've got you covered.
               </p>
-              <div className="amenitiesGrid">
+              <div ref={amenitiesGridRef} className="amenitiesGrid">
                 {KEY_AMENITIES.map((amenity, index) => (
-                  <div key={amenity.label} ref={amenityCardRefs[index]} className="amenityItem">
+                  <div key={amenity.label} className="amenityItem">
                     <span className="amenityIcon">{amenity.icon}</span>
                     <span className="amenityLabel">{amenity.label}</span>
                   </div>
@@ -301,9 +475,9 @@ export default function Home() {
             <span ref={testimonialBadgeRef} className="badge">What People Say</span>
             <h2 ref={testimonialTitleRef} className="sectionTitle">Trusted by Hundreds of Happy Clients</h2>
           </div>
-          <div className="testimonialGrid">
+          <div ref={testimonialGridRef} className="testimonialGrid">
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} ref={testimonialCardRefs[i]} className="testimonialCard">
+              <div key={i} className="testimonialCard">
                   <div className="testimonialRating">
                     {[...Array(t.rating)].map((_, j) => (
                       <span key={j} className="star">★</span>

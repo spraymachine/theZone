@@ -342,6 +342,8 @@
   border: 1px solid var(--border-light);
   /* GSAP animation optimization */
   will-change: transform, opacity;
+  /* Initial state - GSAP will override these */
+  opacity: 0;
 }
 
 .amenityIcon {
