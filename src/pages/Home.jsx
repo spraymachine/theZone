@@ -86,7 +86,7 @@ export default function Home() {
   const eventCardRefs = EVENT_TYPES.map((_, index) => 
     useGSAPScroll({
       animation: 'fadeInUp',
-      delay: index * 0.25, // Stagger: 0s (leftmost), 0.25s, 0.5s, 0.75s (rightmost)
+      delay: index * 0.3, // Stagger: 0s (leftmost), 0.3s, 0.6s, 0.9s (rightmost)
       duration: 0.8,
       start: 'top 85%' // Trigger when cards are entering viewport
     })
@@ -116,7 +116,7 @@ export default function Home() {
   const testimonialCardRefs = TESTIMONIALS.map((_, index) => 
     useGSAPScroll({
       animation: 'fadeInUp',
-      delay: 0.2 + (index * 0.2), // Stagger: 0.2s (leftmost), 0.4s, 0.6s, 0.8s (rightmost)
+      delay: 0.2 + (index * 0.3), // Stagger: 0.2s (leftmost), 0.5s, 0.8s (rightmost)
       duration: 0.8,
       start: 'top 85%'
     })
