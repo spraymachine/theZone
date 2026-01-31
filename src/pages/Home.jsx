@@ -64,13 +64,13 @@ const TESTIMONIALS = [
 ]
 
 export default function Home() {
-  // GSAP scroll animations
-  const heroBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
-  const heroTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
-  const heroSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
-  const heroActionsRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.3, duration: 0.8 })
-  const heroStatsRef = useGSAPScroll({ animation: 'scaleIn', delay: 0.4, duration: 0.8 })
-  const heroImageRef = useGSAPScroll({ animation: 'fadeInRight', delay: 0.2, duration: 1 })
+  // Landing page hero animations (animate immediately on load)
+  const heroBadgeRef = useGSAPScroll({ animation: 'topToOriginal', delay: 0, duration: 0.8, start: 'top 100%' })
+  const heroTitleRef = useGSAPScroll({ animation: 'slideInFwdCenter', delay: 0.2, duration: 1, start: 'top 100%' })
+  const heroSubtitleRef = useGSAPScroll({ animation: 'slideInFwdCenter', delay: 0.3, duration: 1, start: 'top 100%' })
+  const heroActionsRef = useGSAPScroll({ animation: 'bottomToOriginal', delay: 0.4, duration: 0.8, start: 'top 100%' })
+  const heroStatsRef = useGSAPScroll({ animation: 'bottomToOriginal', delay: 0.5, duration: 0.8, start: 'top 100%' })
+  const heroImageRef = useGSAPScroll({ animation: 'rightToOriginal', delay: 0.3, duration: 1, start: 'top 100%' })
 
   const overviewBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
   const overviewTitleRef = useGSAPScroll({ animation: 'fadeInLeft', delay: 0.1, duration: 0.8 })
@@ -82,12 +82,12 @@ export default function Home() {
   const eventTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
   const eventSubtitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.2, duration: 0.8 })
   
-  // Event cards animations - staggered from left to right
+  // Event cards animations - staggered from left to right (leftmost first, rightmost last)
   const eventCardRefs = EVENT_TYPES.map((_, index) => 
     useGSAPScroll({
       animation: 'fadeInUp',
-      delay: index * 0.2, // Stagger: 0s, 0.2s, 0.4s, 0.6s - more noticeable left to right
-      duration: 0.8, // Longer duration for smoother, more visible effect
+      delay: index * 0.25, // Stagger: 0s (leftmost), 0.25s, 0.5s, 0.75s (rightmost)
+      duration: 0.8,
       start: 'top 85%' // Trigger when cards are entering viewport
     })
   )
@@ -110,14 +110,14 @@ export default function Home() {
   })
 
   const testimonialBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
-  const testimonialTitleRef = useGSAPScroll({ animation: 'fadeInUp', delay: 0.1, duration: 0.8 })
+  const testimonialTitleRef = useGSAPScroll({ animation: 'topToOriginal', delay: 0.1, duration: 0.8 })
   
-  // Testimonial cards animations - staggered from left to right
+  // Testimonial cards animations - staggered from left to right (leftmost first, rightmost last)
   const testimonialCardRefs = TESTIMONIALS.map((_, index) => 
     useGSAPScroll({
       animation: 'fadeInUp',
-      delay: 0.2 + (index * 0.15), // Stagger: 0.2s, 0.35s, 0.5s - left to right
-      duration: 0.7,
+      delay: 0.2 + (index * 0.2), // Stagger: 0.2s (leftmost), 0.4s, 0.6s, 0.8s (rightmost)
+      duration: 0.8,
       start: 'top 85%'
     })
   )

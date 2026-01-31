@@ -31,39 +31,70 @@ export function useGSAPScroll({
       opacity: 0,
       y: 0,
       x: 0,
-      scale: 1
+      scale: 1,
+      z: 0,
+      filter: 'blur(0px)' // Add blur for smoother fade effect
     }
 
     switch (animation) {
       case 'fadeIn':
         initialStyles.opacity = 0
+        initialStyles.filter = 'blur(8px)' // Add subtle blur
         break
       case 'fadeInUp':
         initialStyles.opacity = 0
-        initialStyles.y = 80 // Increased movement distance for more visible effect
+        initialStyles.y = 120 // Increased from 80 to 120 for more dramatic effect
+        initialStyles.filter = 'blur(10px)' // Add blur for smoother effect
         break
       case 'fadeInDown':
         initialStyles.opacity = 0
-        initialStyles.y = -50
+        initialStyles.y = -80 // Increased from -50 to -80
+        initialStyles.filter = 'blur(8px)'
         break
       case 'fadeInLeft':
         initialStyles.opacity = 0
-        initialStyles.x = -50
+        initialStyles.x = -100 // Increased from -50 to -100 for more dramatic slide
+        initialStyles.filter = 'blur(10px)'
         break
       case 'fadeInRight':
         initialStyles.opacity = 0
-        initialStyles.x = 50
+        initialStyles.x = 100 // Increased from 50 to 100 for more dramatic slide
+        initialStyles.filter = 'blur(10px)'
         break
       case 'scaleIn':
         initialStyles.opacity = 0
-        initialStyles.scale = 0.8
+        initialStyles.scale = 0.6 // Increased from 0.8 to 0.6 for more dramatic scale
+        initialStyles.filter = 'blur(5px)' // Less blur for scale animations
         break
       case 'slideUp':
-        initialStyles.y = 100
+        initialStyles.y = 150 // Increased from 100 to 150
+        initialStyles.filter = 'blur(8px)'
+        break
+      case 'slideInFwdCenter':
+        initialStyles.opacity = 0
+        initialStyles.scale = 0.8
+        initialStyles.z = -200 // 3D depth for forward motion
+        initialStyles.filter = 'blur(15px)'
+        break
+      case 'topToOriginal':
+        initialStyles.opacity = 0
+        initialStyles.y = -100 // Start from top
+        initialStyles.filter = 'blur(8px)'
+        break
+      case 'bottomToOriginal':
+        initialStyles.opacity = 0
+        initialStyles.y = 100 // Start from bottom
+        initialStyles.filter = 'blur(8px)'
+        break
+      case 'rightToOriginal':
+        initialStyles.opacity = 0
+        initialStyles.x = 150 // Start from right
+        initialStyles.filter = 'blur(10px)'
         break
       default:
         initialStyles.opacity = 0
-        initialStyles.y = 30
+        initialStyles.y = 50 // Increased from 30 to 50
+        initialStyles.filter = 'blur(8px)'
     }
 
     // Apply initial styles immediately to ensure elements start hidden
@@ -83,14 +114,31 @@ export function useGSAPScroll({
       delay: delay // Delay the entire timeline for stagger effect
     })
 
-    // Animate to final state
-    tl.to(element, {
+    // Animate to final state with more pronounced easing
+    let easeType = 'power4.out'
+    let finalProps = {
       opacity: 1,
       y: 0,
       x: 0,
       scale: 1,
+      z: 0,
+      filter: 'blur(0px)',
       duration: duration,
-      ease: 'power3.out'
+      force3D: true
+    }
+
+    if (animation === 'scaleIn') {
+      easeType = 'back.out(1.4)'
+    } else if (animation === 'slideInFwdCenter') {
+      easeType = 'power3.out'
+      // z is already set to 0 in finalProps
+    } else if (animation === 'topToOriginal' || animation === 'bottomToOriginal' || animation === 'rightToOriginal') {
+      easeType = 'power4.out'
+    }
+    
+    tl.to(element, {
+      ...finalProps,
+      ease: easeType
     })
 
     return () => {
