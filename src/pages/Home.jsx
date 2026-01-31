@@ -153,33 +153,45 @@ export default function Home() {
     // Left column items (even indices 0, 2, 4): HD Projector, High-Speed WiFi, Flexible Seating
     // Right column items (odd indices 1, 3, 5): Sound System, Air Conditioning, Power Backup
     
-    const leftColumnIndices = [0, 2, 4] // Even indices
-    const rightColumnIndices = [1, 3, 5] // Odd indices
+    const leftColumnIndices = [0, 2, 4] // Even indices - animate from left
+    const rightColumnIndices = [1, 3, 5] // Odd indices - animate from right
     
-    const leftColumnItems = leftColumnIndices.map(idx => items[idx]).filter(Boolean)
-    const rightColumnItems = rightColumnIndices.map(idx => items[idx]).filter(Boolean)
-
-    // Set initial states immediately - left column from left, right column from right
-    // Set synchronously before creating timeline
-    gsap.set(leftColumnItems, {
-      opacity: 0,
-      x: -150,
-      y: 0, // Explicitly set y to 0 to prevent bottom animation
-      filter: 'blur(10px)',
-      immediateRender: true,
-      force3D: true
+    // Set initial states for ALL items
+    items.forEach((item, index) => {
+      if (leftColumnIndices.includes(index)) {
+        // Left column items - from left
+        gsap.set(item, {
+          opacity: 0,
+          x: -150,
+          y: 0,
+          filter: 'blur(10px)',
+          immediateRender: true,
+          force3D: true
+        })
+      } else if (rightColumnIndices.includes(index)) {
+        // Right column items - from right
+        gsap.set(item, {
+          opacity: 0,
+          x: 150,
+          y: 0,
+          filter: 'blur(10px)',
+          immediateRender: true,
+          force3D: true
+        })
+      } else {
+        // Middle items (shouldn't happen with 6 items, but just in case)
+        gsap.set(item, {
+          opacity: 0,
+          x: 0,
+          y: 0,
+          filter: 'blur(10px)',
+          immediateRender: true,
+          force3D: true
+        })
+      }
     })
-    
-    gsap.set(rightColumnItems, {
-      opacity: 0,
-      x: 150,
-      y: 0, // Explicitly set y to 0 to prevent bottom animation
-      filter: 'blur(10px)',
-      immediateRender: true,
-      force3D: true
-    })
 
-    // Create timeline with row-wise stagger AFTER initial states are set
+    // Create timeline with row-wise stagger
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: amenitiesGridRef.current,
@@ -190,46 +202,33 @@ export default function Home() {
     })
 
     // Animate row by row (3 items per row in 3-column grid)
-    // Row 1: indices 0, 1, 2 | Row 2: indices 3, 4, 5
     const itemsPerRow = 3
     const totalRows = Math.ceil(items.length / itemsPerRow)
     
     for (let row = 0; row < totalRows; row++) {
       const rowStart = row * itemsPerRow
       
-      // Find left and right items in this row
-      // Left items are at indices 0, 2, 4 (even indices)
-      // Right items are at indices 1, 3, 5 (odd indices)
-      const rowLeftIndex = leftColumnIndices.find(idx => idx >= rowStart && idx < rowStart + itemsPerRow)
-      const rowRightIndex = rightColumnIndices.find(idx => idx >= rowStart && idx < rowStart + itemsPerRow)
-      
-      const rowLeftItem = rowLeftIndex !== undefined ? items[rowLeftIndex] : null
-      const rowRightItem = rowRightIndex !== undefined ? items[rowRightIndex] : null
-      
-      // Animate left column item (from left to original)
-      if (rowLeftItem) {
-        tl.to(rowLeftItem, {
+      // Animate all items in this row
+      for (let col = 0; col < itemsPerRow; col++) {
+        const itemIndex = rowStart + col
+        if (itemIndex >= items.length) break
+        
+        const item = items[itemIndex]
+        const isLeftColumn = leftColumnIndices.includes(itemIndex)
+        const isRightColumn = rightColumnIndices.includes(itemIndex)
+        
+        // Determine animation position based on column
+        const position = col * 0.1 // Stagger within row: 0s, 0.1s, 0.2s
+        
+        tl.to(item, {
           opacity: 1,
           x: 0,
-          y: 0, // Ensure y stays at 0
+          y: 0,
           filter: 'blur(0px)',
           duration: 0.8,
           ease: 'power4.out',
           force3D: true
-        }, row * 0.2) // Row-wise stagger: 0s, 0.2s
-      }
-      
-      // Animate right column item (from right to original)
-      if (rowRightItem) {
-        tl.to(rowRightItem, {
-          opacity: 1,
-          x: 0,
-          y: 0, // Ensure y stays at 0
-          filter: 'blur(0px)',
-          duration: 0.8,
-          ease: 'power4.out',
-          force3D: true
-        }, row * 0.2 + 0.1) // Slightly after left item in same row
+        }, row * 0.2 + position) // Row-wise stagger + column stagger
       }
     }
 
