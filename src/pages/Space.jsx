@@ -1,6 +1,6 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import ImageSlider from '../components/ImageSlider'
+import GSAPHorizontalCarousel from '../components/GSAPHorizontalCarousel'
 import { useGSAPScroll } from '../hooks/useGSAPScroll'
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
@@ -230,8 +230,8 @@ export default function Space() {
           <div className="aboutContent">
             <span ref={aboutBadgeRef} className="badge">Endless Possibilities</span>
           </div>
-          <div className="aboutSlider">
-            <ImageSlider />
+          <div className="aboutCarousel">
+            <GSAPHorizontalCarousel />
           </div>
         </div>
       </section>

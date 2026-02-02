@@ -58,6 +58,12 @@
 }
 
 /* About / Endless Possibilities Section */
+.aboutSection {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 0; /* ScrollTrigger pinSpacing handles spacing */
+}
+
 .aboutSection .container {
   display: flex;
   flex-direction: column;
@@ -69,14 +75,17 @@
   margin-bottom: 40px;
 }
 
-.aboutSection .aboutSlider {
+.aboutSection .aboutCarousel {
   width: 100%;
-  max-width: 900px;
+  max-width: 100%;
 }
 
 /* Space Overview Section */
 .overviewSection {
   background: #f5f5f0 !important;
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
 }
 
 .overviewSection .overviewGrid {

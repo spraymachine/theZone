@@ -1,0 +1,108 @@
+.gsapCarouselPin {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  background: var(--bg-primary);
+}
+
+.gsapCarouselContainer {
+  width: 100%;
+  overflow-x: hidden;
+  padding: 40px 0;
+}
+
+.gsapCarousel {
+  display: flex;
+  gap: 24px;
+  will-change: transform;
+}
+
+.carouselSlide {
+  flex: 0 0 calc(100vw - 80px);
+  max-width: 600px;
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.carouselSlide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 1;
+}
+
+.carouselContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  z-index: 2;
+  color: var(--bg-secondary);
+}
+
+.carouselName {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--bg-secondary);
+}
+
+.carouselDescription {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.carouselButton button {
+  background: var(--bg-secondary);
+  color: var(--brand-accent);
+  border: 2px solid var(--bg-secondary);
+  padding: 14px 32px;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carouselButton button:hover {
+  background: transparent;
+  color: var(--bg-secondary);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .carouselSlide {
+    flex: 0 0 calc(100vw - 40px);
+    height: 400px;
+  }
+
+  .carouselContent {
+    padding: 30px 24px;
+  }
+
+  .carouselName {
+    font-size: 24px;
+  }
+
+  .carouselDescription {
+    font-size: 16px;
+  }
+}
+
+
