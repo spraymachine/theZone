@@ -167,7 +167,7 @@ export default function Testimonials() {
             </p>
             <div ref={ctaActionsRef} className="ctaActions">
               <a href="#/book" className="btn btn-primary btn-lg">Book Now</a>
-              <a href="#/contact" className="btn btn-outline btn-lg" style={{ borderColor: 'rgba(245,245,240,0.3)', color: '#f5f5f0' }}>
+              <a href="#/contact" className="btn btn-outline btn-lg">
                 Contact Us
               </a>
             </div>
@@ -179,4 +179,3 @@ export default function Testimonials() {
     </div>
   )
 }
-

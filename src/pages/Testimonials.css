@@ -51,13 +51,13 @@
   display: block;
   font-size: 40px;
   font-weight: 800;
-  color: var(--brand-accent);
+  color: #ffffff;
   margin-bottom: 8px;
 }
 
 .statLabel {
   font-size: 14px;
-  color: var(--text-on-dark);
+  color: #ffffff;
 }
 
 /* Testimonials Grid */
@@ -78,12 +78,13 @@
 }
 
 .testimonialCard {
-  background: rgba(245, 245, 240, 0.1);
-  border: 1px solid rgba(245, 245, 240, 0.2);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-lg);
   padding: 28px;
   transition: none;
-  color: var(--text-light);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .testimonialCard:hover {
@@ -190,6 +191,23 @@
   color: var(--text-light);
 }
 
+.ctaActions .btn-primary:hover {
+  background: #1E293B;
+  color: var(--text-light);
+}
+
+.testimonialsPage .ctaActions .btn-outline {
+  background: rgba(245, 245, 240, 0.42);
+  border-color: var(--brand-dark);
+  color: var(--brand-dark);
+}
+
+.testimonialsPage .ctaActions .btn-outline:hover {
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+  color: var(--text-light);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .statsGrid {
@@ -211,4 +229,3 @@
     grid-template-columns: 1fr;
   }
 }
-

@@ -475,11 +475,11 @@
 .ctaActions .btn-primary {
   background: #f5f5f0;
   color: var(--brand-accent);
-  border: 2px solid var(--brand-accent);
 }
 
 .ctaActions .btn-primary:hover {
-  background: rgba(245, 245, 240, 0.9);
+  background: var(--brand-dark);
+  color: var(--text-light);
 }
 
 .ctaActions .btn-outline {
@@ -611,4 +611,3 @@
     width: 100%;
   }
 }
-

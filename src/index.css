@@ -136,6 +136,16 @@ ul, ol {
   box-shadow: none;
 }
 
+a.btn-primary[href="#/book"] {
+  border: 2px solid transparent;
+}
+
+a.btn-primary[href="#/book"]:hover {
+  background: var(--bg-secondary);
+  color: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+
 .btn-dark {
   background: var(--brand-dark);
   color: var(--text-light);
