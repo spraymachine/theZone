@@ -313,18 +313,18 @@
 }
 
 .ambienceCard {
-  background: rgba(245, 245, 240, 0.1);
-  border: 1px solid rgba(245, 245, 240, 0.2);
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
   padding: 32px 20px;
   transition: none;
-  color: var(--text-light);
+  color: var(--text-primary);
 }
 
 .ambienceCard:hover {
   transform: none;
   box-shadow: none;
-  border-color: var(--border-medium);
+  border-color: var(--brand-accent);
 }
 
 .ambienceIcon {
@@ -336,13 +336,13 @@
 .ambienceName {
   font-size: 16px;
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--brand-dark);
   margin-bottom: 8px;
 }
 
 .ambienceDesc {
   font-size: 14px;
-  color: var(--text-on-dark);
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 
@@ -542,4 +542,3 @@
     grid-template-columns: 1fr;
   }
 }
-

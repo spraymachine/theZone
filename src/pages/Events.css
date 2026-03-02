@@ -116,12 +116,14 @@
 }
 
 .eventCategory.category-brown .btn-primary {
-  background: var(--brand-dark);
-  color: var(--text-light);
+  background: #FFFFFF;
+  color: var(--brand-accent);
 }
 
 .eventCategory.category-brown .btn-primary:hover {
-  background: #1E293B;
+  background: var(--bg-secondary);
+  color: var(--brand-accent-hover);
+  border-color: var(--brand-accent-hover);
 }
 
 .categoryGrid {
