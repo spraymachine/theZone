@@ -219,9 +219,11 @@ export default function BookNow() {
       status: 'pending'
     }
 
-    const { error } = await supabase
+    const { data: insertedBooking, error } = await supabase
       .from('bookings')
       .insert([bookingPayload])
+      .select('id')
+      .single()
 
     setSubmitting(false)
 
@@ -234,6 +236,45 @@ export default function BookNow() {
       }
       return
     }
+
+    // Fire-and-forget email send (booking success should not depend on email success)
+    const selectedAddOns = ADD_ONS
+      .filter((a) => form.addOns[a.key])
+      .map((a) => ({ key: a.key, label: a.label, fee: a.fee }))
+
+    const eventTypeLabel =
+      EVENT_TYPES.find((t) => t.value === form.eventType)?.label || form.eventType
+
+    supabase.functions
+      .invoke('send-booking-confirmation', {
+        body: {
+          bookingId: insertedBooking?.id ?? null,
+          name: form.name,
+          email: form.email,
+          phone: form.phone || null,
+          eventType: eventTypeLabel,
+          date: form.date,
+          startTime: form.startTime,
+          endTime: estimatedEndTime || null,
+          durationHours: hours,
+          guests: Number(form.guests || 0),
+          addOns: selectedAddOns,
+          estimatedTotal: Math.round(estimatedTotal),
+          notes: mergedNotes
+        }
+      })
+      .then(({ data, error: fnError }) => {
+        if (fnError) {
+          console.warn('Confirmation email failed:', fnError)
+          return
+        }
+        if (data && data.ok === false) {
+          console.warn('Confirmation email rejected:', data)
+        }
+      })
+      .catch((err) => {
+        console.warn('Confirmation email invoke error:', err)
+      })
 
     setSubmitted({
       ...form,
@@ -422,6 +463,12 @@ export default function BookNow() {
                         required
                       />
                       <span className="formHelp">Minimum {MIN_HOURS} hours. Base rate includes {MIN_HOURS} hours.</span>
+                    </div>
+
+                    {/* Mobile Estimated Total */}
+                    <div className="mobileEstimatedTotal">
+                      <span className="mobileTotalLabel">Estimated Total</span>
+                      <span className="mobileTotalValue">{money.format(estimatedTotal)}</span>
                     </div>
 
                     {estimatedEndTime && (

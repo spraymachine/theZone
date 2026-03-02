@@ -1,0 +1,19 @@
+{
+  "bookingId": "123",
+  "name": "Test User",
+  "email": "you@example.com",
+  "phone": "+91 90000 00000",
+  "eventType": "Get-together",
+  "date": "2026-02-24",
+  "startTime": "18:00",
+  "endTime": "21:00",
+  "durationHours": 3,
+  "guests": 20,
+  "addOns": [
+    { "key": "cleaning", "label": "Deep Cleaning", "fee": 400 },
+    { "key": "sound", "label": "Sound Upgrade", "fee": 300 }
+  ],
+  "estimatedTotal": 5199,
+  "notes": "This is a test confirmation email."
+}
+

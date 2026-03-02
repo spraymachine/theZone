@@ -118,7 +118,7 @@ ul, ol {
   gap: var(--space-sm);
   padding: 14px 28px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 400;
   border-radius: var(--radius-md);
   border: none;
   transition: none;

@@ -75,6 +75,7 @@
   border: none;
   border-radius: var(--radius-xl);
   padding: 40px;
+  font-family: var(--font-sans);
 }
 
 .formSection {
@@ -86,6 +87,7 @@
 }
 
 .formSectionTitle {
+  font-family: var(--font-sans);
   font-size: 18px;
   font-weight: 700;
   color: rgba(245, 245, 240, 0.9);
@@ -107,7 +109,7 @@
 .formGroup label {
   display: block;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 200;
   margin-bottom: 8px;
 }
 
@@ -120,6 +122,7 @@
 .formGroup textarea {
   width: 100%;
   padding: 14px 16px;
+  font-family: var(--font-sans);
   font-size: 15px;
   border: 1px solid rgba(245, 245, 240, 0.3);
   border-radius: var(--radius-md);
@@ -158,6 +161,11 @@
   font-size: 12px;
   color: rgba(255, 255, 255, 0.6);
   margin-top: 6px;
+}
+
+/* Mobile Estimated Total */
+.mobileEstimatedTotal {
+  display: none;
 }
 
 /* Time Preview */
@@ -282,9 +290,11 @@
   padding: 28px;
   margin-bottom: 20px;
   color: var(--text-primary);
+  font-family: var(--font-sans);
 }
 
 .summaryCard h3 {
+  font-family: var(--font-sans);
   font-size: 18px;
   font-weight: 700;
   color: var(--brand-dark);
@@ -346,9 +356,11 @@
   border-radius: var(--radius-xl);
   padding: 24px;
   text-align: center;
+  font-family: var(--font-sans);
 }
 
 .helpCard h4 {
+  font-family: var(--font-sans);
   font-size: 16px;
   font-weight: 700;
   color: var(--text-light);
@@ -391,17 +403,33 @@
   margin-bottom: 24px;
 }
 
+.bookingSuccess {
+  font-family: var(--font-sans);
+}
+
 .bookingSuccess h2 {
+  font-family: var(--font-sans);
   font-size: 28px;
   font-weight: 700;
-  color: var(--brand-dark);
+  color: #ffffff;
   margin-bottom: 12px;
 }
 
 .bookingSuccess > p {
   font-size: 16px;
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.88);
   margin-bottom: 32px;
+}
+
+.bookingSuccess .btn-primary {
+  background: #ffffff;
+  color: var(--brand-accent);
+  border-color: #ffffff;
+}
+
+.bookingSuccess .btn-primary:hover {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.92);
 }
 
 .successDetails {
@@ -544,5 +572,30 @@
   .formActions {
     flex-direction: column;
   }
-}
 
+  .mobileEstimatedTotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+    background: rgba(245, 245, 240, 0.15);
+    border: 1px solid rgba(245, 245, 240, 0.3);
+    border-radius: var(--radius-md);
+  }
+
+  .mobileTotalLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(245, 245, 240, 0.9);
+    font-family: var(--font-sans);
+  }
+
+  .mobileTotalValue {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f5f5f0;
+    font-family: var(--font-sans);
+  }
+}
