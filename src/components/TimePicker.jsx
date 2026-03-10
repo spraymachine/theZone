@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import './TimePicker.css'
 
 // Generate time slots: 12-hour format, :00 and :30 only
-const TIME_SLOTS = []
+export const TIME_SLOTS = []
 for (let h = 0; h < 24; h++) {
   for (const m of [0, 30]) {
     const hour24 = h
@@ -25,7 +25,16 @@ function format12Hour(time24) {
   return `${hour12}:${String(m).padStart(2, '0')} ${period}`
 }
 
-export default function TimePicker({ value, onChange, id, required, disabled }) {
+export default function TimePicker({
+  value,
+  onChange,
+  id,
+  required,
+  disabled,
+  placeholder = 'Select time',
+  slotStatusByValue = null,
+  showLegend = false
+}) {
   const [open, setOpen] = useState(false)
   const [filter, setFilter] = useState('AM') // 'AM' or 'PM'
   const containerRef = useRef(null)
@@ -57,6 +66,15 @@ export default function TimePicker({ value, onChange, id, required, disabled }) 
   const filteredSlots = TIME_SLOTS.filter(s => s.period === filter)
 
   const displayValue = format12Hour(value)
+  const hasSlotStatusData = Boolean(slotStatusByValue && Object.keys(slotStatusByValue).length > 0)
+
+  const slotCounts = filteredSlots.reduce((acc, slot) => {
+    const status = slotStatusByValue?.[slot.value]?.status || 'available'
+    if (status === 'booked') acc.booked += 1
+    else if (status === 'unavailable') acc.unavailable += 1
+    else acc.available += 1
+    return acc
+  }, { available: 0, booked: 0, unavailable: 0 })
 
   return (
     <div className="timePicker" ref={containerRef}>
@@ -70,7 +88,7 @@ export default function TimePicker({ value, onChange, id, required, disabled }) 
         aria-expanded={open}
       >
         <span className="timePickerValue">
-          {displayValue || 'Select time'}
+          {displayValue || placeholder}
         </span>
         <svg className="timePickerIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="12" cy="12" r="10" />
@@ -98,25 +116,56 @@ export default function TimePicker({ value, onChange, id, required, disabled }) 
           </div>
 
           <div className="timePickerList" ref={listRef} role="listbox">
-            {filteredSlots.map((slot) => (
-              <button
-                key={slot.value}
-                type="button"
-                role="option"
-                aria-selected={value === slot.value}
-                data-selected={value === slot.value}
-                className={`timePickerOption ${value === slot.value ? 'isSelected' : ''}`}
-                onClick={() => {
-                  onChange(slot.value)
-                  setOpen(false)
-                }}
-              >
-                <span className="timePickerOptionTime">{slot.display.split(' ')[0]}</span>
-                <span className={`timePickerOptionPeriod ${slot.period.toLowerCase()}`}>
-                  {slot.period}
+            {showLegend && hasSlotStatusData && (
+              <div className="timePickerLegend" aria-hidden="true">
+                <span className="timePickerLegendItem available">
+                  {slotCounts.available} available
                 </span>
-              </button>
-            ))}
+                <span className="timePickerLegendItem booked">
+                  {slotCounts.booked} booked
+                </span>
+                <span className="timePickerLegendItem unavailable">
+                  {slotCounts.unavailable} unavailable
+                </span>
+              </div>
+            )}
+
+            {filteredSlots.map((slot) => {
+              const status = slotStatusByValue?.[slot.value]?.status || 'available'
+              const isSelectable = status === 'available'
+              const statusLabel = status === 'booked'
+                ? 'Booked'
+                : status === 'unavailable'
+                  ? 'Unavailable'
+                  : 'Available'
+
+              return (
+                <button
+                  key={slot.value}
+                  type="button"
+                  role="option"
+                  aria-selected={value === slot.value}
+                  data-selected={value === slot.value}
+                  className={`timePickerOption ${value === slot.value ? 'isSelected' : ''} ${hasSlotStatusData ? `is-${status}` : ''}`}
+                  disabled={hasSlotStatusData && !isSelectable}
+                  onClick={() => {
+                    onChange(slot.value)
+                    setOpen(false)
+                  }}
+                >
+                  <span className="timePickerOptionTime">{slot.display}</span>
+                  {hasSlotStatusData ? (
+                    <span className={`timePickerOptionStatus ${status}`}>
+                      {statusLabel}
+                    </span>
+                  ) : (
+                    <span className={`timePickerOptionPeriod ${slot.period.toLowerCase()}`}>
+                      {slot.period}
+                    </span>
+                  )}
+                </button>
+              )
+            })}
           </div>
         </div>
       )}
@@ -135,4 +184,3 @@ export default function TimePicker({ value, onChange, id, required, disabled }) 
     </div>
   )
 }
-

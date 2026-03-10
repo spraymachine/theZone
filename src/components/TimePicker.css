@@ -141,6 +141,10 @@
   background: var(--bg-card-hover, #F1F5F9);
 }
 
+.timePickerOption:disabled {
+  cursor: not-allowed;
+}
+
 .timePickerOption.isSelected {
   background: var(--brand-accent-light, rgba(245, 158, 11, 0.1));
   border-color: var(--brand-accent, #F59E0B);
@@ -149,6 +153,70 @@
 .timePickerOptionTime {
   font-weight: 600;
   font-variant-numeric: tabular-nums;
+}
+
+.timePickerOptionStatus {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm, 6px);
+}
+
+.timePickerOptionStatus.available {
+  background: rgba(20, 184, 166, 0.14);
+  color: #0F766E;
+}
+
+.timePickerOptionStatus.booked {
+  background: rgba(220, 38, 38, 0.12);
+  color: #B91C1C;
+}
+
+.timePickerOptionStatus.unavailable {
+  background: rgba(150, 121, 105, 0.16);
+  color: #6E5649;
+}
+
+.timePickerOption.is-booked,
+.timePickerOption.is-unavailable {
+  opacity: 0.72;
+}
+
+.timePickerOption.is-booked:hover,
+.timePickerOption.is-unavailable:hover {
+  background: transparent;
+}
+
+.timePickerLegend {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.timePickerLegendItem {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 4px 8px;
+  border-radius: var(--radius-full, 9999px);
+}
+
+.timePickerLegendItem.available {
+  background: rgba(20, 184, 166, 0.14);
+  color: #0F766E;
+}
+
+.timePickerLegendItem.booked {
+  background: rgba(220, 38, 38, 0.12);
+  color: #B91C1C;
+}
+
+.timePickerLegendItem.unavailable {
+  background: rgba(150, 121, 105, 0.16);
+  color: #6E5649;
 }
 
 .timePickerOptionPeriod {
@@ -245,6 +313,29 @@ body[data-route="admin"] .timePicker .timePickerOption:hover {
 body[data-route="admin"] .timePicker .timePickerOption.isSelected {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(147, 51, 234, 0.2));
   border-color: rgba(147, 197, 253, 0.35);
+}
+
+body[data-route="admin"] .timePicker .timePickerOption.is-booked,
+body[data-route="admin"] .timePicker .timePickerOption.is-unavailable {
+  opacity: 0.5;
+}
+
+body[data-route="admin"] .timePicker .timePickerOptionStatus.available,
+body[data-route="admin"] .timePicker .timePickerLegendItem.available {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6EE7B7;
+}
+
+body[data-route="admin"] .timePicker .timePickerOptionStatus.booked,
+body[data-route="admin"] .timePicker .timePickerLegendItem.booked {
+  background: rgba(239, 68, 68, 0.2);
+  color: #FCA5A5;
+}
+
+body[data-route="admin"] .timePicker .timePickerOptionStatus.unavailable,
+body[data-route="admin"] .timePicker .timePickerLegendItem.unavailable {
+  background: rgba(251, 191, 36, 0.2);
+  color: #FCD34D;
 }
 
 body[data-route="admin"] .timePicker .timePickerOptionPeriod.am {

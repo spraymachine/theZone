@@ -7,6 +7,7 @@ const money = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR
 
 const MIN_HOURS = 3
 const MAX_HOURS = 24
+const NON_BLOCKING_STATUSES = new Set(['cancelled', 'payment_failed', 'payment_expired'])
 
 // Calculate pricing based on weekday/weekend
 function calculatePricing(date, duration) {
@@ -169,7 +170,8 @@ export default function AdminDashboard({ onSignOut }) {
     const newEnd = newStart + Number(createForm.duration) * 60
 
     for (const booking of bookings) {
-      if (booking.status === 'cancelled') continue
+      const status = String(booking.status || '').toLowerCase()
+      if (NON_BLOCKING_STATUSES.has(status)) continue
       if (booking.booking_date !== createForm.booking_date) continue
       
       const existingStart = timeToMinutes(booking.time_slot)
@@ -195,7 +197,8 @@ export default function AdminDashboard({ onSignOut }) {
     const newEnd = newStart + Number(editForm.duration) * 60
 
     for (const booking of bookings) {
-      if (booking.status === 'cancelled') continue
+      const status = String(booking.status || '').toLowerCase()
+      if (NON_BLOCKING_STATUSES.has(status)) continue
       if (booking.booking_date !== editForm.booking_date) continue
       // Skip the booking we're editing
       if (editForm.id != null && booking.id === editForm.id) continue
@@ -468,7 +471,10 @@ export default function AdminDashboard({ onSignOut }) {
               >
                 <option value="all">All</option>
                 <option value="pending">Pending</option>
+                <option value="payment_initiated">Payment Initiated</option>
                 <option value="confirmed">Confirmed</option>
+                <option value="payment_failed">Payment Failed</option>
+                <option value="payment_expired">Payment Expired</option>
                 <option value="cancelled">Cancelled</option>
               </select>
             </div>
@@ -476,7 +482,8 @@ export default function AdminDashboard({ onSignOut }) {
 
           {error ? <div className="adminError">{error}</div> : null}
 
-          <div className="adminTableWrap">
+          {/* Desktop: table */}
+          <div className="adminTableWrap adminTableWrap--desktop">
             <table className="adminTable">
               <thead>
                 <tr>
@@ -521,10 +528,55 @@ export default function AdminDashboard({ onSignOut }) {
               </tbody>
             </table>
           </div>
+
+          {/* Mobile: cards */}
+          <div className="adminBookingCards">
+            {filtered.map((b) => {
+              const isSelected = selected && (selected.id != null ? selected.id === b.id : selected.booking_date === b.booking_date && selected.time_slot === b.time_slot && selected.email === b.email)
+              return (
+                <button
+                  key={b.id ?? `${b.booking_date}-${b.time_slot}-${b.email}`}
+                  type="button"
+                  className={`adminBookingCard ${isSelected ? 'isSelected' : ''}`}
+                  onClick={() => selectBooking(b)}
+                >
+                  <div className="adminBookingCardHeader">
+                    <span className="adminBookingCardName">{b.name}</span>
+                    <span className={`adminStatus s-${String(b.status || 'pending').toLowerCase()}`}>{b.status}</span>
+                  </div>
+                  <div className="adminBookingCardBody">
+                    <div className="adminBookingCardRow">
+                      <span className="adminBookingCardLabel">Date</span>
+                      <span>{b.booking_date}</span>
+                    </div>
+                    <div className="adminBookingCardRow">
+                      <span className="adminBookingCardLabel">Time</span>
+                      <span>{format12Hour(b.time_slot)} • {b.duration || 2}h</span>
+                    </div>
+                    <div className="adminBookingCardRow">
+                      <span className="adminBookingCardLabel">Guests</span>
+                      <span>{b.guests}</span>
+                    </div>
+                    <div className="adminBookingCardRow">
+                      <span className="adminBookingCardLabel">Amount</span>
+                      <span>{money.format(Number(b.amount || 0))}</span>
+                    </div>
+                    <div className="adminBookingCardRow adminBookingCardRow--email">
+                      <span className="adminBookingCardLabel">Email</span>
+                      <span className="adminMono">{b.email}</span>
+                    </div>
+                  </div>
+                </button>
+              )
+            })}
+            {!loading && filtered.length === 0 ? (
+              <div className="adminEmpty adminEmpty--card">No bookings match your filters.</div>
+            ) : null}
+          </div>
         </section>
 
         <section className="adminBottomGrid">
-          <section className="adminCard">
+          <section className="adminCard adminCard--add">
             <h2>Add booking</h2>
             <form className="adminForm" onSubmit={createBooking}>
               <div className="adminGrid2">
@@ -579,7 +631,10 @@ export default function AdminDashboard({ onSignOut }) {
                   <label>Status</label>
                   <select value={createForm.status} onChange={(e) => setCreateForm((p) => ({ ...p, status: e.target.value }))}>
                     <option value="pending">Pending</option>
+                    <option value="payment_initiated">Payment Initiated</option>
                     <option value="confirmed">Confirmed</option>
+                    <option value="payment_failed">Payment Failed</option>
+                    <option value="payment_expired">Payment Expired</option>
                     <option value="cancelled">Cancelled</option>
                   </select>
                 </div>
@@ -604,7 +659,7 @@ export default function AdminDashboard({ onSignOut }) {
             </form>
           </section>
 
-          <section className="adminCard">
+          <section className="adminCard adminCard--edit">
             <div className="adminCardTitleRow">
               <h2>Edit booking</h2>
               {selected ? (
@@ -675,7 +730,10 @@ export default function AdminDashboard({ onSignOut }) {
                     <label>Status</label>
                     <select value={editForm.status} onChange={(e) => setEditForm((p) => ({ ...p, status: e.target.value }))}>
                       <option value="pending">Pending</option>
+                      <option value="payment_initiated">Payment Initiated</option>
                       <option value="confirmed">Confirmed</option>
+                      <option value="payment_failed">Payment Failed</option>
+                      <option value="payment_expired">Payment Expired</option>
                       <option value="cancelled">Cancelled</option>
                     </select>
                   </div>
