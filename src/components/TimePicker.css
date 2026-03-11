@@ -4,21 +4,3 @@
   width: 100%;
 }
 
-/* AM/PM - subtle but visible distinction */
-.timePickerDialog .MuiDateTimePickerToolbar-ampmSelection button,
-.timePickerDialog .MuiPickersToolbar-root [data-field="meridiem"] button,
-.timePickerDialog .MuiTimeClock-arrowSwitcher + div button,
-.timePickerDialog [role="group"] button {
-  opacity: 0.65;
-  font-weight: 500;
-}
-
-.timePickerDialog .MuiDateTimePickerToolbar-ampmSelection button.Mui-selected,
-.timePickerDialog .MuiPickersToolbar-root [data-field="meridiem"] button.Mui-selected,
-.timePickerDialog .MuiTimeClock-arrowSwitcher + div button.Mui-selected,
-.timePickerDialog [role="group"] button.Mui-selected {
-  opacity: 1;
-  font-weight: 700;
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 8px;
-}

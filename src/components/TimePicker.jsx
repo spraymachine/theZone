@@ -110,6 +110,7 @@ export default function TimePicker({
           onChange={handleChange}
           disabled={isPickerDisabled}
           ampm
+          ampmInClock={false}
           minutesStep={normalizedStep}
           minTime={minTime}
           maxTime={maxTime}
@@ -125,6 +126,31 @@ export default function TimePicker({
             mobilePaper: {
               className: 'timePickerDialog'
             },
+            toolbar: {
+              sx: {
+                gap: '24px',
+                '& .MuiTimePickerToolbar-ampmSelection': {
+                  marginLeft: '24px',
+                  paddingLeft: '24px',
+                  borderLeft: '1px solid rgba(0,0,0,0.12)',
+                  '& button': {
+                    opacity: 0.7,
+                    fontWeight: 500,
+                    border: '1px solid rgba(0,0,0,0.2)',
+                    borderRadius: '8px',
+                    padding: '6px 12px',
+                    minWidth: 48,
+                    '&.Mui-selected': {
+                      opacity: 1,
+                      fontWeight: 700,
+                      background: 'rgba(0,0,0,0.1)',
+                      borderColor: 'rgba(0,0,0,0.35)',
+                      boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.08)'
+                    }
+                  }
+                }
+              }
+            },
             ...(hasSlotStatusData && {
               timeClock: {
                 sx: {
@@ -132,7 +158,7 @@ export default function TimePicker({
                     color: '#047857'
                   },
                   '& .MuiClockNumber-root.Mui-disabled': {
-                    color: '#6B7280'
+                    color: '#B91C1C'
                   }
                 }
               }
