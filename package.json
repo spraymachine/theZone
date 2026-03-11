@@ -12,7 +12,12 @@
     "deploy:safe": "npm run clean && npm run build && git add dist -f && git commit -m 'Deploy to GitHub Pages' && git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.9",
+    "@mui/x-date-pickers": "^8.27.2",
     "@supabase/supabase-js": "^2.88.0",
+    "dayjs": "^1.11.19",
     "gsap": "^3.14.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

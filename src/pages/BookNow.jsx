@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import TimePicker, { TIME_SLOTS } from '../components/TimePicker'
+import TimePicker from '../components/TimePicker'
+import MaterialDatePicker from '../components/MaterialDatePicker'
 import { useGSAPScroll } from '../hooks/useGSAPScroll'
 import { supabase } from '../supabaseClient'
 import './BookNow.css'
@@ -16,16 +17,11 @@ const EVENT_TYPES = [
   { value: 'other', label: 'Other' }
 ]
 
-const ADD_ONS = [
-  { key: 'cleaning', label: 'Deep Cleaning', fee: 400, icon: '🧹' },
-  { key: 'projector', label: 'Extra Projector', fee: 250, icon: '📽️' },
-  { key: 'sound', label: 'Sound Upgrade', fee: 300, icon: '🔊' },
-  { key: 'catering', label: 'Catering Setup', fee: 500, icon: '🍽️' }
-]
-
 const MIN_HOURS = 3
 const MAX_HOURS = 24
-const SLOT_INTERVAL_MINUTES = 30
+const WINDOW_START_MINUTES = 7 * 60
+const WINDOW_END_MINUTES = 23 * 60
+const AVAILABILITY_STEP_MINUTES = 1
 const NON_BLOCKING_STATUSES = new Set(['cancelled', 'payment_failed', 'payment_expired'])
 
 const money = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' })
@@ -44,6 +40,12 @@ function addMinutesToTimeStr(timeStr, minutesToAdd) {
   const normalized = ((total % (24 * 60)) + 24 * 60) % (24 * 60)
   const hh = String(Math.floor(normalized / 60)).padStart(2, '0')
   const mm = String(normalized % 60).padStart(2, '0')
+  return `${hh}:${mm}`
+}
+
+function minutesToTimeStr(totalMinutes) {
+  const hh = String(Math.floor(totalMinutes / 60)).padStart(2, '0')
+  const mm = String(totalMinutes % 60).padStart(2, '0')
   return `${hh}:${mm}`
 }
 
@@ -105,21 +107,11 @@ export default function BookNow() {
     startTime: '',
     hours: '3',
     guests: '10',
-    addOns: {
-      cleaning: false,
-      projector: false,
-      sound: false,
-      catering: false
-    },
     name: '',
     email: '',
     phone: '',
     notes: ''
   })
-
-  const addOnTotal = useMemo(() => {
-    return ADD_ONS.reduce((sum, a) => sum + (form.addOns[a.key] ? a.fee : 0), 0)
-  }, [form.addOns])
 
   // Calculate pricing based on weekday/weekend
   const pricing = useMemo(() => {
@@ -143,7 +135,7 @@ export default function BookNow() {
     return pricing.base + additionalHours * pricing.additionalPerHour
   }, [form.hours, pricing])
 
-  const estimatedTotal = useMemo(() => baseTotal + addOnTotal, [baseTotal, addOnTotal])
+  const estimatedTotal = useMemo(() => baseTotal, [baseTotal])
 
   const estimatedEndTime = useMemo(() => {
     const minutes = Math.round(Number(form.hours || 0) * 60)
@@ -218,11 +210,9 @@ export default function BookNow() {
     if (!form.date) return {}
 
     const statusMap = {}
-    for (const slot of TIME_SLOTS) {
-      const slotStart = timeToMinutes(slot.value)
-      if (slotStart === null) continue
-
-      const slotBlockEnd = slotStart + SLOT_INTERVAL_MINUTES
+    for (let slotStart = WINDOW_START_MINUTES; slotStart <= WINDOW_END_MINUTES; slotStart += AVAILABILITY_STEP_MINUTES) {
+      const slotValue = minutesToTimeStr(slotStart)
+      const slotBlockEnd = slotStart + AVAILABILITY_STEP_MINUTES
       const requestedEnd = slotStart + requestedDurationMinutes
       let isBooked = false
       let overlapsRequestedWindow = false
@@ -242,7 +232,7 @@ export default function BookNow() {
         if (isBooked && overlapsRequestedWindow) break
       }
 
-      statusMap[slot.value] = {
+      statusMap[slotValue] = {
         status: isBooked ? 'booked' : overlapsRequestedWindow ? 'unavailable' : 'available'
       }
     }
@@ -295,10 +285,6 @@ export default function BookNow() {
 
   function updateField(key, value) {
     setForm((prev) => ({ ...prev, [key]: value }))
-  }
-
-  function toggleAddOn(key) {
-    setForm((prev) => ({ ...prev, addOns: { ...prev.addOns, [key]: !prev.addOns[key] } }))
   }
 
   async function onSubmit(e) {
@@ -386,6 +372,42 @@ export default function BookNow() {
           }
 
           paymentVerified = true
+
+          const eventTypeLabel =
+            EVENT_TYPES.find((t) => t.value === form.eventType)?.label || form.eventType
+
+          // Fire-and-forget email send; booking remains confirmed even if email fails.
+          supabase.functions
+            .invoke('send-booking-confirmation', {
+              body: {
+                bookingId: orderData.bookingId,
+                name: form.name,
+                email: form.email,
+                phone: form.phone || null,
+                eventType: eventTypeLabel,
+                date: form.date,
+                startTime: form.startTime,
+                endTime: estimatedEndTime || null,
+                durationHours: hours,
+                guests: Number(form.guests || 0),
+                addOns: [],
+                estimatedTotal: Math.round(estimatedTotal),
+                notes: form.notes?.trim() || null
+              }
+            })
+            .then(({ data, error: fnError }) => {
+              if (fnError) {
+                console.warn('Confirmation email failed:', fnError)
+                return
+              }
+              if (data && data.ok === false) {
+                console.warn('Confirmation email rejected:', data)
+              }
+            })
+            .catch((err) => {
+              console.warn('Confirmation email invoke error:', err)
+            })
+
           setSubmitted({
             ...form,
             estimatedTotal,
@@ -446,7 +468,6 @@ export default function BookNow() {
       startTime: '',
       hours: '3',
       guests: '10',
-      addOns: { cleaning: false, projector: false, sound: false, catering: false },
       otherEventPurpose: '',
       name: '',
       email: '',
@@ -589,12 +610,11 @@ export default function BookNow() {
                     <div className="formRow">
                       <div className="formGroup">
                         <label htmlFor="date">Date</label>
-                        <input
+                        <MaterialDatePicker
                           id="date"
-                          type="date"
-                          min={today}
                           value={form.date}
-                          onChange={(e) => updateField('date', e.target.value)}
+                          minDate={today}
+                          onChange={(nextDate) => updateField('date', nextDate)}
                           required
                         />
                       </div>
@@ -604,21 +624,19 @@ export default function BookNow() {
                           id="startTime"
                           value={form.startTime}
                           onChange={(v) => updateField('startTime', v)}
+                          variant="booking"
+                          minuteStep={1}
                           disabled={!form.date || loadingAvailability}
                           placeholder={
                             !form.date
                               ? 'Select date first'
                               : loadingAvailability
                                 ? 'Checking slots...'
-                                : 'Select available slot'
+                                : 'Choose a start time'
                           }
                           slotStatusByValue={form.date ? slotStatusByValue : null}
-                          showLegend={Boolean(form.date)}
                           required
                         />
-                        <span className="formHelp">
-                          Only available slots can be selected. Booked slots are marked in red.
-                        </span>
                       </div>
                     </div>
 
@@ -667,28 +685,6 @@ export default function BookNow() {
                         ⚠️ This time conflicts with an existing booking ({overlapConflict.existingStart} – {overlapConflict.existingEnd}). Please choose a different time.
                       </div>
                     )}
-                  </div>
-
-                  {/* Add-ons */}
-                  <div className="formSection">
-                    <h3 className="formSectionTitle">Add-ons (Optional)</h3>
-                    <div className="addOnsGrid">
-                      {ADD_ONS.map((addon) => (
-                        <label 
-                          key={addon.key} 
-                          className={`addOnCard ${form.addOns[addon.key] ? 'selected' : ''}`}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={form.addOns[addon.key]}
-                            onChange={() => toggleAddOn(addon.key)}
-                          />
-                          <span className="addOnIcon">{addon.icon}</span>
-                          <span className="addOnLabel">{addon.label}</span>
-                          <span className="addOnPrice">{money.format(addon.fee)}</span>
-                        </label>
-                      ))}
-                    </div>
                   </div>
 
                   {/* Contact Info */}
@@ -811,12 +807,6 @@ export default function BookNow() {
                     <div className="summaryRow">
                       <span>Additional ({Number(form.hours) - MIN_HOURS}hrs × {money.format(pricing.additionalPerHour)})</span>
                       <span>+{money.format((Number(form.hours) - MIN_HOURS) * pricing.additionalPerHour)}</span>
-                    </div>
-                  )}
-                  {addOnTotal > 0 && (
-                    <div className="summaryRow">
-                      <span>Add-ons</span>
-                      <span>+{money.format(addOnTotal)}</span>
                     </div>
                   )}
                 </div>

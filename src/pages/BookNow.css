@@ -218,59 +218,6 @@
   margin-top: 16px;
 }
 
-/* Add-ons */
-.addOnsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.addOnCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 20px 16px;
-  background: var(--bg-secondary);
-  border: 2px solid var(--border-medium);
-  border-radius: var(--radius-lg);
-  cursor: pointer;
-  transition: none;
-  text-align: center;
-}
-
-.addOnCard input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.addOnCard:hover {
-  border-color: var(--brand-accent);
-  background: var(--bg-card-hover);
-}
-
-.addOnCard.selected {
-  border-color: var(--brand-accent);
-  background: var(--brand-accent-light);
-}
-
-.addOnCard .addOnIcon {
-  font-size: 28px;
-}
-
-.addOnCard .addOnLabel {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.addOnCard .addOnPrice {
-  font-size: 13px;
-  color: var(--text-secondary);
-  font-weight: 600;
-}
-
 /* Form Actions */
 .formActions {
   display: flex;
@@ -501,94 +448,6 @@
   color: var(--brand-accent);
 }
 
-/* TimePicker Styles for White Form */
-.bookingForm .timePickerTrigger {
-  border: 1px solid var(--border-medium);
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-}
-
-.bookingForm .timePickerTrigger:hover {
-  border-color: var(--brand-accent);
-}
-
-.bookingForm .timePickerTrigger.isOpen {
-  border-color: var(--brand-accent);
-  box-shadow: 0 0 0 3px var(--brand-accent-light);
-}
-
-.bookingForm .timePickerTrigger.isEmpty .timePickerValue {
-  color: var(--text-muted);
-}
-
-.bookingForm .timePickerDropdown {
-  background: var(--bg-secondary);
-  border-color: var(--border-light);
-}
-
-.bookingForm .timePickerFilters {
-  border-bottom-color: var(--border-light);
-}
-
-.bookingForm .timePickerFilterBtn {
-  color: var(--text-secondary);
-  border-color: var(--border-light);
-  background: var(--bg-primary);
-}
-
-.bookingForm .timePickerFilterBtn:hover {
-  color: var(--text-primary);
-  background: var(--bg-card-hover);
-}
-
-.bookingForm .timePickerFilterBtn.isActive {
-  color: var(--text-light);
-  background: var(--brand-accent);
-  border-color: var(--brand-accent);
-}
-
-.bookingForm .timePickerOption {
-  color: var(--text-primary);
-  background: transparent;
-}
-
-.bookingForm .timePickerOption:disabled {
-  opacity: 0.64;
-}
-
-.bookingForm .timePickerOption:hover {
-  background: var(--bg-card-hover);
-}
-
-.bookingForm .timePickerOption.isSelected {
-  background: var(--brand-accent-light);
-  border-color: var(--brand-accent);
-}
-
-.bookingForm .timePickerOptionPeriod.am,
-.bookingForm .timePickerOptionPeriod.pm {
-  background: var(--brand-accent-light);
-  color: var(--brand-accent-hover);
-}
-
-.bookingForm .timePickerOptionStatus.available,
-.bookingForm .timePickerLegendItem.available {
-  background: rgba(20, 184, 166, 0.15);
-  color: #0F766E;
-}
-
-.bookingForm .timePickerOptionStatus.booked,
-.bookingForm .timePickerLegendItem.booked {
-  background: rgba(220, 38, 38, 0.12);
-  color: #B91C1C;
-}
-
-.bookingForm .timePickerOptionStatus.unavailable,
-.bookingForm .timePickerLegendItem.unavailable {
-  background: rgba(150, 121, 105, 0.18);
-  color: #6E5649;
-}
-
 /* Responsive */
 @media (max-width: 1024px) {
   .bookingGrid {
@@ -607,10 +466,6 @@
   }
 
   .formRow {
-    grid-template-columns: 1fr;
-  }
-
-  .addOnsGrid {
     grid-template-columns: 1fr;
   }
 
