@@ -1,6 +1,32 @@
-/* TimePicker - minimal styles, MUI default component */
-
 .timePicker {
   width: 100%;
 }
 
+.timePickerInput {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border, #d1d5db);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: var(--bg, #fff);
+  color: var(--text, #1a1a1a);
+  cursor: pointer;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.timePickerInput:focus {
+  outline: none;
+  border-color: var(--accent, #047857);
+  box-shadow: 0 0 0 2px rgba(4, 120, 87, 0.12);
+}
+
+.timePickerInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--bg-disabled, #f3f4f6);
+}
+
+.timePickerInput::placeholder {
+  color: #9ca3af;
+}
