@@ -1,62 +1,82 @@
-/* Clean dark theme: slate bg, subtle cards, blue accent */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&display=swap');
+
+/* ── Core Shell ─────────────────────────────────────────── */
 .admin {
-  min-height: 100vh;
-  padding: 24px;
-  background: #0f172a;
-  color: #f8fafc;
+  min-height: 100dvh;
+  padding: 36px 32px;
+  background: #0b0b0d;
+  background-image: radial-gradient(ellipse 110% 45% at 50% 0%, rgba(245, 158, 11, 0.06) 0%, transparent 65%);
+  color: #e4e4e7;
+  font-family: 'Syne', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
+/* ── Header ─────────────────────────────────────────────── */
 .adminHeader {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  max-width: 1200px;
-  margin: 0 auto 16px auto;
+  max-width: 1240px;
+  margin: 0 auto 28px auto;
 }
 
 .adminBadge {
   display: inline-flex;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  align-items: center;
+  font-size: 10px;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #94a3b8;
-  border: 1px solid #334155;
-  border-radius: 999px;
-  padding: 6px 10px;
-  background: #1e293b;
+  font-weight: 600;
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 4px;
+  padding: 4px 9px;
+  background: rgba(245, 158, 11, 0.08);
 }
 
 .adminTitle {
-  margin: 10px 0 6px 0;
-  font-size: 34px;
-  color: #f8fafc;
+  margin: 10px 0 4px 0;
+  font-size: 42px;
+  font-weight: 800;
+  color: #f4f4f5;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 .adminSubtle {
   margin: 0;
-  color: #94a3b8;
+  color: #71717a;
+  font-size: 13px;
 }
 
 .adminHeaderRight {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  padding-top: 6px;
 }
 
 .adminLink {
-  color: #94a3b8;
+  color: #71717a;
   text-decoration: none;
-  border-bottom: 1px solid #475569;
-  padding-bottom: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: none;
+  transition: color 0.15s, background 0.15s;
 }
 
 .adminLink:hover {
-  color: #f8fafc;
+  color: #e4e4e7;
+  background: rgba(255, 255, 255, 0.05);
 }
 
+/* ── Main Layout ─────────────────────────────────────────── */
 .adminMain {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -70,15 +90,28 @@
   gap: 16px;
 }
 
+/* ── Cards ─────────────────────────────────────────────── */
 .adminCard {
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 16px;
-  padding: 14px;
+  background: #111113;
+  border: 1px solid #27272a;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.adminCard > h2 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #f4f4f5;
+  letter-spacing: -0.01em;
 }
 
 .adminCard h2 {
-  color: #f8fafc;
+  color: #f4f4f5;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
 }
 
 .adminCardTitleRow {
@@ -86,25 +119,32 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .adminSmall {
   font-size: 12px;
-  color: #94a3b8;
+  color: #52525b;
+  font-family: 'DM Mono', ui-monospace, monospace;
+  letter-spacing: 0.02em;
 }
 
+/* ── Filters ─────────────────────────────────────────────── */
 .adminFilters {
   display: grid;
   grid-template-columns: 1fr 180px 160px;
   gap: 10px;
-  margin: 10px 0 10px 0;
+  margin-bottom: 14px;
 }
 
+/* ── Form Fields ─────────────────────────────────────────── */
 .adminField label {
   display: block;
-  font-size: 12px;
-  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #52525b;
   margin-bottom: 6px;
 }
 
@@ -112,136 +152,204 @@
 .adminField select,
 .adminField textarea {
   width: 100%;
-  border-radius: 10px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: #f8fafc;
-  padding: 10px 12px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #27272a;
+  background: #0b0b0d;
+  color: #e4e4e7;
+  padding: 9px 12px;
+  font-family: 'Syne', system-ui, sans-serif;
+  font-size: 14px;
   outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .adminField input:focus,
 .adminField select:focus,
 .adminField textarea:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+  border-color: rgba(245, 158, 11, 0.45);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.07);
+}
+
+.adminField input::placeholder {
+  color: #3f3f46;
 }
 
 .adminField textarea {
   resize: vertical;
+  line-height: 1.5;
 }
 
+.adminField select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2352525b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.adminField select option {
+  background: #18181b;
+  color: #e4e4e7;
+}
+
+/* ── Errors ─────────────────────────────────────────────── */
 .adminError {
   margin: 10px 0;
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 80, 80, 0.35);
-  background: rgba(255, 80, 80, 0.12);
-  color: rgba(255, 220, 220, 0.95);
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(248, 113, 113, 0.22);
+  background: rgba(248, 113, 113, 0.06);
+  color: #fca5a5;
+  font-size: 13px;
 }
 
 .adminFieldError {
-  margin-top: 4px;
+  margin-top: 5px;
   font-size: 12px;
   color: #f87171;
-  font-weight: 500;
+  font-weight: 600;
 }
 
+/* ── Table ─────────────────────────────────────────────── */
 .adminTableWrap {
   overflow: auto;
-  border-radius: 12px;
-  border: 1px solid #334155;
-  background: #1e293b;
+  border-radius: 8px;
+  border: 1px solid #27272a;
 }
 
 .adminTable {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .adminTable th,
 .adminTable td {
-  padding: 10px 10px;
-  border-bottom: 1px solid #334155;
+  padding: 10px 14px;
+  border-bottom: 1px solid #1c1c1f;
   white-space: nowrap;
-  color: #f8fafc;
+  color: #d4d4d8;
 }
 
 .adminTable thead th {
   position: sticky;
   top: 0;
-  background: #1e293b;
+  background: #111113;
   text-align: left;
-  color: #94a3b8;
-  font-weight: 500;
+  color: #52525b;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   z-index: 1;
+  border-bottom: 1px solid #27272a;
+  padding-top: 13px;
+  padding-bottom: 13px;
 }
 
 .adminTable tbody tr {
   cursor: pointer;
+  transition: background 0.1s;
 }
 
 .adminTable tbody tr:hover {
-  background: rgba(51, 65, 85, 0.5);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.adminTable tbody tr:hover td:first-child {
+  box-shadow: inset 2px 0 0 #f59e0b;
 }
 
 .adminTable tbody tr.isSelected {
-  background: rgba(59, 130, 246, 0.15);
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.adminTable tbody tr.isSelected td:first-child {
+  box-shadow: inset 2px 0 0 #f59e0b;
+}
+
+.adminTable tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .adminEmpty {
-  padding: 18px 10px;
-  color: #94a3b8;
+  padding: 22px 14px;
+  color: #3f3f46;
+  font-size: 13px;
 }
 
+/* ── Monospace data ─────────────────────────────────────── */
 .adminMono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'DM Mono', ui-monospace, monospace;
   font-size: 12px;
+  color: #71717a;
+  font-variant-numeric: tabular-nums;
 }
 
+/* ── Status badges ─────────────────────────────────────── */
 .adminStatus {
   display: inline-flex;
-  border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 12px;
+  align-items: center;
+  gap: 5px;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.adminStatus::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .adminStatus.s-pending {
-  background: rgba(251, 191, 36, 0.2);
-  border: 1px solid rgba(251, 191, 36, 0.4);
+  background: rgba(251, 191, 36, 0.1);
   color: #fcd34d;
 }
+.adminStatus.s-pending::before { background: #fcd34d; }
+
 .adminStatus.s-confirmed {
-  background: rgba(34, 197, 94, 0.2);
-  border: 1px solid rgba(34, 197, 94, 0.4);
+  background: rgba(74, 222, 128, 0.1);
   color: #86efac;
 }
+.adminStatus.s-confirmed::before { background: #86efac; }
+
 .adminStatus.s-payment_initiated {
-  background: rgba(59, 130, 246, 0.2);
-  border: 1px solid rgba(59, 130, 246, 0.4);
+  background: rgba(96, 165, 250, 0.1);
   color: #93c5fd;
 }
+.adminStatus.s-payment_initiated::before { background: #93c5fd; }
+
 .adminStatus.s-payment_failed,
 .adminStatus.s-payment_expired {
-  background: rgba(249, 115, 22, 0.2);
-  border: 1px solid rgba(249, 115, 22, 0.4);
+  background: rgba(251, 146, 60, 0.1);
   color: #fdba74;
 }
+.adminStatus.s-payment_failed::before,
+.adminStatus.s-payment_expired::before { background: #fdba74; }
+
 .adminStatus.s-cancelled {
-  background: rgba(239, 68, 68, 0.2);
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: rgba(248, 113, 113, 0.1);
   color: #fca5a5;
 }
+.adminStatus.s-cancelled::before { background: #fca5a5; }
 
+/* ── Form container ─────────────────────────────────────── */
 .adminForm {
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 .adminGrid2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
 }
 
 .adminSpan2 {
@@ -251,59 +359,94 @@
 .adminActions {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 8px;
+  margin-top: 16px;
 }
 
+/* ── Buttons ─────────────────────────────────────────────── */
 .adminBtn,
 .adminBtnPrimary,
 .adminBtnDanger {
-  border: 1px solid #334155;
-  background: #334155;
-  color: #f8fafc;
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: 6px;
+  padding: 9px 16px;
   cursor: pointer;
+  font-family: 'Syne', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
-.adminBtn:hover {
-  background: #475569;
-  border-color: #475569;
+.adminBtn {
+  border: 1px solid #3f3f46;
+  background: transparent;
+  color: #71717a;
+}
+
+.adminBtn:hover:not(:disabled) {
+  border-color: #52525b;
+  color: #e4e4e7;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.adminBtn:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
 .adminBtn:disabled,
 .adminBtnPrimary:disabled,
 .adminBtnDanger:disabled {
-  opacity: 0.6;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
 .adminBtnPrimary {
-  background: #3b82f6;
-  border-color: #3b82f6;
+  background: #f59e0b;
+  border: 1px solid #f59e0b;
+  color: #0b0b0d;
+  font-weight: 700;
 }
-.adminBtnPrimary:hover {
-  background: #2563eb;
-  border-color: #2563eb;
+
+.adminBtnPrimary:hover:not(:disabled) {
+  background: #fbbf24;
+  border-color: #fbbf24;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.28);
+  transform: translateY(-1px);
+}
+
+.adminBtnPrimary:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
 }
 
 .adminBtnDanger {
-  background: rgba(239, 68, 68, 0.2);
-  border-color: rgba(239, 68, 68, 0.5);
-}
-.adminBtnDanger:hover {
-  background: rgba(239, 68, 68, 0.3);
+  background: transparent;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  color: #f87171;
 }
 
+.adminBtnDanger:hover:not(:disabled) {
+  background: rgba(248, 113, 113, 0.07);
+  border-color: rgba(248, 113, 113, 0.55);
+}
+
+.adminBtnDanger:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* ── Empty states ─────────────────────────────────────── */
 .adminEmptyBox {
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px dashed #475569;
-  color: #94a3b8;
+  margin-top: 0;
+  padding: 24px 16px;
+  border-radius: 6px;
+  border: 1px dashed #27272a;
+  color: #3f3f46;
+  font-size: 13px;
+  text-align: center;
 }
 
-/* Mobile: show cards, hide table */
+/* ── Mobile Cards ─────────────────────────────────────── */
 .adminBookingCards {
   display: none;
 }
@@ -312,7 +455,6 @@
   display: block;
 }
 
-/* Card styles (used on mobile) */
 .adminBookingCard {
   display: flex;
   flex-direction: column;
@@ -320,24 +462,23 @@
   width: 100%;
   padding: 0;
   margin: 0;
-  border: none;
-  border-radius: 12px;
-  background: #1e293b;
-  border: 1px solid #334155;
-  color: #f8fafc;
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  background: #111113;
+  color: #e4e4e7;
   text-align: left;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.15s, border-color 0.15s;
 }
 
 .adminBookingCard:hover {
-  background: #334155;
-  border-color: #475569;
+  background: #18181b;
+  border-color: #3f3f46;
 }
 
 .adminBookingCard.isSelected {
-  background: rgba(59, 130, 246, 0.15);
-  border-color: #3b82f6;
+  background: rgba(245, 158, 11, 0.05);
+  border-color: rgba(245, 158, 11, 0.3);
 }
 
 .adminBookingCardHeader {
@@ -345,20 +486,22 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 12px 14px;
-  border-bottom: 1px solid #334155;
+  padding: 13px 16px;
+  border-bottom: 1px solid #1c1c1f;
 }
 
 .adminBookingCardName {
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  color: #f4f4f5;
 }
 
 .adminBookingCardBody {
-  padding: 12px 14px;
+  padding: 12px 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
 }
 
 .adminBookingCardRow {
@@ -367,29 +510,38 @@
   align-items: flex-start;
   gap: 12px;
   font-size: 13px;
-  color: #f8fafc;
+  color: #d4d4d8;
 }
 
 .adminBookingCardLabel {
-  color: #94a3b8;
-  font-size: 12px;
+  color: #3f3f46;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   flex-shrink: 0;
+  padding-top: 2px;
 }
 
 .adminBookingCardRow--email span:last-child {
   word-break: break-all;
   text-align: right;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: #71717a;
 }
 
 .adminEmpty--card {
-  padding: 24px 16px;
+  padding: 28px 16px;
   text-align: center;
-  border-radius: 12px;
-  border: 1px dashed #475569;
-  background: #1e293b;
-  color: #94a3b8;
+  border-radius: 8px;
+  border: 1px dashed #27272a;
+  background: #111113;
+  color: #3f3f46;
+  font-size: 13px;
 }
 
+/* ── Responsive ─────────────────────────────────────────── */
 @media (max-width: 980px) {
   .adminMain {
     grid-template-columns: 1fr;
@@ -402,9 +554,7 @@
   }
 }
 
-/* Mobile-first responsive: tablet */
 @media (max-width: 768px) {
-  /* Edit booking above Add booking on mobile */
   .adminBottomGrid {
     display: flex;
     flex-direction: column;
@@ -417,7 +567,7 @@
   }
 
   .admin {
-    padding: 16px;
+    padding: 20px 16px;
   }
 
   .adminHeader {
@@ -437,11 +587,11 @@
   }
 
   .adminTitle {
-    font-size: 26px;
+    font-size: 30px;
   }
 
   .adminCard {
-    padding: 12px;
+    padding: 16px;
   }
 
   .adminCardTitleRow {
@@ -456,10 +606,9 @@
   }
 
   .adminCardTitleRow h2 {
-    font-size: 18px;
+    font-size: 15px;
   }
 
-  /* Switch to cards on mobile */
   .adminTableWrap--desktop {
     display: none;
   }
@@ -467,31 +616,32 @@
   .adminBookingCards {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
     margin-top: 8px;
   }
 
   .adminBookingCard {
-    background: #334155;
-    border-color: #475569;
+    background: #18181b;
+    border-color: #3f3f46;
   }
 
   .adminBookingCard:hover {
-    background: #475569;
-    border-color: #64748b;
+    background: #27272a;
+    border-color: #52525b;
   }
 
   .adminBookingCard.isSelected {
-    background: rgba(59, 130, 246, 0.2);
-    border-color: #3b82f6;
+    background: rgba(245, 158, 11, 0.07);
+    border-color: rgba(245, 158, 11, 0.35);
   }
 
   .adminBookingCardHeader {
-    border-bottom-color: #475569;
+    border-bottom-color: #3f3f46;
   }
 
   .adminEmpty--card {
-    background: #334155;
+    background: #18181b;
+    border-color: #3f3f46;
   }
 
   .adminGrid2 {
@@ -511,26 +661,27 @@
   .adminBtnDanger {
     flex: 1;
     min-width: 120px;
+    text-align: center;
+    justify-content: center;
   }
 }
 
-/* Small phones */
 @media (max-width: 480px) {
   .admin {
-    padding: 12px;
+    padding: 14px 12px;
   }
 
   .adminBadge {
-    font-size: 11px;
-    padding: 5px 8px;
+    font-size: 9px;
+    padding: 4px 7px;
   }
 
   .adminTitle {
-    font-size: 22px;
+    font-size: 26px;
   }
 
   .adminSubtle {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .adminHeaderRight {
@@ -539,10 +690,7 @@
 
   .adminHeaderRight .adminBtn {
     width: 100%;
-  }
-
-  .adminFilters .adminField {
-    margin-bottom: 0;
+    text-align: center;
   }
 
   .adminBookingCardHeader,
@@ -551,11 +699,10 @@
   }
 
   .adminBookingCardName {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .adminBookingCardRow {
     font-size: 12px;
   }
 }
-
