@@ -510,11 +510,11 @@
   align-items: flex-start;
   gap: 12px;
   font-size: 13px;
-  color: #d4d4d8;
+  color: #e4e4e7;
 }
 
 .adminBookingCardLabel {
-  color: #3f3f46;
+  color: #71717a;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -528,7 +528,7 @@
   text-align: right;
   font-family: 'DM Mono', monospace;
   font-size: 12px;
-  color: #71717a;
+  color: #a1a1aa;
 }
 
 .adminEmpty--card {
