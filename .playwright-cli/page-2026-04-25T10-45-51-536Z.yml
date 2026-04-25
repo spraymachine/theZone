@@ -1,0 +1,267 @@
+- generic [ref=e350]:
+  - navigation [ref=e351]:
+    - generic [ref=e352]:
+      - link "◆ The Zone" [ref=e353] [cursor=pointer]:
+        - /url: "#/"
+        - generic [ref=e354]: ◆
+        - generic [ref=e355]: The Zone
+      - generic [ref=e356]:
+        - button "Close menu" [ref=e357] [cursor=pointer]:
+          - generic [ref=e358]: ×
+        - link "Home" [ref=e359] [cursor=pointer]:
+          - /url: "#/"
+        - link "The Space" [ref=e360] [cursor=pointer]:
+          - /url: "#/space"
+        - link "Events" [ref=e361] [cursor=pointer]:
+          - /url: "#/events"
+        - link "Pricing & FAQs" [ref=e362] [cursor=pointer]:
+          - /url: "#/pricing"
+        - link "Book Now" [ref=e363] [cursor=pointer]:
+          - /url: "#/book"
+      - button "Toggle menu" [ref=e364] [cursor=pointer]
+  - generic [ref=e372]:
+    - generic [ref=e373]:
+      - generic [ref=e374]: Premium Private Space
+      - heading "Perfect Space for Every Occasion" [level=1] [ref=e375]
+      - paragraph [ref=e376]: A versatile private venue for conferences, parties, get-togethers, and corporate events. Equipped with premium amenities and flexible configurations.
+      - generic [ref=e377]:
+        - link "Book Now" [ref=e378] [cursor=pointer]:
+          - /url: "#/book"
+          - text: Book Now
+          - img [ref=e379]
+        - link "Explore Space" [ref=e381] [cursor=pointer]:
+          - /url: "#/space"
+      - generic [ref=e382]:
+        - generic [ref=e383]:
+          - generic [ref=e384]: 2,000
+          - generic [ref=e385]: Square Feet
+        - generic [ref=e386]:
+          - generic [ref=e387]: "40"
+          - generic [ref=e388]: Capacity
+        - generic [ref=e389]:
+          - generic [ref=e390]: "4.9"
+          - generic [ref=e391]: Star Rating
+    - generic:
+      - img "The Zone Event Space"
+  - generic [ref=e394]:
+    - generic [ref=e395]:
+      - generic [ref=e396]: About The Zone
+      - heading "A Space That Adapts to Your Vision" [level=2] [ref=e397]
+      - paragraph [ref=e398]: Located in the heart of the city, The Zone is a thoughtfully designed private space that transforms to suit your needs. Whether you're planning a high-stakes business presentation or an intimate celebration, our venue provides the perfect backdrop.
+      - list [ref=e399]:
+        - listitem [ref=e400]:
+          - img [ref=e401]
+          - text: Flexible layout configurations
+        - listitem [ref=e404]:
+          - img [ref=e405]
+          - text: State-of-the-art audio/visual equipment
+        - listitem [ref=e408]:
+          - img [ref=e409]
+          - text: Climate-controlled environment
+        - listitem [ref=e412]:
+          - img [ref=e413]
+          - text: Dedicated event support team
+      - link "Learn More About Us" [ref=e416] [cursor=pointer]:
+        - /url: "#/about"
+    - generic:
+      - img "Premium Event Space"
+  - generic [ref=e418]:
+    - generic [ref=e419]:
+      - generic [ref=e420]: What We Host
+      - heading "Perfect for Every Event Type" [level=2] [ref=e421]
+      - paragraph [ref=e422]: From corporate conferences to personal celebrations, our space adapts to your needs
+    - generic [ref=e423]:
+      - link "🎯 Conferences Professional meetings with premium tech setup Learn More" [ref=e424] [cursor=pointer]:
+        - /url: "#/events#conferences"
+        - generic [ref=e425]: 🎯
+        - heading "Conferences" [level=3] [ref=e426]
+        - paragraph [ref=e427]: Professional meetings with premium tech setup
+        - generic [ref=e428]:
+          - text: Learn More
+          - img [ref=e429]
+      - link "🎉 Parties Birthdays, anniversaries & celebrations Learn More" [ref=e431] [cursor=pointer]:
+        - /url: "#/events#parties"
+        - generic [ref=e432]: 🎉
+        - heading "Parties" [level=3] [ref=e433]
+        - paragraph [ref=e434]: Birthdays, anniversaries & celebrations
+        - generic [ref=e435]:
+          - text: Learn More
+          - img [ref=e436]
+      - link "☕ Get-togethers Casual meetups in a cozy atmosphere Learn More" [ref=e438] [cursor=pointer]:
+        - /url: "#/events#gatherings"
+        - generic [ref=e439]: ☕
+        - heading "Get-togethers" [level=3] [ref=e440]
+        - paragraph [ref=e441]: Casual meetups in a cozy atmosphere
+        - generic [ref=e442]:
+          - text: Learn More
+          - img [ref=e443]
+      - link "💼 Corporate Workshops, team meetings & launches Learn More" [ref=e445] [cursor=pointer]:
+        - /url: "#/events#corporate"
+        - generic [ref=e446]: 💼
+        - heading "Corporate" [level=3] [ref=e447]
+        - paragraph [ref=e448]: Workshops, team meetings & launches
+        - generic [ref=e449]:
+          - text: Learn More
+          - img [ref=e450]
+    - link "View All Event Types" [ref=e453] [cursor=pointer]:
+      - /url: "#/events"
+  - generic [ref=e457]:
+    - generic [ref=e458]: Fully Equipped
+    - heading "Everything You Need, Ready to Go" [level=2] [ref=e459]
+    - paragraph [ref=e460]: Our space comes equipped with premium amenities to ensure your event runs smoothly. No need to bring anything extra – we've got you covered.
+    - generic [ref=e461]:
+      - generic [ref=e462]:
+        - generic [ref=e463]: 📽️
+        - generic [ref=e464]: HD Projector
+      - generic [ref=e465]:
+        - generic [ref=e466]: 🔊
+        - generic [ref=e467]: Sound System
+      - generic [ref=e468]:
+        - generic [ref=e469]: 📶
+        - generic [ref=e470]: High-Speed WiFi
+      - generic [ref=e471]:
+        - generic [ref=e472]: ❄️
+        - generic [ref=e473]: Air Conditioning
+      - generic [ref=e474]:
+        - generic [ref=e475]: 💺
+        - generic [ref=e476]: Flexible Seating
+      - generic [ref=e477]:
+        - generic [ref=e478]: ⚡
+        - generic [ref=e479]: Power Backup
+    - link "View All Amenities" [ref=e480] [cursor=pointer]:
+      - /url: "#/amenities"
+  - generic [ref=e482]:
+    - generic [ref=e483]:
+      - generic [ref=e484]: What People Say
+      - heading "Trusted by Hundreds of Happy Clients" [level=2] [ref=e485]
+    - generic [ref=e486]:
+      - generic [ref=e487]:
+        - generic [ref=e488]:
+          - generic [ref=e489]: ★
+          - generic [ref=e490]: ★
+          - generic [ref=e491]: ★
+          - generic [ref=e492]: ★
+          - generic [ref=e493]: ★
+        - paragraph [ref=e494]: "\"The Zone exceeded all our expectations. The space was perfect for our annual conference and the team made everything seamless.\""
+        - generic [ref=e495]:
+          - generic [ref=e496]: SM
+          - generic [ref=e497]:
+            - paragraph [ref=e498]: Sarah Mitchell
+            - paragraph [ref=e499]: Marketing Director, TechCorp
+      - generic [ref=e500]:
+        - generic [ref=e501]:
+          - generic [ref=e502]: ★
+          - generic [ref=e503]: ★
+          - generic [ref=e504]: ★
+          - generic [ref=e505]: ★
+          - generic [ref=e506]: ★
+        - paragraph [ref=e507]: "\"We hosted my daughter's 18th birthday here and it was magical. The ambiance, the service, everything was top-notch!\""
+        - generic [ref=e508]:
+          - generic [ref=e509]: MC
+          - generic [ref=e510]:
+            - paragraph [ref=e511]: Michael Chen
+            - paragraph [ref=e512]: Parent
+      - generic [ref=e513]:
+        - generic [ref=e514]:
+          - generic [ref=e515]: ★
+          - generic [ref=e516]: ★
+          - generic [ref=e517]: ★
+          - generic [ref=e518]: ★
+          - generic [ref=e519]: ★
+        - paragraph [ref=e520]: "\"Best venue for corporate workshops. Clean, professional, and fully equipped. We've booked it three times already.\""
+        - generic [ref=e521]:
+          - generic [ref=e522]: PS
+          - generic [ref=e523]:
+            - paragraph [ref=e524]: Priya Sharma
+            - paragraph [ref=e525]: HR Manager, StartupHub
+    - link "Read More Reviews" [ref=e527] [cursor=pointer]:
+      - /url: "#/testimonials"
+  - generic [ref=e530]:
+    - heading "Ready to Host Your Event?" [level=2] [ref=e531]
+    - paragraph [ref=e532]: Book The Zone today and create unforgettable memories in a premium private space.
+    - generic [ref=e533]:
+      - link "Book Your Event" [ref=e534] [cursor=pointer]:
+        - /url: "#/book"
+      - link "Contact Us" [ref=e535] [cursor=pointer]:
+        - /url: "#/contact"
+  - contentinfo [ref=e536]:
+    - generic [ref=e539]:
+      - generic [ref=e540]:
+        - link "◆ The Zone" [ref=e541] [cursor=pointer]:
+          - /url: "#/"
+          - generic [ref=e542]: ◆
+          - generic [ref=e543]: The Zone
+        - paragraph [ref=e544]: Premium private space for conferences, parties, get-togethers, and corporate events.
+        - generic [ref=e545]:
+          - link "Instagram" [ref=e546] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e547]
+          - link "Facebook" [ref=e549] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e550]
+          - link "WhatsApp" [ref=e552] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e553]
+      - generic [ref=e555]:
+        - heading "Quick Links" [level=4] [ref=e556]
+        - list [ref=e557]:
+          - listitem [ref=e558]:
+            - link "Home" [ref=e559] [cursor=pointer]:
+              - /url: "#/"
+          - listitem [ref=e560]:
+            - link "The Space" [ref=e561] [cursor=pointer]:
+              - /url: "#/space"
+          - listitem [ref=e562]:
+            - link "Events" [ref=e563] [cursor=pointer]:
+              - /url: "#/events"
+          - listitem [ref=e564]:
+            - link "Pricing & FAQs" [ref=e565] [cursor=pointer]:
+              - /url: "#/pricing"
+          - listitem [ref=e566]:
+            - link "Book Now" [ref=e567] [cursor=pointer]:
+              - /url: "#/book"
+      - generic [ref=e568]:
+        - heading "Event Types" [level=4] [ref=e569]
+        - list [ref=e570]:
+          - listitem [ref=e571]:
+            - link "Conferences" [ref=e572] [cursor=pointer]:
+              - /url: "#/events#conferences"
+          - listitem [ref=e573]:
+            - link "Parties" [ref=e574] [cursor=pointer]:
+              - /url: "#/events#parties"
+          - listitem [ref=e575]:
+            - link "Corporate Events" [ref=e576] [cursor=pointer]:
+              - /url: "#/events#corporate"
+          - listitem [ref=e577]:
+            - link "Get-togethers" [ref=e578] [cursor=pointer]:
+              - /url: "#/events#gatherings"
+      - generic [ref=e579]:
+        - heading "Support" [level=4] [ref=e580]
+        - list [ref=e581]:
+          - listitem [ref=e582]:
+            - link "Contact Us" [ref=e583] [cursor=pointer]:
+              - /url: "#/contact"
+          - listitem [ref=e584]:
+            - link "Testimonials" [ref=e585] [cursor=pointer]:
+              - /url: "#/testimonials"
+      - generic [ref=e586]:
+        - heading "Contact" [level=4] [ref=e587]
+        - generic [ref=e588]:
+          - generic [ref=e589]:
+            - img [ref=e590]
+            - generic [ref=e593]: 4th floor, KUBERA TOWERS, Sampath Vinayaka Temple Rd, Visakhapatnam, 530003
+          - generic [ref=e594]:
+            - img [ref=e595]
+            - generic [ref=e597]: "9849112369"
+          - generic [ref=e598]:
+            - img [ref=e599]
+            - generic [ref=e602]: sandeep9849112369@gmail.com
+    - generic [ref=e605]:
+      - paragraph [ref=e606]: © 2026 The Zone. All rights reserved.
+      - generic [ref=e607]:
+        - link "Privacy Policy" [ref=e608] [cursor=pointer]:
+          - /url: "#/privacy"
+        - link "Terms & Conditions" [ref=e609] [cursor=pointer]:
+          - /url: "#/terms"
+        - link "Refund Policy" [ref=e610] [cursor=pointer]:
+          - /url: "#/refund"

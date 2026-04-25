@@ -11,6 +11,9 @@ export default function MaterialDatePicker({ id, value, onChange, minDate, disab
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
         value={selectedDate}
+        desktopModeMediaQuery="@media (min-width: 769px)"
+        closeOnSelect
+        reduceAnimations
         onChange={(nextValue) => {
           const normalized = nextValue && nextValue.isValid() ? nextValue.format('YYYY-MM-DD') : ''
           onChange?.(normalized)

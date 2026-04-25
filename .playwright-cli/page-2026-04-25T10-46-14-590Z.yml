@@ -1,0 +1,206 @@
+- generic [ref=e615]:
+  - navigation [ref=e616]:
+    - generic [ref=e617]:
+      - link "◆ The Zone" [ref=e618] [cursor=pointer]:
+        - /url: "#/"
+        - generic [ref=e619]: ◆
+        - generic [ref=e620]: The Zone
+      - generic [ref=e621]:
+        - button "Close menu" [ref=e622] [cursor=pointer]:
+          - generic [ref=e623]: ×
+        - link "Home" [ref=e624] [cursor=pointer]:
+          - /url: "#/"
+        - link "The Space" [ref=e625] [cursor=pointer]:
+          - /url: "#/space"
+        - link "Events" [ref=e626] [cursor=pointer]:
+          - /url: "#/events"
+        - link "Pricing & FAQs" [ref=e627] [cursor=pointer]:
+          - /url: "#/pricing"
+        - link "Book Now" [ref=e628] [cursor=pointer]:
+          - /url: "#/book"
+      - button "Toggle menu" [ref=e629] [cursor=pointer]
+  - generic [ref=e636]:
+    - generic [ref=e637]: Book Now
+    - heading "Reserve Your Perfect Event" [level=1] [ref=e638]
+    - paragraph [ref=e639]: Fill out the form, submit, and complete secure payment to confirm your slot instantly.
+  - generic [ref=e642]:
+    - generic [ref=e644]:
+      - generic [ref=e645]:
+        - heading "Event Details" [level=3] [ref=e646]
+        - generic [ref=e647]:
+          - generic [ref=e648]:
+            - generic [ref=e649]: Event Type
+            - combobox "Event Type" [ref=e650]:
+              - option "Private office" [selected]
+              - option "Party / Celebration"
+              - option "Get-together"
+              - option "Conference / Meeting"
+              - option "Corporate Event"
+              - option "Other"
+          - generic [ref=e651]:
+            - generic [ref=e652]: Number of Guests
+            - spinbutton "Number of Guests" [ref=e653]: "10"
+      - generic [ref=e654]:
+        - heading "Date & Time" [level=3] [ref=e655]
+        - generic [ref=e656]:
+          - generic [ref=e657]:
+            - generic [ref=e658]: Date
+            - group [ref=e660]:
+              - generic [ref=e661]:
+                - generic [ref=e662]:
+                  - spinbutton "Day" [ref=e663]: DD
+                  - text: /
+                - generic [ref=e664]:
+                  - spinbutton "Month" [ref=e665]: MM
+                  - text: /
+                - spinbutton "Year" [ref=e667]: YYYY
+              - button "Choose date" [ref=e669] [cursor=pointer]:
+                - img [ref=e670]
+              - group
+              - textbox [ref=e672]
+          - generic [ref=e673]:
+            - generic [ref=e674]: Start Time
+            - textbox "Start Time" [disabled] [ref=e676]:
+              - /placeholder: Select date first
+        - generic [ref=e677]:
+          - generic [ref=e678]: Duration (hours)
+          - spinbutton "Duration (hours)" [ref=e679]: "3"
+          - generic [ref=e680]: Minimum 3 hours. Base rate includes 3 hours.
+        - generic [ref=e681]:
+          - generic [ref=e682]: Estimated Total
+          - generic [ref=e683]: ₹0.00
+      - generic [ref=e684]:
+        - heading "Your Information" [level=3] [ref=e685]
+        - generic [ref=e686]:
+          - generic [ref=e687]:
+            - generic [ref=e688]: Full Name
+            - textbox "Full Name" [ref=e689]
+          - generic [ref=e690]:
+            - generic [ref=e691]: Phone
+            - textbox "Phone" [ref=e692]
+        - generic [ref=e693]:
+          - generic [ref=e694]: Email
+          - textbox "Email" [ref=e695]
+        - generic [ref=e696]:
+          - generic [ref=e697]: Special Requests (Optional)
+          - textbox "Special Requests (Optional)" [ref=e698]:
+            - /placeholder: Any setup requirements, accessibility needs, or special requests...
+      - generic [ref=e699]:
+        - button "Pay & Confirm Booking" [ref=e700] [cursor=pointer]
+        - button "Reset Form" [ref=e701] [cursor=pointer]
+    - generic [ref=e702]:
+      - generic [ref=e703]:
+        - heading "Booking Summary" [level=3] [ref=e704]
+        - generic [ref=e705]:
+          - generic [ref=e706]:
+            - generic [ref=e707]: Event Type
+            - generic [ref=e708]: Private office
+          - generic [ref=e709]:
+            - generic [ref=e710]: Date
+            - generic [ref=e711]: —
+          - generic [ref=e712]:
+            - generic [ref=e713]: Time
+            - generic [ref=e714]: —
+          - generic [ref=e715]:
+            - generic [ref=e716]: Duration
+            - generic [ref=e717]: 3 hours
+          - generic [ref=e718]:
+            - generic [ref=e719]: Guests
+            - generic [ref=e720]: "10"
+        - generic [ref=e722]:
+          - generic [ref=e723]:
+            - generic [ref=e724]: Day Type
+            - generic [ref=e725]: —
+          - generic [ref=e726]:
+            - generic [ref=e727]: Base (3hrs)
+            - generic [ref=e728]: ₹0.00
+        - generic [ref=e730]:
+          - generic [ref=e731]: Estimated Total
+          - generic [ref=e732]: ₹0.00
+        - paragraph [ref=e733]: Full payment is collected at checkout to confirm and lock your booking slot.
+      - generic [ref=e734]:
+        - heading "Need Help?" [level=4] [ref=e735]
+        - paragraph [ref=e736]: Questions about your booking? We're here to help.
+        - link "Contact Us" [ref=e737] [cursor=pointer]:
+          - /url: "#/contact"
+  - contentinfo [ref=e738]:
+    - generic [ref=e741]:
+      - generic [ref=e742]:
+        - link "◆ The Zone" [ref=e743] [cursor=pointer]:
+          - /url: "#/"
+          - generic [ref=e744]: ◆
+          - generic [ref=e745]: The Zone
+        - paragraph [ref=e746]: Premium private space for conferences, parties, get-togethers, and corporate events.
+        - generic [ref=e747]:
+          - link "Instagram" [ref=e748] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e749]
+          - link "Facebook" [ref=e751] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e752]
+          - link "WhatsApp" [ref=e754] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e755]
+      - generic [ref=e757]:
+        - heading "Quick Links" [level=4] [ref=e758]
+        - list [ref=e759]:
+          - listitem [ref=e760]:
+            - link "Home" [ref=e761] [cursor=pointer]:
+              - /url: "#/"
+          - listitem [ref=e762]:
+            - link "The Space" [ref=e763] [cursor=pointer]:
+              - /url: "#/space"
+          - listitem [ref=e764]:
+            - link "Events" [ref=e765] [cursor=pointer]:
+              - /url: "#/events"
+          - listitem [ref=e766]:
+            - link "Pricing & FAQs" [ref=e767] [cursor=pointer]:
+              - /url: "#/pricing"
+          - listitem [ref=e768]:
+            - link "Book Now" [ref=e769] [cursor=pointer]:
+              - /url: "#/book"
+      - generic [ref=e770]:
+        - heading "Event Types" [level=4] [ref=e771]
+        - list [ref=e772]:
+          - listitem [ref=e773]:
+            - link "Conferences" [ref=e774] [cursor=pointer]:
+              - /url: "#/events#conferences"
+          - listitem [ref=e775]:
+            - link "Parties" [ref=e776] [cursor=pointer]:
+              - /url: "#/events#parties"
+          - listitem [ref=e777]:
+            - link "Corporate Events" [ref=e778] [cursor=pointer]:
+              - /url: "#/events#corporate"
+          - listitem [ref=e779]:
+            - link "Get-togethers" [ref=e780] [cursor=pointer]:
+              - /url: "#/events#gatherings"
+      - generic [ref=e781]:
+        - heading "Support" [level=4] [ref=e782]
+        - list [ref=e783]:
+          - listitem [ref=e784]:
+            - link "Contact Us" [ref=e785] [cursor=pointer]:
+              - /url: "#/contact"
+          - listitem [ref=e786]:
+            - link "Testimonials" [ref=e787] [cursor=pointer]:
+              - /url: "#/testimonials"
+      - generic [ref=e788]:
+        - heading "Contact" [level=4] [ref=e789]
+        - generic [ref=e790]:
+          - generic [ref=e791]:
+            - img [ref=e792]
+            - generic [ref=e795]: 4th floor, KUBERA TOWERS, Sampath Vinayaka Temple Rd, Visakhapatnam, 530003
+          - generic [ref=e796]:
+            - img [ref=e797]
+            - generic [ref=e799]: "9849112369"
+          - generic [ref=e800]:
+            - img [ref=e801]
+            - generic [ref=e804]: sandeep9849112369@gmail.com
+    - generic [ref=e807]:
+      - paragraph [ref=e808]: © 2026 The Zone. All rights reserved.
+      - generic [ref=e809]:
+        - link "Privacy Policy" [ref=e810] [cursor=pointer]:
+          - /url: "#/privacy"
+        - link "Terms & Conditions" [ref=e811] [cursor=pointer]:
+          - /url: "#/terms"
+        - link "Refund Policy" [ref=e812] [cursor=pointer]:
+          - /url: "#/refund"

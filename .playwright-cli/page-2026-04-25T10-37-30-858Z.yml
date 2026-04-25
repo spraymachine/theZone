@@ -1,0 +1,269 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - navigation [ref=e5]:
+      - generic [ref=e6]:
+        - link "◆ The Zone" [ref=e7] [cursor=pointer]:
+          - /url: "#/"
+          - generic [ref=e8]: ◆
+          - generic [ref=e9]: The Zone
+        - generic [ref=e10]:
+          - button "Close menu" [ref=e193] [cursor=pointer]:
+            - generic [ref=e194]: ×
+          - link "Home" [ref=e11] [cursor=pointer]:
+            - /url: "#/"
+          - link "The Space" [ref=e12] [cursor=pointer]:
+            - /url: "#/space"
+          - link "Events" [ref=e13] [cursor=pointer]:
+            - /url: "#/events"
+          - link "Pricing & FAQs" [ref=e14] [cursor=pointer]:
+            - /url: "#/pricing"
+          - link "Book Now" [ref=e15] [cursor=pointer]:
+            - /url: "#/book"
+        - button "Toggle menu" [ref=e195] [cursor=pointer]
+    - generic [ref=e19]:
+      - generic [ref=e20]: Book Now
+      - heading "Reserve Your Perfect Event" [level=1] [ref=e21]
+      - paragraph [ref=e22]: Fill out the form, submit, and complete secure payment to confirm your slot instantly.
+    - generic [ref=e25]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - heading "Event Details" [level=3] [ref=e29]
+          - generic [ref=e30]:
+            - generic [ref=e31]:
+              - generic [ref=e32]: Event Type
+              - combobox "Event Type" [ref=e33]:
+                - option "Private office" [selected]
+                - option "Party / Celebration"
+                - option "Get-together"
+                - option "Conference / Meeting"
+                - option "Corporate Event"
+                - option "Other"
+            - generic [ref=e34]:
+              - generic [ref=e35]: Number of Guests
+              - spinbutton "Number of Guests" [ref=e36]: "10"
+        - generic [ref=e37]:
+          - heading "Date & Time" [level=3] [ref=e38]
+          - generic [ref=e39]:
+            - generic [ref=e40]:
+              - generic [ref=e41]: Date
+              - group [ref=e43]:
+                - generic [ref=e44]:
+                  - generic [ref=e45]:
+                    - spinbutton "Day" [ref=e46]: DD
+                    - text: /
+                  - generic [ref=e47]:
+                    - spinbutton "Month" [ref=e48]: MM
+                    - text: /
+                  - spinbutton "Year" [ref=e50]: YYYY
+                - button "Choose date" [ref=e52] [cursor=pointer]:
+                  - img [ref=e53]
+                - group
+                - textbox [ref=e55]
+            - generic [ref=e56]:
+              - generic [ref=e57]: Start Time
+              - textbox "Start Time" [disabled] [ref=e59]:
+                - /placeholder: Select date first
+          - generic [ref=e60]:
+            - generic [ref=e61]: Duration (hours)
+            - spinbutton "Duration (hours)" [ref=e62]: "3"
+            - generic [ref=e63]: Minimum 3 hours. Base rate includes 3 hours.
+          - generic [ref=e199]:
+            - generic [ref=e200]: Estimated Total
+            - generic [ref=e201]: ₹0.00
+        - generic [ref=e64]:
+          - heading "Your Information" [level=3] [ref=e65]
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - generic [ref=e68]: Full Name
+              - textbox "Full Name" [ref=e69]
+            - generic [ref=e70]:
+              - generic [ref=e71]: Phone
+              - textbox "Phone" [ref=e72]
+          - generic [ref=e73]:
+            - generic [ref=e74]: Email
+            - textbox "Email" [ref=e75]
+          - generic [ref=e76]:
+            - generic [ref=e77]: Special Requests (Optional)
+            - textbox "Special Requests (Optional)" [ref=e78]:
+              - /placeholder: Any setup requirements, accessibility needs, or special requests...
+        - generic [ref=e79]:
+          - button "Pay & Confirm Booking" [ref=e80] [cursor=pointer]
+          - button "Reset Form" [ref=e81] [cursor=pointer]
+      - generic [ref=e82]:
+        - generic [ref=e83]:
+          - heading "Booking Summary" [level=3] [ref=e84]
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - generic [ref=e87]: Event Type
+              - generic [ref=e88]: Private office
+            - generic [ref=e89]:
+              - generic [ref=e90]: Date
+              - generic [ref=e91]: —
+            - generic [ref=e92]:
+              - generic [ref=e93]: Time
+              - generic [ref=e94]: —
+            - generic [ref=e95]:
+              - generic [ref=e96]: Duration
+              - generic [ref=e97]: 3 hours
+            - generic [ref=e98]:
+              - generic [ref=e99]: Guests
+              - generic [ref=e100]: "10"
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - generic [ref=e104]: Day Type
+              - generic [ref=e105]: —
+            - generic [ref=e106]:
+              - generic [ref=e107]: Base (3hrs)
+              - generic [ref=e108]: ₹0.00
+          - generic [ref=e110]:
+            - generic [ref=e111]: Estimated Total
+            - generic [ref=e112]: ₹0.00
+          - paragraph [ref=e113]: Full payment is collected at checkout to confirm and lock your booking slot.
+        - generic [ref=e114]:
+          - heading "Need Help?" [level=4] [ref=e115]
+          - paragraph [ref=e116]: Questions about your booking? We're here to help.
+          - link "Contact Us" [ref=e117] [cursor=pointer]:
+            - /url: "#/contact"
+    - contentinfo [ref=e118]:
+      - generic [ref=e121]:
+        - generic [ref=e122]:
+          - link "◆ The Zone" [ref=e123] [cursor=pointer]:
+            - /url: "#/"
+            - generic [ref=e124]: ◆
+            - generic [ref=e125]: The Zone
+          - paragraph [ref=e126]: Premium private space for conferences, parties, get-togethers, and corporate events.
+          - generic [ref=e127]:
+            - link "Instagram" [ref=e128] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e129]
+            - link "Facebook" [ref=e131] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e132]
+            - link "WhatsApp" [ref=e134] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e135]
+        - generic [ref=e137]:
+          - heading "Quick Links" [level=4] [ref=e138]
+          - list [ref=e139]:
+            - listitem [ref=e140]:
+              - link "Home" [ref=e141] [cursor=pointer]:
+                - /url: "#/"
+            - listitem [ref=e142]:
+              - link "The Space" [ref=e143] [cursor=pointer]:
+                - /url: "#/space"
+            - listitem [ref=e144]:
+              - link "Events" [ref=e145] [cursor=pointer]:
+                - /url: "#/events"
+            - listitem [ref=e146]:
+              - link "Pricing & FAQs" [ref=e147] [cursor=pointer]:
+                - /url: "#/pricing"
+            - listitem [ref=e148]:
+              - link "Book Now" [ref=e149] [cursor=pointer]:
+                - /url: "#/book"
+        - generic [ref=e150]:
+          - heading "Event Types" [level=4] [ref=e151]
+          - list [ref=e152]:
+            - listitem [ref=e153]:
+              - link "Conferences" [ref=e154] [cursor=pointer]:
+                - /url: "#/events#conferences"
+            - listitem [ref=e155]:
+              - link "Parties" [ref=e156] [cursor=pointer]:
+                - /url: "#/events#parties"
+            - listitem [ref=e157]:
+              - link "Corporate Events" [ref=e158] [cursor=pointer]:
+                - /url: "#/events#corporate"
+            - listitem [ref=e159]:
+              - link "Get-togethers" [ref=e160] [cursor=pointer]:
+                - /url: "#/events#gatherings"
+        - generic [ref=e161]:
+          - heading "Support" [level=4] [ref=e162]
+          - list [ref=e163]:
+            - listitem [ref=e164]:
+              - link "Contact Us" [ref=e165] [cursor=pointer]:
+                - /url: "#/contact"
+            - listitem [ref=e166]:
+              - link "Testimonials" [ref=e167] [cursor=pointer]:
+                - /url: "#/testimonials"
+        - generic [ref=e168]:
+          - heading "Contact" [level=4] [ref=e169]
+          - generic [ref=e170]:
+            - generic [ref=e171]:
+              - img [ref=e172]
+              - generic [ref=e175]: 4th floor, KUBERA TOWERS, Sampath Vinayaka Temple Rd, Visakhapatnam, 530003
+            - generic [ref=e176]:
+              - img [ref=e177]
+              - generic [ref=e179]: "9849112369"
+            - generic [ref=e180]:
+              - img [ref=e181]
+              - generic [ref=e184]: sandeep9849112369@gmail.com
+      - generic [ref=e187]:
+        - paragraph [ref=e188]: © 2026 The Zone. All rights reserved.
+        - generic [ref=e189]:
+          - link "Privacy Policy" [ref=e190] [cursor=pointer]:
+            - /url: "#/privacy"
+          - link "Terms & Conditions" [ref=e191] [cursor=pointer]:
+            - /url: "#/terms"
+          - link "Refund Policy" [ref=e192] [cursor=pointer]:
+            - /url: "#/refund"
+  - dialog [ref=e202]:
+    - generic [ref=e206]:
+      - generic [ref=e207]:
+        - generic [ref=e208] [cursor=pointer]:
+          - generic [ref=e210]: April 2026
+          - button "calendar view is open, switch to year view" [ref=e211]:
+            - img [ref=e212]
+        - generic [ref=e214]:
+          - button "Previous month" [disabled]:
+            - img
+          - button "Next month" [ref=e216] [cursor=pointer]:
+            - img [ref=e217]
+      - grid "April 2026" [ref=e221]:
+        - row "Sunday Monday Tuesday Wednesday Thursday Friday Saturday" [ref=e222]:
+          - columnheader "Sunday" [ref=e223]: S
+          - columnheader "Monday" [ref=e224]: M
+          - columnheader "Tuesday" [ref=e225]: T
+          - columnheader "Wednesday" [ref=e226]: W
+          - columnheader "Thursday" [ref=e227]: T
+          - columnheader "Friday" [ref=e228]: F
+          - columnheader "Saturday" [ref=e229]: S
+        - rowgroup [ref=e230]:
+          - row "1 2 3 4" [ref=e231]:
+            - gridcell
+            - gridcell
+            - gridcell
+            - gridcell "1" [disabled]
+            - gridcell "2" [disabled]
+            - gridcell "3" [disabled]
+            - gridcell "4" [disabled]
+          - row "5 6 7 8 9 10 11" [ref=e232]:
+            - gridcell "5" [disabled]
+            - gridcell "6" [disabled]
+            - gridcell "7" [disabled]
+            - gridcell "8" [disabled]
+            - gridcell "9" [disabled]
+            - gridcell "10" [disabled]
+            - gridcell "11" [disabled]
+          - row "12 13 14 15 16 17 18" [ref=e233]:
+            - gridcell "12" [disabled]
+            - gridcell "13" [disabled]
+            - gridcell "14" [disabled]
+            - gridcell "15" [disabled]
+            - gridcell "16" [disabled]
+            - gridcell "17" [disabled]
+            - gridcell "18" [disabled]
+          - row "19 20 21 22 23 24 25" [ref=e234]:
+            - gridcell "19" [disabled]
+            - gridcell "20" [disabled]
+            - gridcell "21" [disabled]
+            - gridcell "22" [disabled]
+            - gridcell "23" [disabled]
+            - gridcell "24" [disabled]
+            - gridcell "25" [active] [ref=e235] [cursor=pointer]
+          - row "26 27 28 29 30" [ref=e236]:
+            - gridcell "26" [ref=e237] [cursor=pointer]
+            - gridcell "27" [ref=e238] [cursor=pointer]
+            - gridcell "28" [ref=e239] [cursor=pointer]
+            - gridcell "29" [ref=e240] [cursor=pointer]
+            - gridcell "30" [ref=e241] [cursor=pointer]
+            - gridcell
+            - gridcell
