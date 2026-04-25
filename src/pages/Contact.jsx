@@ -103,7 +103,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3>Phone</h3>
-                    <p>+1 (555) 123-4567</p>
+                    <p>9849112369</p>
                     <p className="contactNote">Also available on WhatsApp</p>
                   </div>
                 </div>
@@ -117,7 +117,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3>Email</h3>
-                    <p>hello@thezone.com</p>
+                    <p>sandeep9849112369@gmail.com</p>
                   </div>
                 </div>
 
@@ -182,7 +182,7 @@ export default function Contact() {
                         name="email"
                         value={form.email}
                         onChange={handleChange}
-                        placeholder="john@example.com"
+                        placeholder="sandeep9849112369@gmail.com"
                         required
                       />
                     </div>
@@ -197,7 +197,7 @@ export default function Contact() {
                         name="phone"
                         value={form.phone}
                         onChange={handleChange}
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="9849112369"
                       />
                     </div>
                     <div className="formGroup">
@@ -253,4 +253,3 @@ export default function Contact() {
     </div>
   )
 }
-
