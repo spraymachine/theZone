@@ -87,9 +87,28 @@
 }
 
 @media (max-width: 768px) {
+  .gsapCarouselPin {
+    overflow: visible;
+  }
+
+  .gsapCarouselContainer {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 24px 0 28px;
+  }
+
+  .gsapCarousel {
+    width: max-content;
+    will-change: auto;
+    padding: 0 20px;
+  }
+
   .carouselSlide {
     flex: 0 0 calc(100vw - 40px);
     height: 400px;
+    scroll-snap-align: center;
   }
 
   .carouselContent {
@@ -104,7 +123,6 @@
     font-size: 16px;
   }
 }
-
 
 
 

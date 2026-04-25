@@ -66,6 +66,12 @@ const TESTIMONIALS = [
   }
 ]
 
+function shouldSkipHeavyScrollMotion() {
+  return window.innerWidth <= 768 ||
+    window.matchMedia('(pointer: coarse)').matches ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
 export default function Home() {
   // Landing page hero animations (animate immediately on load)
   const heroBadgeRef = useGSAPScroll({ animation: 'topToOriginal', delay: 0, duration: 0.8, start: 'top 100%' })
@@ -92,6 +98,10 @@ export default function Home() {
   useEffect(() => {
     const cards = eventGridRef.current?.querySelectorAll('.eventCard')
     if (!cards || cards.length === 0) return
+    if (shouldSkipHeavyScrollMotion()) {
+      gsap.set(cards, { opacity: 1, x: 0, y: 0, filter: 'none', clearProps: 'willChange' })
+      return
+    }
 
     // Set initial state
     gsap.set(cards, {
@@ -146,6 +156,10 @@ export default function Home() {
   useEffect(() => {
     const items = amenitiesGridRef.current?.querySelectorAll('.amenityItem')
     if (!items || items.length === 0) return
+    if (shouldSkipHeavyScrollMotion()) {
+      gsap.set(items, { opacity: 1, x: 0, y: 0, filter: 'none', clearProps: 'willChange' })
+      return
+    }
 
     // Grid is 3 columns, items arranged:
     // Row 1: indices 0, 1, 2 (HD Projector, Sound System, High-Speed WiFi)
@@ -254,6 +268,10 @@ export default function Home() {
   useEffect(() => {
     const cards = testimonialGridRef.current?.querySelectorAll('.testimonialCard')
     if (!cards || cards.length === 0) return
+    if (shouldSkipHeavyScrollMotion()) {
+      gsap.set(cards, { opacity: 1, x: 0, y: 0, filter: 'none', clearProps: 'willChange' })
+      return
+    }
 
     // Set initial state
     gsap.set(cards, {
@@ -527,4 +545,3 @@ export default function Home() {
     </div>
   )
 }
-

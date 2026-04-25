@@ -14,10 +14,17 @@ export default function Navbar() {
   const [currentPath, setCurrentPath] = useState(window.location.hash || '#/')
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 20)
+        ticking = false
+      })
     }
-    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -78,4 +85,3 @@ export default function Navbar() {
     </nav>
   )
 }
-

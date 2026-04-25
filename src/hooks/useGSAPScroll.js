@@ -25,6 +25,22 @@ export function useGSAPScroll({
   useEffect(() => {
     const element = elementRef.current
     if (!element) return
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches
+    const narrowViewport = window.innerWidth <= 768
+
+    if (prefersReducedMotion || coarsePointer || narrowViewport) {
+      gsap.set(element, {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        z: 0,
+        scale: 1,
+        filter: 'none',
+        clearProps: 'willChange'
+      })
+      return
+    }
 
     // Set initial state based on animation type
     const initialStyles = {
@@ -184,4 +200,3 @@ export function useParallax(speed = 0.5) {
 
   return elementRef
 }
-

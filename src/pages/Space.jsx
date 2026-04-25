@@ -69,6 +69,12 @@ const AMENITIES = [
   { icon: '🚪', title: 'Private Entrance', desc: 'Dedicated entrance with reception' }
 ]
 
+function shouldSkipHeavyScrollMotion() {
+  return window.innerWidth <= 768 ||
+    window.matchMedia('(pointer: coarse)').matches ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
 export default function Space() {
   // Hero animations
   const heroBadgeRef = useGSAPScroll({ animation: 'fadeInDown', delay: 0, duration: 0.6 })
@@ -110,6 +116,10 @@ export default function Space() {
   useEffect(() => {
     const items = amenitiesGridRef.current?.querySelectorAll('.amenityCard')
     if (!items || items.length === 0) return
+    if (shouldSkipHeavyScrollMotion()) {
+      gsap.set(items, { opacity: 1, x: 0, y: 0, filter: 'none', clearProps: 'willChange' })
+      return
+    }
 
     // Separate left and right column items
     const leftColumnItems = []

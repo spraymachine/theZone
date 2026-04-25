@@ -23,53 +23,41 @@ export default function GSAPProvider({ children }) {
   const wrapperRef = useRef(null)
 
   useEffect(() => {
-    // Check if ScrollSmoother is available (requires premium license)
     let smoother = null
     const wrapper = wrapperRef.current
     const content = contentRef.current
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const coarsePointer = window.matchMedia('(pointer: coarse)').matches
+    const touchDevice = navigator.maxTouchPoints > 0
+    const narrowViewport = window.innerWidth <= 768
+    const shouldUseNativeScroll = prefersReducedMotion || coarsePointer || touchDevice || narrowViewport
 
-    // Check if ScrollSmoother plugin is registered and available
-    if (ScrollSmoother && typeof ScrollSmoother.create === 'function') {
+    if (!wrapper || !content) return
+
+    if (shouldUseNativeScroll) {
+      ScrollTrigger.config({ ignoreMobileResize: true })
+      ScrollTrigger.normalizeScroll(false)
+      ScrollTrigger.refresh()
+    } else if (ScrollSmoother && typeof ScrollSmoother.create === 'function') {
       try {
-        // Initialize ScrollSmoother
-        // Note: This will only work if you have a Club GreenSock membership
-        // To use ScrollSmoother, you need to:
-        // 1. Purchase a Club GreenSock membership from https://greensock.com/club/
-        // 2. Register your license: gsap.registerPlugin(ScrollSmoother)
-        // 3. Or add your license key to the project
-        
+        wrapper.classList.add('smoothScrollActive')
+
         smoother = ScrollSmoother.create({
           wrapper: wrapper,
           content: content,
-          smooth: 1.5, // Smoothness factor (1 = no smoothing, higher = smoother)
-          effects: true, // Enable data-speed and data-lag effects
-          smoothTouch: 0.1, // Smooth scrolling on touch devices (0 = disabled)
-          normalizeScroll: true, // Normalize scroll behavior across browsers
+          smooth: 1,
+          effects: true,
+          smoothTouch: 0,
+          normalizeScroll: false
         })
 
         smootherRef.current = smoother
-        console.log('✅ GSAP ScrollSmoother initialized successfully')
       } catch (error) {
-        console.warn('⚠️ ScrollSmoother initialization failed. This requires a Club GreenSock membership.', error.message)
-        // Fallback: Use ScrollTrigger only for scroll animations
-        // The wrapper structure will still work, just without smooth scrolling
-        if (wrapper && content) {
-          // Remove wrapper constraints for fallback
-          wrapper.style.height = 'auto'
-          wrapper.style.overflow = 'visible'
-        }
-      }
-    } else {
-      console.warn('⚠️ ScrollSmoother plugin not available. Using ScrollTrigger only for animations.')
-      console.info('💡 To enable smooth scrolling, purchase a Club GreenSock membership: https://greensock.com/club/')
-      // Fallback: Remove wrapper constraints
-      if (wrapper && content) {
-        wrapper.style.height = 'auto'
-        wrapper.style.overflow = 'visible'
+        console.warn('ScrollSmoother initialization failed. Falling back to native scroll.', error.message)
+        wrapper.classList.remove('smoothScrollActive')
       }
     }
 
-    // Initialize ScrollTrigger (always available, free)
     ScrollTrigger.refresh()
 
     // Refresh ScrollTrigger on route changes
@@ -99,6 +87,7 @@ export default function GSAPProvider({ children }) {
       if (smoother) {
         smoother.kill()
       }
+      wrapper.classList.remove('smoothScrollActive')
       ScrollTrigger.getAll().forEach(trigger => trigger.kill())
     }
   }, [])
@@ -111,4 +100,3 @@ export default function GSAPProvider({ children }) {
     </div>
   )
 }
-

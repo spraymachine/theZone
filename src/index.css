@@ -28,13 +28,21 @@ body {
 
 /* GSAP ScrollSmoother wrapper structure */
 #smooth-wrapper {
-  overflow: hidden;
   position: relative;
   width: 100%;
+  min-height: 100vh;
+}
+
+#smooth-wrapper.smoothScrollActive {
+  overflow: hidden;
   height: 100vh;
 }
 
 #smooth-content {
+  min-height: 100vh;
+}
+
+#smooth-wrapper.smoothScrollActive #smooth-content {
   will-change: transform;
 }
 

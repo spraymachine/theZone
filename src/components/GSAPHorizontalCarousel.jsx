@@ -46,6 +46,12 @@ export default function GSAPHorizontalCarousel({ slides = DEFAULT_SLIDES }) {
         timelineRef.current = null
       }
 
+      if (window.innerWidth <= 768 || window.matchMedia('(pointer: coarse)').matches) {
+        gsap.set(carousel, { clearProps: 'width,x,transform,willChange' })
+        ScrollTrigger.refresh()
+        return
+      }
+
       const slideElements = carousel.querySelectorAll('.carouselSlide')
       if (slideElements.length === 0) {
         // Retry if slides aren't ready
@@ -161,5 +167,4 @@ export default function GSAPHorizontalCarousel({ slides = DEFAULT_SLIDES }) {
     </div>
   )
 }
-
 
