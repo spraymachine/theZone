@@ -24,5 +24,4 @@ echo "🚀 Pushing to GitHub Pages..."
 git subtree push --prefix dist origin gh-pages
 
 echo "✅ Deployment complete!"
-echo "🌐 Your site should be live at: https://spraymachine.github.io/theZone/"
-
+echo "🌐 Your site should be live at: https://thezone.co.in/"

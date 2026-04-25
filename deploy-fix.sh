@@ -22,6 +22,5 @@ echo "🚀 Force pushing to gh-pages..."
 git push origin $(git subtree split --prefix dist main):gh-pages --force
 
 echo "✅ Deployment complete!"
-echo "🌐 Your site should be live at: https://spraymachine.github.io/theZone/"
+echo "🌐 Your site should be live at: https://thezone.co.in/"
 echo "⏱️  Wait 1-2 minutes for GitHub Pages to update"
-
