@@ -59,108 +59,212 @@
 
 /* Booking Section */
 .bookingSection {
-  background: var(--bg-primary);
+  background:
+    linear-gradient(180deg, rgba(27, 42, 65, 0.04), rgba(150, 121, 105, 0.08)),
+    var(--bg-primary);
 }
 
 .bookingGrid {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 40px;
+  grid-template-columns: minmax(0, 1.08fr) 360px;
+  gap: 28px;
   align-items: start;
 }
 
 /* Booking Form */
 .bookingForm {
-  background: var(--brand-accent);
-  border: none;
-  border-radius: var(--radius-xl);
-  padding: 40px;
+  counter-reset: booking-section;
+  position: relative;
+  overflow: hidden;
+  background: var(--booking-paper);
+  border: 1px solid rgba(114, 89, 76, 0.18);
+  border-radius: 8px;
+  padding: 0;
   font-family: var(--font-sans);
+  color: var(--booking-ink);
+  box-shadow: 0 26px 70px rgba(27, 42, 65, 0.14);
+}
+
+.bookingForm::before {
+  content: "";
+  display: block;
+  height: 12px;
+  background:
+    linear-gradient(90deg, var(--booking-ink) 0 38%, var(--brand-accent) 38% 68%, var(--booking-paper-muted) 68%);
 }
 
 .formSection {
-  margin-bottom: 36px;
+  counter-increment: booking-section;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  column-gap: 24px;
+  padding: 34px 38px;
+  margin: 0;
+  border-bottom: 1px solid var(--booking-rule);
 }
 
 .formSection:last-of-type {
-  margin-bottom: 0;
+  border-bottom: none;
 }
 
 .formSectionTitle {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--booking-ink);
+  margin-bottom: 26px;
+  padding: 0;
+  border-bottom: none;
+  letter-spacing: 0;
+}
+
+.formSectionTitle::before {
+  content: counter(booking-section, decimal-leading-zero);
+  display: inline-flex;
+  width: 58px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--booking-ink);
+  color: var(--booking-paper);
   font-family: var(--font-sans);
-  font-size: 18px;
-  font-weight: 700;
-  color: rgba(245, 245, 240, 0.9);
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(245, 245, 240, 0.2);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.formSectionTitle::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--booking-rule);
 }
 
 .formRow {
+  grid-column: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 18px;
 }
 
 .formGroup {
-  margin-bottom: 20px;
+  grid-column: 2;
+  margin-bottom: 18px;
+}
+
+.formRow .formGroup {
+  grid-column: auto;
 }
 
 .formGroup label {
   display: block;
-  font-size: 14px;
-  font-weight: 200;
+  font-size: 11px;
+  font-weight: 800;
   margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
 
 .bookingForm .formGroup label {
-  color: #f5f5f0 !important;
+  color: rgba(27, 42, 65, 0.68) !important;
 }
 
 .formGroup input,
 .formGroup select,
 .formGroup textarea {
   width: 100%;
-  padding: 14px 16px;
+  padding: 15px 14px;
   font-family: var(--font-sans);
   font-size: 15px;
-  border: 1px solid rgba(245, 245, 240, 0.3);
-  border-radius: var(--radius-md);
-  background: rgba(245, 245, 240, 0.1);
-  color: #f5f5f0;
+  font-weight: 600;
+  border: 1px solid rgba(27, 42, 65, 0.14);
+  border-radius: 6px;
+  background: #f8f0e4;
+  color: var(--booking-ink);
   transition: none;
 }
 
 .formGroup input::placeholder,
 .formGroup textarea::placeholder {
-  color: rgba(245, 245, 240, 0.5);
+  color: rgba(27, 42, 65, 0.38);
 }
 
 .formGroup input:focus,
 .formGroup select:focus,
 .formGroup textarea:focus {
   outline: none;
-  border-color: rgba(245, 245, 240, 0.6);
-  box-shadow: 0 0 0 3px rgba(245, 245, 240, 0.1);
-  background: rgba(245, 245, 240, 0.15);
-  color: #f5f5f0;
+  border-color: rgba(27, 42, 65, 0.5);
+  box-shadow: 0 0 0 3px rgba(150, 121, 105, 0.18);
+  background: #fffdf8;
+  color: var(--booking-ink);
 }
 
 .formGroup select option {
-  background: var(--brand-accent);
-  color: #f5f5f0;
+  background: var(--booking-paper);
+  color: var(--booking-ink);
 }
 
 .formGroup textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 92px;
 }
 
 .formHelp {
   display: block;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(27, 42, 65, 0.54);
   margin-top: 6px;
+}
+
+.bookingForm .MuiOutlinedInput-root {
+  color: var(--booking-ink) !important;
+  background-color: #f8f0e4 !important;
+  border-radius: 6px !important;
+  font-family: var(--font-sans) !important;
+}
+
+.bookingForm .MuiOutlinedInput-root fieldset {
+  border-color: rgba(27, 42, 65, 0.14) !important;
+}
+
+.bookingForm .MuiOutlinedInput-root:hover fieldset {
+  border-color: rgba(27, 42, 65, 0.28) !important;
+}
+
+.bookingForm .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: rgba(27, 42, 65, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(150, 121, 105, 0.18);
+}
+
+.bookingForm .MuiInputBase-input,
+.bookingForm .MuiSvgIcon-root {
+  color: var(--booking-ink) !important;
+}
+
+.bookingForm .timePickerInput {
+  padding: 15px 14px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid rgba(27, 42, 65, 0.14);
+  border-radius: 6px;
+  background: #f8f0e4;
+  color: var(--booking-ink);
+}
+
+.bookingForm .timePickerInput:focus {
+  border-color: rgba(27, 42, 65, 0.5);
+  box-shadow: 0 0 0 3px rgba(150, 121, 105, 0.18);
+  background: #fffdf8;
+}
+
+.bookingForm .timePickerInput::placeholder {
+  color: rgba(27, 42, 65, 0.38);
 }
 
 /* Mobile Estimated Total */
@@ -170,27 +274,31 @@
 
 /* Time Preview */
 .timePreview {
+  grid-column: 2;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 16px;
-  background: rgba(245, 245, 240, 0.15);
-  color: #f5f5f0;
-  border-radius: var(--radius-md);
+  width: fit-content;
+  padding: 11px 14px;
+  background: var(--booking-ink);
+  color: var(--booking-paper);
+  border: 1px solid rgba(27, 42, 65, 0.1);
+  border-radius: 999px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .timePreview .checking {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 250, 242, 0.72);
 }
 
 .bookedSlotsSummary {
+  grid-column: 2;
   margin-top: 12px;
-  padding: 12px 14px;
-  border-radius: var(--radius-md);
-  background: rgba(245, 245, 240, 0.12);
-  border: 1px solid rgba(245, 245, 240, 0.22);
+  padding: 13px 14px;
+  border-radius: 6px;
+  background: #f1e5d5;
+  border: 1px solid rgba(150, 121, 105, 0.22);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -198,53 +306,65 @@
 
 .bookedSlotsLabel {
   font-size: 12px;
-  font-weight: 700;
-  color: rgba(245, 245, 240, 0.95);
+  font-weight: 800;
+  color: var(--booking-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .bookedSlotsList {
   font-size: 12px;
-  color: rgba(245, 245, 240, 0.82);
+  color: rgba(27, 42, 65, 0.7);
   line-height: 1.5;
 }
 
 /* Conflict Alert */
 .conflictAlert {
+  grid-column: 2;
   padding: 14px 16px;
-  background: #FEE2E2;
-  color: #DC2626;
-  border-radius: var(--radius-md);
+  background: #f9ddd6;
+  color: #9f2d1e;
+  border: 1px solid rgba(159, 45, 30, 0.18);
+  border-radius: 6px;
   font-size: 14px;
   margin-top: 16px;
 }
 
 /* Form Actions */
 .formActions {
+  grid-column: 1 / -1;
   display: flex;
-  gap: 16px;
-  margin-top: 32px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(245, 245, 240, 0.2);
+  gap: 12px;
+  margin-top: 0;
+  padding: 26px 38px 36px;
+  border-top: 1px solid var(--booking-rule);
+  background: #f6ecdf;
 }
 
 .formActions .btn-primary {
   flex: 1;
-  background: #f5f5f0;
-  color: var(--brand-accent);
+  background: var(--booking-ink);
+  color: var(--booking-paper);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  border: 1px solid var(--booking-ink);
+  border-radius: 6px;
 }
 
 .formActions .btn-primary:hover {
-  background: rgba(245, 245, 240, 0.9);
+  background: #263a59;
 }
 
 .formActions .btn-outline {
-  border-color: rgba(245, 245, 240, 0.3);
-  color: #f5f5f0;
+  border-color: rgba(27, 42, 65, 0.24);
+  color: var(--booking-ink);
+  font-family: var(--font-sans);
+  border-radius: 6px;
 }
 
 .formActions .btn-outline:hover {
-  background: rgba(245, 245, 240, 0.1);
-  border-color: rgba(245, 245, 240, 0.5);
+  background: rgba(27, 42, 65, 0.06);
+  border-color: rgba(27, 42, 65, 0.4);
 }
 
 /* Sidebar */
@@ -254,21 +374,22 @@
 }
 
 .summaryCard {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-xl);
-  padding: 28px;
+  background: var(--booking-ink);
+  border: 1px solid rgba(27, 42, 65, 0.2);
+  border-radius: 8px;
+  padding: 28px 26px;
   margin-bottom: 20px;
-  color: var(--text-primary);
+  color: var(--booking-paper);
   font-family: var(--font-sans);
+  box-shadow: 0 24px 60px rgba(27, 42, 65, 0.2);
 }
 
 .summaryCard h3 {
-  font-family: var(--font-sans);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--brand-dark);
-  margin-bottom: 20px;
+  font-family: var(--font-display);
+  font-size: 27px;
+  font-weight: 600;
+  color: var(--booking-paper);
+  margin-bottom: 24px;
 }
 
 .summaryRows {
@@ -280,57 +401,64 @@
 .summaryRow {
   display: flex;
   justify-content: space-between;
+  gap: 18px;
   font-size: 14px;
+  line-height: 1.5;
 }
 
 .summaryRow span:first-child {
-  color: var(--text-secondary);
+  color: rgba(255, 250, 242, 0.58);
 }
 
 .summaryRow span:last-child {
-  color: var(--text-primary);
-  font-weight: 500;
+  color: var(--booking-paper);
+  font-weight: 700;
+  text-align: right;
 }
 
 .summaryDivider {
   height: 1px;
-  background: var(--border-light);
-  margin: 16px 0;
+  background: rgba(255, 250, 242, 0.16);
+  margin: 18px 0;
 }
 
 .summaryTotal {
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
-  font-weight: 700;
+  gap: 18px;
+  padding: 18px 0 0;
+  font-size: 20px;
+  font-weight: 800;
+  border-top: 2px solid rgba(150, 121, 105, 0.55);
 }
 
 .summaryTotal span:first-child {
-  color: var(--brand-dark);
+  color: var(--booking-paper);
 }
 
 .summaryTotal span:last-child {
-  color: var(--brand-accent);
+  color: #dfc8b1;
+  text-align: right;
 }
 
 .summaryNote {
   font-size: 12px;
-  color: var(--text-muted);
+  color: rgba(255, 250, 242, 0.58);
   margin-top: 16px;
   line-height: 1.5;
 }
 
 /* Help Card */
 .helpCard {
-  background: var(--brand-dark);
-  border-radius: var(--radius-xl);
+  background: var(--brand-accent);
+  border-radius: 8px;
   padding: 24px;
   text-align: center;
   font-family: var(--font-sans);
 }
 
 .helpCard h4 {
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 700;
   color: var(--text-light);
@@ -339,7 +467,7 @@
 
 .helpCard p {
   font-size: 14px;
-  color: var(--text-muted);
+  color: rgba(255, 250, 242, 0.78);
   margin-bottom: 16px;
 }
 
@@ -461,41 +589,130 @@
 }
 
 @media (max-width: 768px) {
+  .bookHero {
+    padding: 130px 0 62px;
+  }
+
+  .bookSubtitle {
+    font-size: 16px;
+  }
+
+  .bookingSection {
+    padding-top: 56px;
+  }
+
+  .bookingGrid {
+    gap: 18px;
+  }
+
   .bookingForm {
-    padding: 28px;
+    border-radius: 8px;
   }
 
   .formRow {
+    grid-column: 1;
     grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .formSection {
+    grid-template-columns: 1fr;
+    padding: 28px 18px;
+    margin-bottom: 0;
+  }
+
+  .formSectionTitle {
+    gap: 12px;
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+
+  .formSectionTitle::before {
+    width: 44px;
+    height: 44px;
+    font-size: 11px;
+  }
+
+  .formGroup {
+    grid-column: 1;
+    margin-bottom: 18px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea,
+  .bookingForm .timePickerInput {
+    min-height: 50px;
+  }
+
+  .timePreview {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    border-radius: 6px;
+  }
+
+  .bookedSlotsSummary,
+  .conflictAlert {
+    grid-column: 1;
   }
 
   .formActions {
+    grid-column: 1;
     flex-direction: column;
+    gap: 12px;
+    padding: 22px 18px 28px;
   }
 
   .mobileEstimatedTotal {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
+    gap: 16px;
+    padding: 16px 15px;
     margin-top: 16px;
     margin-bottom: 20px;
-    background: rgba(245, 245, 240, 0.15);
-    border: 1px solid rgba(245, 245, 240, 0.3);
-    border-radius: var(--radius-md);
+    background: var(--booking-ink);
+    border: 1px solid rgba(27, 42, 65, 0.12);
+    border-radius: 6px;
   }
 
   .mobileTotalLabel {
     font-size: 14px;
-    font-weight: 600;
-    color: rgba(245, 245, 240, 0.9);
+    font-weight: 700;
+    color: rgba(255, 250, 242, 0.82);
     font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
   }
 
   .mobileTotalValue {
-    font-size: 20px;
-    font-weight: 700;
-    color: #f5f5f0;
+    font-size: 21px;
+    font-weight: 800;
+    color: #fffaf2;
     font-family: var(--font-sans);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .summaryCard,
+  .helpCard {
+    border-radius: 16px;
+    padding: 22px 18px;
+  }
+
+  .summaryCard h3 {
+    font-size: 21px;
+  }
+
+  .summaryRow,
+  .summaryTotal {
+    align-items: flex-start;
+  }
+
+  .summaryRow span:last-child,
+  .summaryTotal span:last-child {
+    max-width: 55%;
   }
 }

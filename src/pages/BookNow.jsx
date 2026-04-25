@@ -122,9 +122,9 @@ export default function BookNow() {
     const dayOfWeek = date.getDay() // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
 
     if (dayOfWeek >= 1 && dayOfWeek <= 4) { // Monday - Thursday
-      return { base: 3499, additionalPerHour: 1000, dayType: 'Weekday' }
+      return { base: 5500, additionalPerHour: 1500, dayType: 'Weekday' }
     } else { // Friday - Sunday
-      return { base: 4499, additionalPerHour: 1299, dayType: 'Weekend' }
+      return { base: 6000, additionalPerHour: 1500, dayType: 'Weekend' }
     }
   }, [form.date])
 

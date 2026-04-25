@@ -20,12 +20,12 @@ function calculatePricing(date, duration) {
 
   let base, additionalPerHour, dayType
   if (dayOfWeek >= 1 && dayOfWeek <= 4) { // Monday - Thursday
-    base = 3499
-    additionalPerHour = 1000
+    base = 5500
+    additionalPerHour = 1500
     dayType = 'Weekday'
   } else { // Friday - Sunday
-    base = 4499
-    additionalPerHour = 1299
+    base = 6000
+    additionalPerHour = 1500
     dayType = 'Weekend'
   }
 

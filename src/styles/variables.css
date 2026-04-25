@@ -20,6 +20,13 @@
   --brand-accent: #967969;
   --brand-accent-hover: #846A5C;
   --brand-accent-light: rgba(150, 121, 105, 0.1);
+  --brand-accent-deep: #72594c;
+  --brand-support-blue: #1B2A41;
+  --brand-support-blue-soft: rgba(27, 42, 65, 0.1);
+  --booking-paper: #fffaf2;
+  --booking-paper-muted: #f3eadc;
+  --booking-ink: #1b2a41;
+  --booking-rule: rgba(114, 89, 76, 0.2);
   --brand-teal: #14B8A6;
   --brand-teal-light: rgba(20, 184, 166, 0.1);
   
@@ -74,4 +81,3 @@
   --text-secondary: #94A3B8;
   --border-light: #334155;
 }
-

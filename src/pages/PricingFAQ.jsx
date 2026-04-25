@@ -9,8 +9,8 @@ const PRICING_TIERS = [
   {
     name: 'Weekday',
     days: 'Mon - Thu',
-    basePrice: 3499,
-    additionalPerHour: 1000,
+    basePrice: 5500,
+    additionalPerHour: 1500,
     minHours: '3 hour minimum',
     features: [
       'All standard amenities',
@@ -23,8 +23,8 @@ const PRICING_TIERS = [
   {
     name: 'Weekend',
     days: 'Fri - Sun',
-    basePrice: 4499,
-    additionalPerHour: 1299,
+    basePrice: 6000,
+    additionalPerHour: 1500,
     minHours: '3 hour minimum',
     features: [
       'All standard amenities',
@@ -330,4 +330,3 @@ export default function PricingFAQ() {
     </div>
   )
 }
-
